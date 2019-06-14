@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IdeaListComponent } from './idea-list/idea-list.component';
+import { IdeaSevenWsComponent } from './idea-seven-ws/idea-seven-ws.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IdeaListComponent
+    IdeaListComponent,
+    IdeaSevenWsComponent
   ],
   imports: [
     BrowserModule,
