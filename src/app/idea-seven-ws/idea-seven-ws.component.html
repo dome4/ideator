@@ -1,3 +1,21 @@
-<p>
-  idea-seven-ws works!
-</p>
+<ng-container *ngIf="idea">
+  <clr-modal
+    (clrModalOpenChange)="closeModal($event)"
+    [clrModalOpen]="modalOpen"
+    [clrModalStaticBackdrop]="false"
+    [clrModalSize]="'lg'"
+  >
+    <h3 class="modal-title">{{ idea.title }}</h3>
+    <div class="modal-body">
+      <p>But not much to say...</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="basic = false">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="basic = false">
+        Ok
+      </button>
+    </div>
+  </clr-modal>
+</ng-container>

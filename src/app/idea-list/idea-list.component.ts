@@ -16,6 +16,8 @@ export class IdeaListComponent implements OnInit, OnDestroy {
 
   openModal: boolean = false;
 
+  selectedIdea: Idea;
+
   constructor(public ideaService: IdeaService) { }
 
   ngOnInit() {
@@ -28,8 +30,17 @@ export class IdeaListComponent implements OnInit, OnDestroy {
   }
 
   openIdeaModal(idea: Idea) {
-    console.log("idea selected: " + idea.id)
+
+    // open modal in SevenWsComponent
     this.openModal = true;
 
+    // set selected idea
+    this.selectedIdea = idea;
+  }
+
+  modalClosed(event) {
+
+    // close modal
+    this.openModal = false;
   }
 }
