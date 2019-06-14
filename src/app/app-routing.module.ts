@@ -9,6 +9,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'idea-list', component: IdeaListComponent },
+
   // { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -14,6 +14,8 @@ export class IdeaListComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
+  openModal: boolean = false;
+
   constructor(public ideaService: IdeaService) { }
 
   ngOnInit() {
@@ -25,5 +27,9 @@ export class IdeaListComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  openIdeaModal(idea: Idea) {
+    console.log("idea selected: " + idea.id)
+    this.openModal = true;
 
+  }
 }

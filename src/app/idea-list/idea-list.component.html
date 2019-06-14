@@ -5,7 +5,8 @@
 
   <clr-dg-placeholder>We couldn't find any ideas!</clr-dg-placeholder>
 
-  <clr-dg-row *clrDgItems="let idea of ideas">
+  <!-- <clr-dg-row *clrDgItems="let idea of ideas" [routerLink]="[idea.id]"> -->
+  <clr-dg-row *clrDgItems="let idea of ideas" (click)="openIdeaModal(idea)">
     <clr-dg-cell>{{ idea.title }}</clr-dg-cell>
     <clr-dg-cell>{{ idea.businessIdea | slice: 0:50 }} ...</clr-dg-cell>
     <clr-dg-cell><clr-icon shape="note"></clr-icon></clr-dg-cell>
@@ -21,3 +22,22 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+
+<clr-modal
+  [(clrModalOpen)]="openModal"
+  [clrModalStaticBackdrop]="false"
+  [clrModalSize]="'lg'"
+>
+  <h3 class="modal-title">I have a nice title</h3>
+  <div class="modal-body">
+    <p>But not much to say...</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="basic = false">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="basic = false">
+      Ok
+    </button>
+  </div>
+</clr-modal>
