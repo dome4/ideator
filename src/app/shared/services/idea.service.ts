@@ -12,7 +12,7 @@ export class IdeaService {
 
   constructor(private http: HttpClient) { }
 
-  getPersons(): Observable<Idea[]> {
+  getIdeas(): Observable<Idea[]> {
     return this.http.get<Idea[]>('assets/ideas.json');
   }
 }

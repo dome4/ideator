@@ -7,6 +7,8 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IdeaListComponent } from './idea-list/idea-list.component';
 import { IdeaSevenWsComponent } from './idea-seven-ws/idea-seven-ws.component';
+import { IdeaService } from './shared/services/idea.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,12 @@ import { IdeaSevenWsComponent } from './idea-seven-ws/idea-seven-ws.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [IdeaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
