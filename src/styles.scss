@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+// set textarea width in form to 100%
+.clr-form.fullwidth {
+  .clr-control-container,
+  .clr-textarea {
+    width: 100%;
+  }
+}

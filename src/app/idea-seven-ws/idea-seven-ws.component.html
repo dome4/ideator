@@ -7,14 +7,72 @@
   >
     <h3 class="modal-title">{{ idea.title }}</h3>
     <div class="modal-body">
-      <p>But not much to say...</p>
+      <form clrForm class="fullwidth" clrLayout="vertical">
+        <clr-textarea-container>
+          <label>1. What is your business idea?</label>
+          <textarea
+            clrTextarea
+            [(ngModel)]="idea.businessIdea"
+            name="usp"
+          ></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label>2. What makes you idea special?</label>
+          <textarea clrTextarea [(ngModel)]="idea.usp" name="usp"></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label
+            >3. Which are the target customers and how big is the target
+            group?</label
+          >
+          <textarea
+            clrTextarea
+            [(ngModel)]="idea.customers"
+            name="usp"
+          ></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label>4. What is your business model?</label>
+          <textarea
+            clrTextarea
+            [(ngModel)]="idea.businessModel"
+            name="usp"
+          ></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label>5. Who are your competitors?</label>
+          <textarea
+            clrTextarea
+            [(ngModel)]="idea.competitors"
+            name="usp"
+          ></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label>6. Who belongs to the start-up team? Who is missing?</label>
+          <textarea clrTextarea [(ngModel)]="idea.team" name="usp"></textarea>
+        </clr-textarea-container>
+        <clr-textarea-container>
+          <label
+            >7. What are the market barriers for others to follow you?</label
+          >
+          <textarea
+            clrTextarea
+            [(ngModel)]="idea.marketBarriers"
+            name="usp"
+          ></textarea>
+        </clr-textarea-container>
+      </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline" (click)="basic = false">
+      <button
+        type="button"
+        class="btn btn-outline"
+        (click)="cancelIdeaEditing()"
+      >
         Cancel
       </button>
-      <button type="button" class="btn btn-primary" (click)="basic = false">
-        Ok
+      <button type="button" class="btn btn-primary" (click)="saveIdea()">
+        Save
       </button>
     </div>
   </clr-modal>

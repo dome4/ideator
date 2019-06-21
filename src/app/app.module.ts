@@ -9,6 +9,7 @@ import { IdeaListComponent } from './idea-list/idea-list.component';
 import { IdeaSevenWsComponent } from './idea-seven-ws/idea-seven-ws.component';
 import { IdeaService } from './shared/services/idea.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     ClarityModule,

@@ -28,4 +28,22 @@ export class IdeaSevenWsComponent implements OnInit {
     // emit modal closed event
     this.modalClosed.emit(true);
   }
+
+  /*
+  * save edited idea from modal
+  */
+  saveIdea() {
+    
+    // ToDo: ideaService.save(this.user)
+    this.closeModal();
+  }
+
+  /*
+  * simly closes the modal and does not save the edited idea
+  */
+  cancelIdeaEditing() {
+
+    // ToDo: doesn't work yet due to the reference of the user in the modal and the database
+    this.closeModal();
+  }
 }
