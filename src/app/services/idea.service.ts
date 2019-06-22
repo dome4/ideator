@@ -23,7 +23,7 @@ export class IdeaService {
   }
 
   updateIdea(idea: Idea) {
-    // return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
+    return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
   }
 
   createIdea(idea: Idea) {

@@ -55,8 +55,32 @@ export function reducer(state = initialState, action: All): State {
         selectedIdea: action.payload.selectedIdea
       }
     }
+    case IdeaActionTypes.IDEA_EDITED: {
+      return {
+        ...state,
+        ideas: updateIdeaList(action.payload.ideas, action.payload.selectedIdea),
+        selectedIdea: action.payload.selectedIdea
+      }
+    }
     default: {
       return state;
     }
   }
+
+  // ToDo debug idea edited
+
+  /**
+   * update selectedIdea in idea list
+   *
+   * @param ideas
+   * @param selectedIdea updated idea
+   */
+  function updateIdeaList(ideas: Idea[], selectedIdea: Idea) {
+    const i = ideas.findIndex(el => el.id === selectedIdea.id)
+    ideas[i] = selectedIdea;
+
+    return ideas;
+  }
+
+
 }

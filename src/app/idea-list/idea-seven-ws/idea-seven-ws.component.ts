@@ -5,6 +5,7 @@ import { AppState, selectIdeaState } from '../../store/app.states';
 import { State } from '../../store/reducers/idea.reducers';
 import { Subscription, Observable } from 'rxjs';
 import * as _ from 'lodash';
+import { IdeaEdited } from 'src/app/store/actions/idea.actions';
 
 @Component({
   selector: 'app-idea-seven-ws',
@@ -57,8 +58,11 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
   */
   saveIdea() {
 
-    // ToDo: ideaService.save(this.user)
+    // close modal
     this.closeModal();
+
+    // update idea
+    this.store.dispatch(new IdeaEdited({ selectedIdea: this.idea }));
   }
 
   /*

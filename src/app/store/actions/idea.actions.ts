@@ -8,6 +8,7 @@ export enum IdeaActionTypes {
   IDEA_CREATED = '[Idea] Idea Created',
   IDEA_DELETED = '[Idea] Idea Deleted',
   IDEA_EDITED = '[Idea] Idea Edited',
+  IDEA_EDITED_SUCCESS = '[Idea] Idea Edited Success',
 
 }
 
@@ -30,8 +31,20 @@ export class IdeaSelected implements Action {
   constructor(public payload: any) { }
 }
 
+export class IdeaEdited implements Action {
+  readonly type = IdeaActionTypes.IDEA_EDITED;
+  constructor(public payload: any) { }
+}
+
+export class IdeaEditedSuccess implements Action {
+  readonly type = IdeaActionTypes.IDEA_EDITED_SUCCESS;
+  constructor(public payload: any) { }
+}
+
 export type All =
   | FetchIdeasBegin
   | FetchIdeasSuccess
   | FetchIdeasFailure
-  | IdeaSelected;
+  | IdeaSelected
+  | IdeaEdited
+  | IdeaEditedSuccess;

@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
-import { IdeaActionTypes, FetchIdeasFailure, FetchIdeasSuccess } from '../actions/idea.actions';
+import { IdeaActionTypes, FetchIdeasFailure, FetchIdeasSuccess, IdeaEdited, IdeaEditedSuccess } from '../actions/idea.actions';
 import { IdeaService } from 'src/app/services/idea.service';
 import { Idea } from 'src/app/models/idea.model';
+import { State } from '../reducers/idea.reducers';
 
 @Injectable()
 export class IdeaEffects {
@@ -37,4 +38,26 @@ export class IdeaEffects {
     );
 
   // ToDo retry request on failure
+
+  // update idea effect
+  @Effect()
+  IdeaEdited: Observable<any> = this.actions
+    .pipe(
+      ofType(IdeaActionTypes.IDEA_EDITED),
+      map((action: IdeaEdited) => action.payload),
+      switchMap(payload => {
+        return this.ideaService.updateIdea(payload.selectedIdea)
+          .pipe(
+            map(((idea: Idea) => {
+              return new IdeaEditedSuccess({ selectedIdea: idea })
+            }),
+              catchError((error) => {
+                console.log(error);
+                return of(new FetchIdeasFailure({ error: error }));
+              })
+            )
+          )
+      })
+    );
+
 }
