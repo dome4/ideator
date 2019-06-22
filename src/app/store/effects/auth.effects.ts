@@ -44,6 +44,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
       localStorage.setItem('token', user.payload.token);
+      // ToDo think about storing jwt token in local storage
       this.router.navigateByUrl('/');
     })
   );
@@ -91,6 +92,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGOUT),
     tap((user) => {
       localStorage.removeItem('token');
+      this.router.navigateByUrl('/');
     })
   );
 

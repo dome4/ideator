@@ -20,6 +20,8 @@ import { reducers } from './store/app.states';
 import { HeaderComponent } from './header/header.component';
 import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     IdeaSevenWsComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     IdeaService,
     AuthService,
+    AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

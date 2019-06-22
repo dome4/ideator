@@ -3,14 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { IdeaListComponent } from './idea-list/idea-list.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/idea-list',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
-  { path: 'idea-list', component: IdeaListComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'idea-list', component: IdeaListComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '/' }
