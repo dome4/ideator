@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/user.model';
-import { AppState } from '../store/app.states';
+import { AppState, selectAuthState } from '../store/app.states';
 import { Store } from '@ngrx/store';
 import { SignUp } from '../store/actions/auth.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -13,10 +14,18 @@ export class SignupComponent implements OnInit {
 
   // user to login
   user: User = new User();
+  getState: Observable<any>;
+  errorMessage: string | null;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit() {
+    this.getState.subscribe((state) => {
+      this.errorMessage = state.errorMessage;
+    });
+    // ToDo: unsubscribe from observable
   }
 
   onSubmit(): void {

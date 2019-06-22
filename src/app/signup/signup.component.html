@@ -35,9 +35,9 @@
           >Password Required</clr-control-error
         > -->
       </clr-password-container>
-      <!-- <div class="error" [ngClass]="{ active: loginForm.invalid }">
-        Invalid user name or password
-      </div> -->
+      <div class="error" [ngClass]="{ active: errorMessage }">
+        {{ errorMessage }}
+      </div>
       <button type="submit" class="btn btn-primary">Sign up</button>
       <a [routerLink]="['/login']" class="signup">Already have an account?</a>
     </div>

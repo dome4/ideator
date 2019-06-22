@@ -17,6 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { reducers } from './store/app.states';
     IdeaListComponent,
     IdeaSevenWsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -85,5 +85,14 @@ export class AuthEffects {
     ofType(AuthActionTypes.SIGNUP_FAILURE, AuthActionTypes.LOGIN_FAILURE)
   );
 
+  // delete stored login token
+  @Effect({ dispatch: false })
+  public LogOut: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.LOGOUT),
+    tap((user) => {
+      localStorage.removeItem('token');
+    })
+  );
+
 
 }
