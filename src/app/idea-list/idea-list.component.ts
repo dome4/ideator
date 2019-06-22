@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Idea } from '../models/idea.model';
-import { IdeaService } from '../services/idea.service';
+import { Store } from '@ngrx/store';
+import { AppState, selectIdeaState } from '../store/app.states';
+import { State } from '../store/reducers/idea.reducers';
+import { FetchIdeasBegin } from '../store/actions/idea.actions';
 
 @Component({
   selector: 'app-idea-list',
@@ -10,19 +13,33 @@ import { IdeaService } from '../services/idea.service';
 })
 export class IdeaListComponent implements OnInit, OnDestroy {
 
-  ideas: Idea[] = [];
-
   subscriptions: Subscription[] = [];
 
   openModal: boolean = false;
 
   selectedIdea: Idea;
 
-  constructor(public ideaService: IdeaService) { }
+  // idea data
+  getState: Observable<any>;
+  ideasLoading: boolean;
+  ideas: Idea[] = [];
+  errorMessage: string | null;
+
+  constructor(private store: Store<AppState>) {
+    this.getState = this.store.select(selectIdeaState);
+  }
 
   ngOnInit() {
     this.subscriptions.push(
-      this.ideaService.getIdeas().subscribe(ideas => this.ideas = ideas));
+      this.getState.subscribe((state: State) => {
+        this.ideasLoading = state.loading;
+        this.ideas = state.ideas;
+        this.errorMessage = state.errorMessage;
+      })
+    );
+
+    // dispatch idea data
+    this.store.dispatch(new FetchIdeasBegin());
   }
 
   ngOnDestroy() {
