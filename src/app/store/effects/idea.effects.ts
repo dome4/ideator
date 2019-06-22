@@ -20,12 +20,11 @@ export class IdeaEffects {
   @Effect()
   FetchIdeasBegin: Observable<any> = this.actions
     .pipe(
-      ofType(IdeaActionTypes.FETCH_PRODUCTS_BEGIN),
+      ofType(IdeaActionTypes.FETCH_IDEAS_BEGIN),
       switchMap(payload => {
         return this.ideaService.getIdeas()
           .pipe(
             map((ideas: Idea[]) => {
-              console.log(ideas);
               return new FetchIdeasSuccess({ ideas: ideas });
             }),
             catchError((error) => {

@@ -11,6 +11,9 @@ export interface State {
   // if fetched, there should be a idea-array
   ideas: Idea[] | null;
 
+  // currently selected idea
+  selectedIdea: Idea | null;
+
   // error message
   errorMessage: string | null;
 }
@@ -18,19 +21,20 @@ export interface State {
 export const initialState: State = {
   loading: false,
   ideas: [],
+  selectedIdea: null,
   errorMessage: null
 };
 
 export function reducer(state = initialState, action: All): State {
   switch (action.type) {
-    case IdeaActionTypes.FETCH_PRODUCTS_BEGIN: {
+    case IdeaActionTypes.FETCH_IDEAS_BEGIN: {
       return {
         ...state,
         loading: true,
         errorMessage: null
       };
     }
-    case IdeaActionTypes.FETCH_PRODUCTS_FAILURE: {
+    case IdeaActionTypes.FETCH_IDEAS_FAILURE: {
       return {
         ...state,
         loading: false,
@@ -38,12 +42,18 @@ export function reducer(state = initialState, action: All): State {
         ideas: []
       };
     }
-    case IdeaActionTypes.FETCH_PRODUCTS_SUCCESS: {
+    case IdeaActionTypes.FETCH_IDEAS_SUCCESS: {
       return {
         ...state,
         loading: false,
         ideas: action.payload.ideas
       };
+    }
+    case IdeaActionTypes.IDEA_SELECTED: {
+      return {
+        ...state,
+        selectedIdea: action.payload.selectedIdea
+      }
     }
     default: {
       return state;

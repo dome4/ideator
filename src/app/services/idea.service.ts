@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { Idea } from '../models/idea.model';
 import { delay } from 'rxjs/operators';
 
-
-
 @Injectable()
 export class IdeaService {
 
@@ -22,5 +20,17 @@ export class IdeaService {
       .pipe(
         delay(2000)
       )
+  }
+
+  updateIdea(idea: Idea) {
+    // return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
+  }
+
+  createIdea(idea: Idea) {
+    // return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
+  }
+
+  deleteIdea(idea: Idea) {
+    // return this.http.delete<Idea>(`${this.API_URL}/idea/${idea.id}`);
   }
 }

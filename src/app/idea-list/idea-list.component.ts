@@ -4,7 +4,7 @@ import { Idea } from '../models/idea.model';
 import { Store } from '@ngrx/store';
 import { AppState, selectIdeaState } from '../store/app.states';
 import { State } from '../store/reducers/idea.reducers';
-import { FetchIdeasBegin } from '../store/actions/idea.actions';
+import { FetchIdeasBegin, IdeaSelected } from '../store/actions/idea.actions';
 
 @Component({
   selector: 'app-idea-list',
@@ -53,6 +53,8 @@ export class IdeaListComponent implements OnInit, OnDestroy {
 
     // set selected idea
     this.selectedIdea = idea;
+
+    this.store.dispatch(new IdeaSelected({ selectedIdea: idea }))
   }
 
   modalClosed(event) {

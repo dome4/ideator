@@ -1,20 +1,43 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Idea } from '../models/idea.model';
+import { Store } from '@ngrx/store';
+import { AppState, selectIdeaState } from '../store/app.states';
+import { State } from '../store/reducers/idea.reducers';
+import { Subscription, Observable } from 'rxjs';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-idea-seven-ws',
   templateUrl: './idea-seven-ws.component.html',
   styleUrls: ['./idea-seven-ws.component.scss']
 })
-export class IdeaSevenWsComponent implements OnInit {
+export class IdeaSevenWsComponent implements OnInit, OnDestroy {
 
   @Input() modalOpen: boolean;
-  @Input() idea: Idea;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  // idea data
+  getState: Observable<any>;
+  ideasLoading: boolean;
+  idea: Idea;
+
+  // subscriptions
+  subscriptions: Subscription[] = [];
+
+  constructor(private store: Store<AppState>) {
+    this.getState = this.store.select(selectIdeaState);
+  }
 
   ngOnInit() {
+    this.subscriptions.push(
+      this.getState.subscribe((state: State) => {
+        this.idea = _.cloneDeep(state.selectedIdea);
+      })
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   closeModal() {
