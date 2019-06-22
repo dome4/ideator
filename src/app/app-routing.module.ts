@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IdeaListComponent } from './idea-list/idea-list.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,9 @@ const routes: Routes = [
   },
   { path: 'idea-list', component: IdeaListComponent },
   { path: 'login', component: LoginComponent },
-
-  // { path: '**', component: PageNotFoundComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: '**', redirectTo: '/' }
+  // ToDo { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
