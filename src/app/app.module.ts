@@ -22,6 +22,7 @@ import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HomeComponent } from './home/home.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,9 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+    }),
   ],
   providers: [
     IdeaService,
