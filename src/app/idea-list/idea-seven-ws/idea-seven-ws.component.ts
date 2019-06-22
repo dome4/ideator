@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Idea } from '../models/idea.model';
+import { Idea } from '../../models/idea.model';
 import { Store } from '@ngrx/store';
-import { AppState, selectIdeaState } from '../store/app.states';
-import { State } from '../store/reducers/idea.reducers';
+import { AppState, selectIdeaState } from '../../store/app.states';
+import { State } from '../../store/reducers/idea.reducers';
 import { Subscription, Observable } from 'rxjs';
 import * as _ from 'lodash';
 

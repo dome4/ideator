@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IdeaListComponent } from './idea-list/idea-list.component';
-import { IdeaSevenWsComponent } from './idea-seven-ws/idea-seven-ws.component';
+import { IdeaSevenWsComponent } from './idea-list/idea-seven-ws/idea-seven-ws.component';
 import { IdeaService } from './services/idea.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
