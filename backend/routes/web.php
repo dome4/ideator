@@ -12,8 +12,22 @@
 */
 
 $router->get('/', function () use ($router) {
+    // ToDo repond angular app
     return $router->app->version();
 });
+
+// api routes
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('ideas',  ['uses' => 'IdeaController@showAllIdeas']);
+  
+    $router->get('ideas/{id}', ['uses' => 'IdeaController@showOneIdea']);
+  
+    $router->post('ideas', ['uses' => 'IdeaController@create']);
+  
+    $router->delete('ideas/{id}', ['uses' => 'IdeaController@delete']);
+  
+    $router->put('ideas/{id}', ['uses' => 'IdeaController@update']);
+  });
 
 // get random app key
 $router->get('/key', function() {
