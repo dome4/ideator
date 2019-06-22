@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/models/user.model';
+import { User } from '../models/user.model';
 import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../store/app.states';
 import { LogIn } from '../store/actions/auth.actions';

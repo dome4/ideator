@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Idea } from '../shared/models/idea.model';
+import { Idea } from '../models/idea.model';
 
 @Component({
   selector: 'app-idea-seven-ws',
@@ -33,7 +33,7 @@ export class IdeaSevenWsComponent implements OnInit {
   * save edited idea from modal
   */
   saveIdea() {
-    
+
     // ToDo: ideaService.save(this.user)
     this.closeModal();
   }

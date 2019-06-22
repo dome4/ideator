@@ -1,4 +1,4 @@
-import { User } from '../../shared/models/user.model';
+import { User } from '../../models/user.model';
 import { AuthActionTypes, All } from '../actions/auth.actions';
 
 export interface State {

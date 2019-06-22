@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IdeaService } from '../shared/services/idea.service';
-import { Idea } from '../shared/models/idea.model';
 import { Subscription } from 'rxjs';
+import { Idea } from '../models/idea.model';
+import { IdeaService } from '../services/idea.service';
 
 @Component({
   selector: 'app-idea-list',
