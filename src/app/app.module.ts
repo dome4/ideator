@@ -18,6 +18,8 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
 import { HeaderComponent } from './header/header.component';
+import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,20 @@ import { HeaderComponent } from './header/header.component';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [IdeaService, AuthService],
+  providers: [
+    IdeaService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
