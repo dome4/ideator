@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <form class="login" clrForm [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form class="login" clrForm (ngSubmit)="onSubmit()" ngNativeValidate>
     <section class="title">
       <h3 class="welcome">Welcome to</h3>
       Company Product Name
@@ -12,7 +12,8 @@
           name="email"
           clrInput
           placeholder="eMail"
-          formControlName="email"
+          [(ngModel)]="user.email"
+          required
         />
         <!-- <clr-control-error *clrIfError="'required'"
           >Email Required</clr-control-error
@@ -27,27 +28,18 @@
           name="password"
           clrPassword
           placeholder="Password"
-          formControlName="password"
+          [(ngModel)]="user.password"
+          required
         />
         <!-- <clr-control-error *clrIfError="'required'"
           >Password Required</clr-control-error
         > -->
       </clr-password-container>
-
-      <clr-checkbox-wrapper>
-        <label>Remember me</label>
-        <input
-          formControlName="rememberMe"
-          type="checkbox"
-          name="rememberMe"
-          clrCheckbox
-        />
-      </clr-checkbox-wrapper>
-      <div class="error" [ngClass]="{ active: loginForm.invalid }">
+      <!-- <div class="error" [ngClass]="{ active: loginForm.invalid }">
         Invalid user name or password
-      </div>
+      </div> -->
       <button type="submit" class="btn btn-primary">Sign up</button>
-      <a routerLink="/login" class="signup">Log in</a>
+      <a [routerLink]="['/login']" class="signup">Already have an account?</a>
     </div>
   </form>
 </div>

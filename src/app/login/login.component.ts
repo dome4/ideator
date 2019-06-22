@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm, FormBuilder } from '@angular/forms';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -8,26 +9,16 @@ import { FormGroup, FormControl, Validators, NgForm, FormBuilder } from '@angula
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm: FormGroup;
+  // new user to be created
+  user: User = new User();
 
-  constructor(private formBuilder: FormBuilder) {
-    // create our form group with all the inputs we will be using in the template
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      rememberMe: ['']
-    });
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.loginForm)
-
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-    }
+  onSubmit(): void {
+    console.log(this.user);
   }
 
 
