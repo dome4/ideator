@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm, FormBuilder } from '@angular/forms';
 import { User } from '../shared/models/user.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.states';
+import { LogIn } from '../store/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,17 @@ export class LoginComponent implements OnInit {
   // new user to be created
   user: User = new User();
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
 
   onSubmit(): void {
-    console.log(this.user);
+    const payload = {
+      email: this.user.email,
+      password: this.user.password
+    };
+    this.store.dispatch(new LogIn(payload));
   }
 
 
