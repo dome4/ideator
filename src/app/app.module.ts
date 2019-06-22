@@ -23,6 +23,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { IdeaEffects } from './store/effects/idea.effects';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ClarityModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      IdeaEffects
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25 // Retains last 25 states
     }),
