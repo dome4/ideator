@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Observable, of } from 'rxjs';
-import { LogIn, AuthActionTypes, LogInSuccess, LogInFailure } from '../actions/auth.actions';
+import { LogIn, AuthActionTypes, LogInSuccess, LogInFailure, SignUp, SignUpSuccess, SignUpFailure } from '../actions/auth.actions';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 @Injectable()
@@ -38,7 +38,7 @@ export class AuthEffects {
       })
     );
 
-  // login success effect
+  // store user token on login
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
@@ -48,16 +48,42 @@ export class AuthEffects {
     })
   );
 
-  // login failure effect
+  // signup effect
+  @Effect()
+  SignUp: Observable<any> = this.actions
+    .pipe(
+      ofType(AuthActionTypes.SIGNUP),
+      map((action: SignUp) => action.payload),
+      switchMap(payload => {
+        return this.authService.signUp(payload.email, payload.password)
+          .pipe(
+            map((user) => {
+              console.log(user);
+              return new SignUpSuccess({ token: user.token, email: payload.email });
+            }),
+            catchError((error) => {
+              console.log(error);
+              return of(new SignUpFailure({ error: error }));
+            })
+          );
+      })
+    );
+
+  // store user token on signup
   @Effect({ dispatch: false })
-  LogInFailure: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.LOGIN_FAILURE)
+  SignUpSuccess: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.SIGNUP_SUCCESS),
+    tap((user) => {
+      localStorage.setItem('token', user.payload.token);
+      this.router.navigateByUrl('/');
+    })
   );
 
-
-
-
-
+  // login and signup failure
+  @Effect({ dispatch: false })
+  AuthFailure: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.SIGNUP_FAILURE, AuthActionTypes.LOGIN_FAILURE)
+  );
 
 
 }
