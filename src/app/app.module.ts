@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { SignupComponent } from './signup/signup.component';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [IdeaService],
+  providers: [IdeaService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
