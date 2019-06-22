@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import * as tslib_1 from "tslib";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ClrStackBlock } from './stack-block';
+import { ClrStackHeader } from './stack-header';
+import { ClrStackInput } from './stack-input';
+import { ClrStackSelect } from './stack-select';
+import { ClrStackView } from './stack-view';
+import { ClrStackViewCustomTags } from './stack-view-custom-tags';
+import { ClrIconModule } from '../../icon/icon.module';
+import { ClrExpandableAnimationModule } from '../../utils/animations/expandable-animation/expandable-animation.module';
+export var CLR_STACK_VIEW_DIRECTIVES = [
+    ClrStackView,
+    ClrStackHeader,
+    ClrStackBlock,
+    ClrStackViewCustomTags,
+    /**
+     * Undocumented experimental feature: inline editing.
+     */
+    ClrStackInput,
+    ClrStackSelect,
+];
+var ClrStackViewModule = /** @class */ (function () {
+    function ClrStackViewModule() {
+    }
+    ClrStackViewModule = tslib_1.__decorate([
+        NgModule({
+            imports: [CommonModule, FormsModule, ClrIconModule, ClrExpandableAnimationModule],
+            declarations: [CLR_STACK_VIEW_DIRECTIVES],
+            exports: [CLR_STACK_VIEW_DIRECTIVES],
+        })
+    ], ClrStackViewModule);
+    return ClrStackViewModule;
+}());
+export { ClrStackViewModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3RhY2stdmlldy5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AY2xyL2FuZ3VsYXIvIiwic291cmNlcyI6WyJkYXRhL3N0YWNrLXZpZXcvc3RhY2stdmlldy5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRzs7QUFFSCxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDL0MsT0FBTyxFQUFFLFFBQVEsRUFBUSxNQUFNLGVBQWUsQ0FBQztBQUMvQyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUM5QyxPQUFPLEVBQUUsY0FBYyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFDaEQsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUM5QyxPQUFPLEVBQUUsY0FBYyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFDaEQsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGNBQWMsQ0FBQztBQUM1QyxPQUFPLEVBQUUsc0JBQXNCLEVBQUUsTUFBTSwwQkFBMEIsQ0FBQztBQUNsRSxPQUFPLEVBQUUsYUFBYSxFQUFFLE1BQU0sd0JBQXdCLENBQUM7QUFDdkQsT0FBTyxFQUFFLDRCQUE0QixFQUFFLE1BQU0seUVBQXlFLENBQUM7QUFFdkgsTUFBTSxDQUFDLElBQU0seUJBQXlCLEdBQWdCO0lBQ3BELFlBQVk7SUFDWixjQUFjO0lBQ2QsYUFBYTtJQUNiLHNCQUFzQjtJQUN0Qjs7T0FFRztJQUNILGFBQWE7SUFDYixjQUFjO0NBSWYsQ0FBQztBQU9GO0lBQUE7SUFBaUMsQ0FBQztJQUFyQixrQkFBa0I7UUFMOUIsUUFBUSxDQUFDO1lBQ1IsT0FBTyxFQUFFLENBQUMsWUFBWSxFQUFFLFdBQVcsRUFBRSxhQUFhLEVBQUUsNEJBQTRCLENBQUM7WUFDakYsWUFBWSxFQUFFLENBQUMseUJBQXlCLENBQUM7WUFDekMsT0FBTyxFQUFFLENBQUMseUJBQXlCLENBQUM7U0FDckMsQ0FBQztPQUNXLGtCQUFrQixDQUFHO0lBQUQseUJBQUM7Q0FBQSxBQUFsQyxJQUFrQztTQUFyQixrQkFBa0IiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogQ29weXJpZ2h0IChjKSAyMDE2LTIwMTkgVk13YXJlLCBJbmMuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKiBUaGlzIHNvZnR3YXJlIGlzIHJlbGVhc2VkIHVuZGVyIE1JVCBsaWNlbnNlLlxuICogVGhlIGZ1bGwgbGljZW5zZSBpbmZvcm1hdGlvbiBjYW4gYmUgZm91bmQgaW4gTElDRU5TRSBpbiB0aGUgcm9vdCBkaXJlY3Rvcnkgb2YgdGhpcyBwcm9qZWN0LlxuICovXG5cbmltcG9ydCB7IENvbW1vbk1vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XG5pbXBvcnQgeyBOZ01vZHVsZSwgVHlwZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgRm9ybXNNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XG5cbmltcG9ydCB7IENsclN0YWNrQmxvY2sgfSBmcm9tICcuL3N0YWNrLWJsb2NrJztcbmltcG9ydCB7IENsclN0YWNrSGVhZGVyIH0gZnJvbSAnLi9zdGFjay1oZWFkZXInO1xuaW1wb3J0IHsgQ2xyU3RhY2tJbnB1dCB9IGZyb20gJy4vc3RhY2staW5wdXQnO1xuaW1wb3J0IHsgQ2xyU3RhY2tTZWxlY3QgfSBmcm9tICcuL3N0YWNrLXNlbGVjdCc7XG5pbXBvcnQgeyBDbHJTdGFja1ZpZXcgfSBmcm9tICcuL3N0YWNrLXZpZXcnO1xuaW1wb3J0IHsgQ2xyU3RhY2tWaWV3Q3VzdG9tVGFncyB9IGZyb20gJy4vc3RhY2stdmlldy1jdXN0b20tdGFncyc7XG5pbXBvcnQgeyBDbHJJY29uTW9kdWxlIH0gZnJvbSAnLi4vLi4vaWNvbi9pY29uLm1vZHVsZSc7XG5pbXBvcnQgeyBDbHJFeHBhbmRhYmxlQW5pbWF0aW9uTW9kdWxlIH0gZnJvbSAnLi4vLi4vdXRpbHMvYW5pbWF0aW9ucy9leHBhbmRhYmxlLWFuaW1hdGlvbi9leHBhbmRhYmxlLWFuaW1hdGlvbi5tb2R1bGUnO1xuXG5leHBvcnQgY29uc3QgQ0xSX1NUQUNLX1ZJRVdfRElSRUNUSVZFUzogVHlwZTxhbnk+W10gPSBbXG4gIENsclN0YWNrVmlldyxcbiAgQ2xyU3RhY2tIZWFkZXIsXG4gIENsclN0YWNrQmxvY2ssXG4gIENsclN0YWNrVmlld0N1c3RvbVRhZ3MsXG4gIC8qKlxuICAgKiBVbmRvY3VtZW50ZWQgZXhwZXJpbWVudGFsIGZlYXR1cmU6IGlubGluZSBlZGl0aW5nLlxuICAgKi9cbiAgQ2xyU3RhY2tJbnB1dCxcbiAgQ2xyU3RhY2tTZWxlY3QsXG4gIC8qKlxuICAgKiBFbmQgb2YgdW5kb2N1bWVudGVkIGV4cGVyaW1lbnRhbCBmZWF0dXJlLlxuICAgKi9cbl07XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtDb21tb25Nb2R1bGUsIEZvcm1zTW9kdWxlLCBDbHJJY29uTW9kdWxlLCBDbHJFeHBhbmRhYmxlQW5pbWF0aW9uTW9kdWxlXSxcbiAgZGVjbGFyYXRpb25zOiBbQ0xSX1NUQUNLX1ZJRVdfRElSRUNUSVZFU10sXG4gIGV4cG9ydHM6IFtDTFJfU1RBQ0tfVklFV19ESVJFQ1RJVkVTXSxcbn0pXG5leHBvcnQgY2xhc3MgQ2xyU3RhY2tWaWV3TW9kdWxlIHt9XG4iXX0=

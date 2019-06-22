@@ -1,0 +1,41 @@
+/*
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import * as tslib_1 from "tslib";
+import { Injectable } from '@angular/core';
+import { map, distinctUntilChanged } from 'rxjs/operators';
+import { AccordionService } from './../../providers/accordion.service';
+import { StepperModel } from '../models/stepper.model';
+let StepperService = class StepperService extends AccordionService {
+    constructor() {
+        super(...arguments);
+        this.panelsCompleted = this.getAllCompletedPanelChanges();
+        this.accordion = new StepperModel();
+    }
+    resetPanels() {
+        this.accordion.resetPanels();
+        this.emitUpdatedPanels();
+    }
+    setPanelsWithErrors(ids) {
+        this.accordion.setPanelsWithErrors(ids);
+        this.emitUpdatedPanels();
+    }
+    navigateToNextPanel(currentPanelId, currentPanelValid = true) {
+        this.accordion.navigateToNextPanel(currentPanelId, currentPanelValid);
+        this.emitUpdatedPanels();
+    }
+    overrideInitialPanel(panelId) {
+        this.accordion.overrideInitialPanel(panelId);
+        this.emitUpdatedPanels();
+    }
+    getAllCompletedPanelChanges() {
+        return this._panelsChanges.pipe(map(() => this.accordion.allPanelsCompleted), distinctUntilChanged());
+    }
+};
+StepperService = tslib_1.__decorate([
+    Injectable()
+], StepperService);
+export { StepperService };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3RlcHBlci5zZXJ2aWNlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQGNsci9hbmd1bGFyLyIsInNvdXJjZXMiOlsiYWNjb3JkaW9uL3N0ZXBwZXIvcHJvdmlkZXJzL3N0ZXBwZXIuc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHOztBQUVILE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDM0MsT0FBTyxFQUFFLEdBQUcsRUFBRSxvQkFBb0IsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBRzNELE9BQU8sRUFBRSxnQkFBZ0IsRUFBRSxNQUFNLHFDQUFxQyxDQUFDO0FBQ3ZFLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSx5QkFBeUIsQ0FBQztBQUd2RCxJQUFhLGNBQWMsR0FBM0IsTUFBYSxjQUFlLFNBQVEsZ0JBQWdCO0lBRHBEOztRQUVXLG9CQUFlLEdBQUcsSUFBSSxDQUFDLDJCQUEyQixFQUFFLENBQUM7UUFDcEQsY0FBUyxHQUFHLElBQUksWUFBWSxFQUFFLENBQUM7SUF5QjNDLENBQUM7SUF2QkMsV0FBVztRQUNULElBQUksQ0FBQyxTQUFTLENBQUMsV0FBVyxFQUFFLENBQUM7UUFDN0IsSUFBSSxDQUFDLGlCQUFpQixFQUFFLENBQUM7SUFDM0IsQ0FBQztJQUVELG1CQUFtQixDQUFDLEdBQWE7UUFDL0IsSUFBSSxDQUFDLFNBQVMsQ0FBQyxtQkFBbUIsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUN4QyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztJQUMzQixDQUFDO0lBRUQsbUJBQW1CLENBQUMsY0FBc0IsRUFBRSxpQkFBaUIsR0FBRyxJQUFJO1FBQ2xFLElBQUksQ0FBQyxTQUFTLENBQUMsbUJBQW1CLENBQUMsY0FBYyxFQUFFLGlCQUFpQixDQUFDLENBQUM7UUFDdEUsSUFBSSxDQUFDLGlCQUFpQixFQUFFLENBQUM7SUFDM0IsQ0FBQztJQUVELG9CQUFvQixDQUFDLE9BQWU7UUFDbEMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxvQkFBb0IsQ0FBQyxPQUFPLENBQUMsQ0FBQztRQUM3QyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztJQUMzQixDQUFDO0lBRU8sMkJBQTJCO1FBQ2pDLE9BQU8sSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLEdBQUcsRUFBRSxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsa0JBQWtCLENBQUMsRUFBRSxvQkFBb0IsRUFBRSxDQUFDLENBQUM7SUFDeEcsQ0FBQztDQUNGLENBQUE7QUEzQlksY0FBYztJQUQxQixVQUFVLEVBQUU7R0FDQSxjQUFjLENBMkIxQjtTQTNCWSxjQUFjIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIENvcHlyaWdodCAoYykgMjAxNi0yMDE5IFZNd2FyZSwgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICogVGhpcyBzb2Z0d2FyZSBpcyByZWxlYXNlZCB1bmRlciBNSVQgbGljZW5zZS5cbiAqIFRoZSBmdWxsIGxpY2Vuc2UgaW5mb3JtYXRpb24gY2FuIGJlIGZvdW5kIGluIExJQ0VOU0UgaW4gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgcHJvamVjdC5cbiAqL1xuXG5pbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBtYXAsIGRpc3RpbmN0VW50aWxDaGFuZ2VkIH0gZnJvbSAncnhqcy9vcGVyYXRvcnMnO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSB9IGZyb20gJ3J4anMnO1xuXG5pbXBvcnQgeyBBY2NvcmRpb25TZXJ2aWNlIH0gZnJvbSAnLi8uLi8uLi9wcm92aWRlcnMvYWNjb3JkaW9uLnNlcnZpY2UnO1xuaW1wb3J0IHsgU3RlcHBlck1vZGVsIH0gZnJvbSAnLi4vbW9kZWxzL3N0ZXBwZXIubW9kZWwnO1xuXG5ASW5qZWN0YWJsZSgpXG5leHBvcnQgY2xhc3MgU3RlcHBlclNlcnZpY2UgZXh0ZW5kcyBBY2NvcmRpb25TZXJ2aWNlIHtcbiAgcmVhZG9ubHkgcGFuZWxzQ29tcGxldGVkID0gdGhpcy5nZXRBbGxDb21wbGV0ZWRQYW5lbENoYW5nZXMoKTtcbiAgcHJvdGVjdGVkIGFjY29yZGlvbiA9IG5ldyBTdGVwcGVyTW9kZWwoKTtcblxuICByZXNldFBhbmVscygpIHtcbiAgICB0aGlzLmFjY29yZGlvbi5yZXNldFBhbmVscygpO1xuICAgIHRoaXMuZW1pdFVwZGF0ZWRQYW5lbHMoKTtcbiAgfVxuXG4gIHNldFBhbmVsc1dpdGhFcnJvcnMoaWRzOiBzdHJpbmdbXSkge1xuICAgIHRoaXMuYWNjb3JkaW9uLnNldFBhbmVsc1dpdGhFcnJvcnMoaWRzKTtcbiAgICB0aGlzLmVtaXRVcGRhdGVkUGFuZWxzKCk7XG4gIH1cblxuICBuYXZpZ2F0ZVRvTmV4dFBhbmVsKGN1cnJlbnRQYW5lbElkOiBzdHJpbmcsIGN1cnJlbnRQYW5lbFZhbGlkID0gdHJ1ZSkge1xuICAgIHRoaXMuYWNjb3JkaW9uLm5hdmlnYXRlVG9OZXh0UGFuZWwoY3VycmVudFBhbmVsSWQsIGN1cnJlbnRQYW5lbFZhbGlkKTtcbiAgICB0aGlzLmVtaXRVcGRhdGVkUGFuZWxzKCk7XG4gIH1cblxuICBvdmVycmlkZUluaXRpYWxQYW5lbChwYW5lbElkOiBzdHJpbmcpIHtcbiAgICB0aGlzLmFjY29yZGlvbi5vdmVycmlkZUluaXRpYWxQYW5lbChwYW5lbElkKTtcbiAgICB0aGlzLmVtaXRVcGRhdGVkUGFuZWxzKCk7XG4gIH1cblxuICBwcml2YXRlIGdldEFsbENvbXBsZXRlZFBhbmVsQ2hhbmdlcygpOiBPYnNlcnZhYmxlPGJvb2xlYW4+IHtcbiAgICByZXR1cm4gdGhpcy5fcGFuZWxzQ2hhbmdlcy5waXBlKG1hcCgoKSA9PiB0aGlzLmFjY29yZGlvbi5hbGxQYW5lbHNDb21wbGV0ZWQpLCBkaXN0aW5jdFVudGlsQ2hhbmdlZCgpKTtcbiAgfVxufVxuIl19
