@@ -11,9 +11,27 @@
 |
 */
 
+use Illuminate\Hashing\BcryptHasher;
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
+        'password' => (new BcryptHasher)->make('12345'),
+
+    ];
+});
+
+$factory->define(App\Idea::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->text($maxNbChars = 200),
+        'businessIdea' => $faker->text($maxNbChars = 200),
+        'usp' => $faker->text($maxNbChars = 200),
+        'customers' => $faker->text($maxNbChars = 200),
+        'businessModel' => $faker->text($maxNbChars = 200),
+        'competitors' => $faker->text($maxNbChars = 200),
+        'team' => $faker->text($maxNbChars = 200),
+        'marketBarriers' => $faker->text($maxNbChars = 200),
+
     ];
 });
