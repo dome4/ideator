@@ -1,31 +1,26 @@
-# Lumen PHP Framework
-
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
-
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+# Ideator Backend API
 
 ## Installation
 
 - rename `.env.example` to `.env`
-- get an APP_KEY from the `/key` route
 - fill out `.env`
+- get an `APP_KEY` and the `JWT_SECRET` from the `/key` route
 
-## Official Documentation
+## Run
+
+- run `php artisan migrate` to execute the database migrations
+- run `php artisan db:seed` to seed some dummy data
+
+## Development
+
+- Run dev server with `php -S localhost:8000 -t public`
+- If something does not work run `composer dump-autoload`
+
+## Based on the following Tutorials
+
+- [Developing RESTful APIs with Lumen](https://auth0.com/blog/developing-restful-apis-with-lumen/)
+- [JWT authentication for Lumen 5.6](https://medium.com/tech-tajawal/jwt-authentication-for-lumen-5-6-2376fd38d454)
+
+## Lumen Official Documentation
 
 Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
-
-##
-
-API is based on the following tutorial [Developing RESTful APIs with Lumen](https://auth0.com/blog/developing-restful-apis-with-lumen/)

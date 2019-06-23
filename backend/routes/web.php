@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 });
 
 // api routes
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($router) {
     $router->get('ideas',  ['uses' => 'IdeaController@showAllIdeas']);
   
     $router->get('ideas/{id}', ['uses' => 'IdeaController@showOneIdea']);
@@ -28,6 +28,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->put('ideas/{id}', ['uses' => 'IdeaController@update']);
   });
+
+// auth routes
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('login', ['uses' => 'AuthController@authenticate']);
+});
 
 // get random app key
 $router->get('/key', function() {
