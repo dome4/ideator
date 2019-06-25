@@ -23,6 +23,10 @@ class CreateIdeasTable extends Migration
             $table->string('competitors');
             $table->string('team');
             $table->string('marketBarriers');
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade'); // if the user is deleted, all his ideas should be deleted as well
             $table->timestamps();
         });
     }
