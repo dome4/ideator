@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Hashing\BcryptHasher;
+use App\User;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
@@ -23,6 +24,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Idea::class, function (Faker\Generator $faker) {
+
+    // get all users for foreign key
+    $users = User::all()->pluck('id')->toArray();
+
     return [
         'title' => $faker->text($maxNbChars = 200),
         'businessIdea' => $faker->text($maxNbChars = 200),
@@ -32,6 +37,7 @@ $factory->define(App\Idea::class, function (Faker\Generator $faker) {
         'competitors' => $faker->text($maxNbChars = 200),
         'team' => $faker->text($maxNbChars = 200),
         'marketBarriers' => $faker->text($maxNbChars = 200),
+        'userId' => $faker->randomElement($users),
 
     ];
 });
