@@ -6,7 +6,7 @@
 - fill out `.env`
 - get an `APP_KEY` and the `JWT_SECRET` from the `/key` route
 
-## Run
+## Initialization
 
 - run `php artisan migrate` to execute the database migrations
 - run `php artisan db:seed` to seed some dummy data

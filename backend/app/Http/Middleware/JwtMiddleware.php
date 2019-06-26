@@ -47,6 +47,19 @@ class JwtMiddleware
             ], 400);
         }
 
+        // find requesting user
+        $user = User::find($credentials->sub);
+
+        // user could not be found -> but the user has to be in the table, because he is logged in at the moment
+        if(!$user) {
+            return response()->json([
+                'error' => 'An internal error occured.'
+            ], 500);
+        }
+
+        // put the user in the request so that you can grab it from there
+        $request->auth = $user;
+
         return $next($request);
     }
 }

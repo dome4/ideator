@@ -16,13 +16,13 @@ class CreateIdeasTable extends Migration
         Schema::create('ideas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('businessIdea');
-            $table->string('usp');
-            $table->string('customers');
-            $table->string('businessModel');
-            $table->string('competitors');
-            $table->string('team');
-            $table->string('marketBarriers');
+            $table->string('businessIdea')->nullable();
+            $table->string('usp')->nullable();
+            $table->string('customers')->nullable();
+            $table->string('businessModel')->nullable();
+            $table->string('competitors')->nullable();
+            $table->string('team')->nullable();
+            $table->string('marketBarriers')->nullable();
             $table->integer('userId')->unsigned();
             $table->foreign('userId')
                     ->references('id')->on('users')
