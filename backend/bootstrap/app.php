@@ -63,6 +63,13 @@ $app->singleton(
 //    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
+// CORS middleware only for debugging
+if (app()->environment('local')) {
+    $app->middleware([
+        \Barryvdh\Cors\HandleCors::class,
+    ]);
+}
+
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
@@ -85,6 +92,11 @@ $app->routeMiddleware([
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+if (app()->environment('local')) {
+    $app->register(Barryvdh\Cors\ServiceProvider::class);
+    $app->configure('cors');
+}
 
 /*
 |--------------------------------------------------------------------------
