@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\File;
 |
 */
 
-// return angular app
-$router->get('/', function () use ($router) {
-    return File::get(app()->basePath('public').'/index.html');  
-});
 
 // api routes
 $router->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($router) {
@@ -39,4 +35,9 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
 // get random app key
 $router->get('/key', function() {
     return str_random(32);
+});
+
+// return angular app -> catches all requests so that angular router can handle them
+$router->get('{all:.*}', function() {
+    return File::get(app()->basePath('public').'/index.html');  
 });

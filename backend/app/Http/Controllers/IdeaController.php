@@ -80,10 +80,6 @@ class IdeaController extends Controller
 
     public function update($id, Request $request)
     {
-        // validation
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
 
         // if user id is missing in request
         if(!$request->auth->id) {
