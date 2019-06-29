@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ideaApiUrl: 'test'
+  apiUrl: 'localhost:8000/'
 };
 
 /*

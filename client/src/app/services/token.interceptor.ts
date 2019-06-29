@@ -3,7 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 
@@ -49,7 +49,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
 
           // ToDo: handle case of unvalid token -> renew token
-          return Observable.throw(response);
+          return throwError(response);
         })
       );
   }

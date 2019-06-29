@@ -9,28 +9,28 @@ import { delay } from 'rxjs/operators';
 export class IdeaService {
 
   // api url
-  private API_URL = environment.ideaApiUrl;
+  private BASE_URL = environment.apiUrl + 'api';
 
   constructor(private http: HttpClient) { }
 
   getIdeas(): Observable<Idea[]> {
 
-    // simulate api call
-    return this.http.get<Idea[]>('assets/ideas.json')
+    // simulate api call delay
+    return this.http.get<Idea[]>(`${this.BASE_URL}/ideas`)
       .pipe(
         delay(2000)
-      )
+      );
   }
 
   updateIdea(idea: Idea) {
-    return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
+    return this.http.post<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
   }
 
   createIdea(idea: Idea) {
-    // return this.http.post<Idea>(`${this.API_URL}/idea/${idea.id}`, idea);
+    // return this.http.post<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
   }
 
   deleteIdea(idea: Idea) {
-    // return this.http.delete<Idea>(`${this.API_URL}/idea/${idea.id}`);
+    // return this.http.delete<Idea>(`${this.BASE_URL}/ideas/${idea.id}`);
   }
 }

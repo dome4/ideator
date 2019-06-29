@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,9 +13,9 @@
 |
 */
 
+// return angular app
 $router->get('/', function () use ($router) {
-    // ToDo repond angular app
-    return $router->app->version();
+    return File::get(app()->basePath('public').'/index.html');  
 });
 
 // api routes
