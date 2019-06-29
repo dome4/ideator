@@ -39,5 +39,5 @@ $router->get('/key', function() {
 
 // return angular app -> catches all requests so that angular router can handle them
 $router->get('{all:.*}', function() {
-    return File::get(app()->basePath('public').'/index.html');  
+    return File::get(app()->basePath('public').'/ng-index.html');  
 });

@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "../backend/public",
             "deleteOutputPath": false,
-            "index": "src/index.html",
+            "index": "src/ng-index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
