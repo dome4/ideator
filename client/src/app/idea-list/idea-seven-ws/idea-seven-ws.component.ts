@@ -21,6 +21,7 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
   getState: Observable<any>;
   ideasLoading: boolean;
   idea: Idea;
+  ideas: Idea[] = [];
 
   // subscriptions
   subscriptions: Subscription[] = [];
@@ -33,6 +34,7 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.getState.subscribe((state: State) => {
         this.idea = _.cloneDeep(state.selectedIdea);
+        this.ideas = _.cloneDeep(state.ideas);
       })
     )
   }
@@ -62,15 +64,17 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
     this.closeModal();
 
     // update idea
-    this.store.dispatch(new IdeaEdited({ selectedIdea: this.idea }));
+    this.store.dispatch(new IdeaEdited({ selectedIdea: this.idea, ideas: this.ideas }));
   }
 
   /*
-  * simly closes the modal and does not save the edited idea
+  * simply closes the modal and does not save the edited idea
   */
   cancelIdeaEditing() {
+    // because a copy of the object is made with clonedeep in the subscription,
+    // nothing else is necessary here
 
-    // ToDo: doesn't work yet due to the reference of the user in the modal and the database
+    // close modal
     this.closeModal();
   }
 }

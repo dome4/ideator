@@ -67,20 +67,16 @@ export function reducer(state = initialState, action: All): State {
     }
   }
 
-  // ToDo debug idea edited
-
   /**
-   * update selectedIdea in idea list
+   * update selected idea in idea list
    *
    * @param ideas
    * @param selectedIdea updated idea
    */
   function updateIdeaList(ideas: Idea[], selectedIdea: Idea) {
-    const i = ideas.findIndex(el => el.id === selectedIdea.id)
+    const i = ideas.findIndex(el => el.id === selectedIdea.id);
     ideas[i] = selectedIdea;
 
     return ideas;
   }
-
-
 }

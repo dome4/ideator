@@ -14,16 +14,11 @@ export class IdeaService {
   constructor(private http: HttpClient) { }
 
   getIdeas(): Observable<Idea[]> {
-
-    // simulate api call delay
-    return this.http.get<Idea[]>(`${this.BASE_URL}/ideas`)
-      .pipe(
-        delay(2000)
-      );
+    return this.http.get<Idea[]>(`${this.BASE_URL}/ideas`);
   }
 
   updateIdea(idea: Idea) {
-    return this.http.post<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
+    return this.http.put<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
   }
 
   createIdea(idea: Idea) {
