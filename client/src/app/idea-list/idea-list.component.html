@@ -38,8 +38,8 @@
 
   <!-- <clr-dg-row *clrDgItems="let idea of ideas" [routerLink]="[idea.id]"> -->
   <clr-dg-row *clrDgItems="let idea of ideas" [clrDgItem]="idea">
-    <clr-dg-cell>{{ idea.title }}</clr-dg-cell>
-    <clr-dg-cell>{{ idea.businessIdea | slice: 0:50 }} ...</clr-dg-cell>
+    <clr-dg-cell>{{ idea.title | customSlice: 0:50 }}</clr-dg-cell>
+    <clr-dg-cell>{{ idea.businessIdea | customSlice: 0:50 }}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>

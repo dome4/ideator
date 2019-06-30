@@ -24,6 +24,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { IdeaEffects } from './store/effects/idea.effects';
+import { CustomSlicePipe } from './pipes/custom-slice.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { IdeaEffects } from './store/effects/idea.effects';
     LoginComponent,
     SignupComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    CustomSlicePipe
   ],
   imports: [
     BrowserModule,
