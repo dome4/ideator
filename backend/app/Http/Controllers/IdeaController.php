@@ -34,15 +34,8 @@ class IdeaController extends Controller
     {
 
         $ideas = $this->getUserIdeas($request)
-            ->findOrFail($id)
-            ->get();
-
-        // check if any ideas have been found
-        if($ideas->isEmpty()) {
-            return response()->json([
-                'error' => 'No matching ideas found.'
-            ], 404);
-        }
+            ->where('id', $id)
+            ->firstOrFail();
 
         return response()->json($ideas);
     }
