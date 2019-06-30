@@ -15,68 +15,197 @@ export interface State {
   selectedIdea: Idea | null;
 
   // error message
-  errorMessage: string | null;
+  error?: Error | null;
 }
 
 export const initialState: State = {
   loading: false,
   ideas: [],
   selectedIdea: null,
-  errorMessage: null
+  error: null
 };
 
 export function reducer(state = initialState, action: All): State {
   switch (action.type) {
-    case IdeaActionTypes.FETCH_IDEAS_BEGIN: {
+    /*************************
+    * GET all ideas actions
+    ************************/
+    case IdeaActionTypes.GET_IDEAS: {
       return {
         ...state,
         loading: true,
-        errorMessage: null
+        ideas: null,
+        error: null
       };
     }
-    case IdeaActionTypes.FETCH_IDEAS_FAILURE: {
+    case IdeaActionTypes.GET_IDEAS_SUCCESS: {
       return {
         ...state,
         loading: false,
-        errorMessage: 'Ideas could not be fetched.',
-        ideas: []
+        ideas: action.payload,
+        error: null
       };
     }
-    case IdeaActionTypes.FETCH_IDEAS_SUCCESS: {
+    case IdeaActionTypes.GET_IDEAS_ERROR: {
       return {
         ...state,
         loading: false,
-        ideas: action.payload.ideas
+        ideas: [],
+        error: action.payload
       };
     }
-    case IdeaActionTypes.IDEA_SELECTED: {
+
+    /*************************
+    * GET idea by id actions
+    ************************/
+    case IdeaActionTypes.GET_IDEA: {
       return {
         ...state,
-        selectedIdea: action.payload.selectedIdea
-      }
+        loading: true,
+        selectedIdea: null,
+        error: null
+      };
     }
-    case IdeaActionTypes.IDEA_EDITED: {
+    case IdeaActionTypes.GET_IDEA_SUCCESS: {
       return {
         ...state,
-        ideas: updateIdeaList(action.payload.ideas, action.payload.selectedIdea),
-        selectedIdea: action.payload.selectedIdea
+        loading: false,
+        selectedIdea: action.payload,
+        error: null
+      };
+    }
+    case IdeaActionTypes.GET_IDEA_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        selectedIdea: null,
+        error: action.payload
+      };
+    }
+
+    /*************************
+    * CREATE idea actions
+    ************************/
+    case IdeaActionTypes.CREATE_IDEA: {
+      return {
+        ...state,
+        loading: true,
+        selectedIdea: action.payload,
+        error: null
+      };
+    }
+    case IdeaActionTypes.CREATE_IDEA_SUCCESS: {
+
+      const newIdea: Idea = {
+        ...state.selectedIdea,
+        id: action.payload
+      };
+
+      const ideasArray = [
+        ...state.ideas,
+        newIdea
+      ];
+
+      return {
+        ...state,
+        loading: false,
+        ideas: ideasArray,
+        selectedIdea: null,
+        error: null
+      };
+    }
+    case IdeaActionTypes.CREATE_IDEA_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        selectedIdea: null,
+        error: action.payload
+      };
+    }
+
+    /*************************
+    * DELETE idea actions
+    ************************/
+    case IdeaActionTypes.DELETE_IDEA: {
+
+      const selected = state.ideas.find(h => h.id === action.payload);
+
+      return {
+        ...state,
+        loading: true,
+        selectedIdea: selected,
+        error: null
+      };
+    }
+    case IdeaActionTypes.DELETE_IDEA_SUCCESS: {
+
+      const ideasArray = state.ideas.filter(h => h.id !== state.selectedIdea.id);
+
+      return {
+        ...state,
+        loading: false,
+        ideas: ideasArray,
+        selectedIdea: null,
+        error: null
+      };
+    }
+    case IdeaActionTypes.DELETE_IDEA_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        selectedIdea: null,
+        error: action.payload
+      };
+    }
+
+    /*************************
+    * UPDATE idea actions
+    ************************/
+    case IdeaActionTypes.UPDATE_IDEA: {
+      return {
+        ...state,
+        loading: true,
+        selectedIdea: action.payload,
+        error: null
+      };
+    }
+    case IdeaActionTypes.UPDATE_IDEA_SUCCESS: {
+
+      const index = state.ideas.findIndex(h => h.id === state.selectedIdea.id);
+
+      if (index >= 0) {
+        const ideasArray = [
+          ...state.ideas.slice(0, index),
+          state.selectedIdea,
+          ...state.ideas.slice(index + 1)
+        ];
+
+        return {
+          ...state,
+          loading: false,
+          ideas: ideasArray,
+          selectedIdea: null,
+          error: null
+        };
       }
+      return state;
+    }
+    case IdeaActionTypes.UPDATE_IDEA_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        selectedIdea: null,
+        error: action.payload
+      };
     }
     default: {
       return state;
     }
   }
-
-  /**
-   * update selected idea in idea list
-   *
-   * @param ideas
-   * @param selectedIdea updated idea
-   */
-  function updateIdeaList(ideas: Idea[], selectedIdea: Idea) {
-    const i = ideas.findIndex(el => el.id === selectedIdea.id);
-    ideas[i] = selectedIdea;
-
-    return ideas;
-  }
 }
+
+/*************************
+ * SELECTORS
+ ************************/
+// maybe add additional selectors
+// -> see https://github.com/yduartep/angular-ngrx-crud/blob/master/src/app/games/store/games.reducers.ts

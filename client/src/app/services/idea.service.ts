@@ -17,15 +17,19 @@ export class IdeaService {
     return this.http.get<Idea[]>(`${this.BASE_URL}/ideas`);
   }
 
-  updateIdea(idea: Idea) {
+  getIdea(id: number): Observable<Idea> {
+    return this.http.get<Idea>(`${this.BASE_URL}/ideas/${id}`);
+  }
+
+  updateIdea(idea: Idea): Observable<Idea> {
     return this.http.put<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
   }
 
-  createIdea(idea: Idea) {
-    // return this.http.post<Idea>(`${this.BASE_URL}/ideas/${idea.id}`, idea);
+  createIdea(idea: Idea): Observable<Idea> {
+    return this.http.post<Idea>(`${this.BASE_URL}/ideas`, idea);
   }
 
-  deleteIdea(idea: Idea) {
-    // return this.http.delete<Idea>(`${this.BASE_URL}/ideas/${idea.id}`);
+  deleteIdea(id: number): Observable<Idea> {
+    return this.http.delete<Idea>(`${this.BASE_URL}/ideas/${id}`);
   }
 }

@@ -1,4 +1,13 @@
 <div class="progress loop" *ngIf="ideasLoading"><progress></progress></div>
+
+<button
+  [clrLoading]="createIdeaBtnState"
+  (click)="createIdea()"
+  class="btn btn-outline"
+>
+  Add Idea
+</button>
+
 <clr-datagrid>
   <clr-dg-column>Title</clr-dg-column>
   <clr-dg-column>Business Idea</clr-dg-column>

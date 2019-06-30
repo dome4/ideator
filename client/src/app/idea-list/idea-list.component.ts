@@ -4,7 +4,8 @@ import { Idea } from '../models/idea.model';
 import { Store } from '@ngrx/store';
 import { AppState, selectIdeaState } from '../store/app.states';
 import { State } from '../store/reducers/idea.reducers';
-import { FetchIdeasBegin, IdeaSelected } from '../store/actions/idea.actions';
+import { GetIdeas, GetIdea, CreateIdea } from '../store/actions/idea.actions';
+import { ClrLoadingState } from '@clr/angular';
 
 @Component({
   selector: 'app-idea-list',
@@ -23,7 +24,10 @@ export class IdeaListComponent implements OnInit, OnDestroy {
   getState: Observable<any>;
   ideasLoading: boolean;
   ideas: Idea[] = [];
-  errorMessage: string | null;
+  error: Error | null;
+
+  // variable for button animation
+  createIdeaBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
   constructor(private store: Store<AppState>) {
     this.getState = this.store.select(selectIdeaState);
@@ -34,12 +38,12 @@ export class IdeaListComponent implements OnInit, OnDestroy {
       this.getState.subscribe((state: State) => {
         this.ideasLoading = state.loading;
         this.ideas = state.ideas;
-        this.errorMessage = state.errorMessage;
+        this.error = state.error;
       })
     );
 
     // dispatch idea data
-    this.store.dispatch(new FetchIdeasBegin());
+    this.store.dispatch(new GetIdeas());
   }
 
   ngOnDestroy() {
@@ -54,12 +58,47 @@ export class IdeaListComponent implements OnInit, OnDestroy {
     // set selected idea
     this.selectedIdea = idea;
 
-    this.store.dispatch(new IdeaSelected({ selectedIdea: idea }))
+    // ToDo: modal needs id of the selected id, not the whole id -> alternative to routing params
+
+    this.store.dispatch(new GetIdea(this.selectedIdea.id));
   }
 
   modalClosed(event) {
 
     // close modal
     this.openModal = false;
+  }
+
+  createIdea() {
+    this.createIdeaBtnState = ClrLoadingState.LOADING;
+
+    // create new dummy idea
+    const idea: Idea = {
+      id: 99, // is ignored by api
+      title: 'new idea successfully created',
+      businessIdea: '',
+      usp: '',
+      customers: '',
+      businessModel: '',
+      competitors: '',
+      team: '',
+      marketBarriers: ''
+    };
+    this.store.dispatch(new CreateIdea(idea));
+
+    // open modal
+    this.openModal = true;
+
+    // ToDo -> show success on creation completed
+    setTimeout(() => {
+      this.createIdeaBtnState = ClrLoadingState.SUCCESS;
+
+      setTimeout(() => {
+        this.createIdeaBtnState = ClrLoadingState.DEFAULT;
+      }, 500)
+    }, 1000)
+
+
+
   }
 }

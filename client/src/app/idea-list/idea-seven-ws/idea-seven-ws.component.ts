@@ -5,7 +5,7 @@ import { AppState, selectIdeaState } from '../../store/app.states';
 import { State } from '../../store/reducers/idea.reducers';
 import { Subscription, Observable } from 'rxjs';
 import * as _ from 'lodash';
-import { IdeaEdited } from 'src/app/store/actions/idea.actions';
+import { UpdateIdea } from 'src/app/store/actions/idea.actions';
 
 @Component({
   selector: 'app-idea-seven-ws',
@@ -21,7 +21,6 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
   getState: Observable<any>;
   ideasLoading: boolean;
   idea: Idea;
-  ideas: Idea[] = [];
 
   // subscriptions
   subscriptions: Subscription[] = [];
@@ -34,7 +33,6 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.getState.subscribe((state: State) => {
         this.idea = _.cloneDeep(state.selectedIdea);
-        this.ideas = _.cloneDeep(state.ideas);
       })
     )
   }
@@ -64,7 +62,7 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
     this.closeModal();
 
     // update idea
-    this.store.dispatch(new IdeaEdited({ selectedIdea: this.idea, ideas: this.ideas }));
+    this.store.dispatch(new UpdateIdea(this.idea));
   }
 
   /*
