@@ -99,7 +99,9 @@ class IdeaController extends Controller
         $this->getUserIdeas($request)
             ->findOrFail($id)
             ->delete();
-        return response('Deleted Successfully', 200);
+        return response()->json([
+            'success' => 'Deleted Successfully.'
+        ], 200);
     }
 
     /**
