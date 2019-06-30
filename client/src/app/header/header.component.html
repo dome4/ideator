@@ -1,35 +1,54 @@
 <header class="header-6">
   <div class="branding">
-    <a href="..." class="nav-link">
+    <a [routerLink]="['/']" class="nav-link">
       <clr-icon shape="vm-bug"></clr-icon>
       <span class="title">Ideator</span>
     </a>
   </div>
-  <div class="header-nav">
-    <a
-      [routerLink]="['idea-list']"
-      routerLinkActive="active"
-      class="nav-link nav-icon"
-    >
-      <clr-icon shape="bullet-list"></clr-icon>
-    </a>
-  </div>
   <div class="header-actions">
-    <clr-dropdown>
-      <button class="nav-icon" clrDropdownTrigger>
-        <clr-icon shape="user"></clr-icon>
+    <a
+      [routerLink]="['/login']"
+      *ngIf="!isAuthenticated"
+      class="nav-link nav-icon-text"
+    >
+      <clr-icon shape="user"></clr-icon>
+      <span class="nav-text">Sign In</span>
+    </a>
+
+    <clr-dropdown *ngIf="isAuthenticated">
+      <button class="nav-text" clrDropdownTrigger>
+        {{ user.email }}
         <clr-icon shape="caret down"></clr-icon>
       </button>
+
       <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-        <a href="..." clrDropdownItem>About</a>
-        <a href="..." clrDropdownItem>Preferences</a>
-        <a (click)="logOut()" *ngIf="isAuthenticated" clrDropdownItem
-          >Log out</a
-        >
-        <a [routerLink]="['/login']" *ngIf="!isAuthenticated" clrDropdownItem
-          >Log in</a
-        >
+        <a href="#" clrDropdownItem>Edit Profile</a>
+        <a href="#" clrDropdownItem>Preferences</a>
+        <div class="dropdown-divider" role="separator"></div>
+        <a (click)="logOut()" clrDropdownItem>Log out</a>
       </clr-dropdown-menu>
     </clr-dropdown>
   </div>
 </header>
+<nav class="subnav" *ngIf="isAuthenticated">
+  <ul class="nav">
+    <li class="nav-item">
+      <a
+        [routerLink]="['/idea-list']"
+        routerLinkActive="active"
+        class="nav-link"
+        href="#"
+        >List of Ideas</a
+      >
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" href="#">Management</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cloud</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Tenants</a>
+    </li> -->
+  </ul>
+</nav>
