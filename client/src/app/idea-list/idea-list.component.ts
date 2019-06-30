@@ -6,6 +6,7 @@ import { AppState, selectIdeaState } from '../store/app.states';
 import { State } from '../store/reducers/idea.reducers';
 import { GetIdeas, GetIdea, CreateIdea } from '../store/actions/idea.actions';
 import { ClrLoadingState } from '@clr/angular';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-idea-list',
@@ -18,7 +19,8 @@ export class IdeaListComponent implements OnInit, OnDestroy {
 
   openModal: boolean = false;
 
-  selectedIdea: Idea;
+  // selected items of datagrid
+  selectedItems: Idea[] = [];
 
   // idea data
   getState: Observable<any>;
@@ -55,12 +57,8 @@ export class IdeaListComponent implements OnInit, OnDestroy {
     // open modal in SevenWsComponent
     this.openModal = true;
 
-    // set selected idea
-    this.selectedIdea = idea;
-
-    // ToDo: modal needs id of the selected id, not the whole id -> alternative to routing params
-
-    this.store.dispatch(new GetIdea(this.selectedIdea.id));
+    // get selected idea from api
+    this.store.dispatch(new GetIdea(idea.id));
   }
 
   modalClosed(event) {
@@ -69,7 +67,7 @@ export class IdeaListComponent implements OnInit, OnDestroy {
     this.openModal = false;
   }
 
-  createIdea() {
+  onCreateIdea() {
     this.createIdeaBtnState = ClrLoadingState.LOADING;
 
     // create new dummy idea
@@ -98,7 +96,19 @@ export class IdeaListComponent implements OnInit, OnDestroy {
       }, 500)
     }, 1000)
 
+  }
 
+  onDeleteIdeas() {
+    // ToDo
+  }
 
+  onEditIdea() {
+    // method is only executable if exactly one idea is selected
+    const selectIdea = _.cloneDeep(this.selectedItems[0]);
+
+    if (selectIdea) {
+      // open idea modal
+      this.openIdeaModal(selectIdea);
+    }
   }
 }

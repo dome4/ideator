@@ -1,25 +1,44 @@
 <div class="progress loop" *ngIf="ideasLoading"><progress></progress></div>
 
-<button
-  [clrLoading]="createIdeaBtnState"
-  (click)="createIdea()"
-  class="btn btn-outline"
->
-  Add Idea
-</button>
+<clr-datagrid [(clrDgSelected)]="selectedItems" [clrDgRowSelection]="true">
+  <clr-dg-action-bar>
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onCreateIdea()"
+        [clrLoading]="createIdeaBtnState"
+      >
+        <clr-icon shape="plus"></clr-icon> Add Idea
+      </button>
+      <button
+        [disabled]="selectedItems.length != 1"
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onEditIdea()"
+      >
+        <clr-icon shape="pencil"></clr-icon> Edit
+      </button>
+      <button
+        [disabled]="selectedItems.length < 1"
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onDeleteIdeas()"
+      >
+        <clr-icon shape="close"></clr-icon> Delete
+      </button>
+    </div>
+  </clr-dg-action-bar>
 
-<clr-datagrid>
   <clr-dg-column>Title</clr-dg-column>
   <clr-dg-column>Business Idea</clr-dg-column>
-  <clr-dg-column>Edit</clr-dg-column>
 
   <clr-dg-placeholder>We couldn't find any ideas!</clr-dg-placeholder>
 
   <!-- <clr-dg-row *clrDgItems="let idea of ideas" [routerLink]="[idea.id]"> -->
-  <clr-dg-row *clrDgItems="let idea of ideas" (click)="openIdeaModal(idea)">
+  <clr-dg-row *clrDgItems="let idea of ideas" [clrDgItem]="idea">
     <clr-dg-cell>{{ idea.title }}</clr-dg-cell>
     <clr-dg-cell>{{ idea.businessIdea | slice: 0:50 }} ...</clr-dg-cell>
-    <clr-dg-cell><clr-icon shape="note"></clr-icon></clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>
