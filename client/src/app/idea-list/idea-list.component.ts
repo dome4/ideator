@@ -4,7 +4,7 @@ import { Idea } from '../models/idea.model';
 import { Store } from '@ngrx/store';
 import { AppState, selectIdeaState } from '../store/app.states';
 import { State } from '../store/reducers/idea.reducers';
-import { GetIdeas, GetIdea, CreateIdea } from '../store/actions/idea.actions';
+import { GetIdeas, GetIdea, CreateIdea, DeleteIdea } from '../store/actions/idea.actions';
 import { ClrLoadingState } from '@clr/angular';
 import * as _ from 'lodash';
 
@@ -39,7 +39,7 @@ export class IdeaListComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.getState.subscribe((state: State) => {
         this.ideasLoading = state.loading;
-        this.ideas = state.ideas;
+        this.ideas = _.cloneDeep(state.ideas);
         this.error = state.error;
       })
     );
@@ -99,7 +99,16 @@ export class IdeaListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteIdeas() {
-    // ToDo
+    // method is only executable if more than one idea is selected
+    const selectIdeas = _.cloneDeep(this.selectedItems);
+
+    if (confirm('Are you sure that you want to delete the selected ideas?')) {
+
+      // delete all selected ideas
+      selectIdeas.forEach(idea => {
+        this.store.dispatch(new DeleteIdea(idea.id));
+      });
+    }
   }
 
   onEditIdea() {

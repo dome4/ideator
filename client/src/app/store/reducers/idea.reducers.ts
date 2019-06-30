@@ -139,7 +139,7 @@ export function reducer(state = initialState, action: All): State {
     }
     case IdeaActionTypes.DELETE_IDEA_SUCCESS: {
 
-      const ideasArray = state.ideas.filter(h => h.id !== state.selectedIdea.id);
+      const ideasArray = [...state.ideas.filter(h => h.id !== state.selectedIdea.id)];
 
       return {
         ...state,
