@@ -1,0 +1,32 @@
+$font-family-complementary: $font-family-template;
+$bubbles-horizontal-min-height: 460px;
+
+// [ NAVIGATION ]
+$navbar-min-height: 90px;
+$navbar-font-size: 0.9rem;
+$navbar-background-color: $color-1;
+$navbar-text-color: $html-text-color;
+$navbar-text-color-hover: darken($html-text-color, 5%);
+$navbar-text-color-dark: $color-5;
+$navbar-text-color-dark-hover: darken($navbar-text-color-dark, 15%);
+
+$navbar-fixed-top-background-color: transparent;
+$navbar-fixed-text-color: $color-1;
+$navbar-fixed-text-color-hover: darken($color-1, 15%);
+
+$navbar-sticky-background-color : $color-1;
+$navbar-sticky-text-color: $color-2;
+$navbar-sticky-text-color-hover: $color-3;
+
+$navbar-side-width: 250px;
+$navbar-side-background-color: $color-1;
+$navbar-side-text-color: $color-3;
+$navbar-side-text-color-hover: darken($navbar-side-text-color, 15%);
+$navbar-side-border-color: $border-color-default;
+
+$nav-pills-light-link-active-bg: $color-1;
+$nav-pills-light-link-active-color: darken($html-text-color, 15%);
+$nav-pills-light-link-active-shadow-bg: darken($color-6, 15%);
+
+// [HEADING]
+$v6-heading-bg-color: lighten($color-6, 1.3138%);

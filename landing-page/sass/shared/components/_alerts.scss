@@ -1,0 +1,45 @@
+$icon-width: 4rem;
+$alert-icons: (
+  "primary":    $fa-var-info-circle,
+  "secondary":  $fa-var-check-circle,
+  "success":    $fa-var-check,
+  "info":       $fa-var-info-circle,
+  "warning":    $fa-var-exclamation-triangle,
+  "danger":     $fa-var-exclamation-circle,
+  "light":      $fa-var-info,
+  "dark":       $fa-var-check-circle
+);
+
+.alert-icon {
+  border-width: 0;
+  border-radius: 0;
+  border-left-width: $icon-width;
+
+  &:before {
+    width: $icon-width;
+    position: absolute;
+    left: -$icon-width;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+
+    @include font-awesome();
+  }
+
+  @each $color, $value in $alert-icons {
+    &.alert-#{$color} {
+      &:before {
+        content: fa-content($value);
+      }
+    }
+  }
+}
+
+.alert-thin {
+  border-left-width: 5px;
+}
+
+.alert-outline,
+.alert-thin {
+  background-color: transparent;
+}

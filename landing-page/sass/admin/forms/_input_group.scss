@@ -1,0 +1,42 @@
+.input-group {
+  .btn {
+    box-shadow: none;
+  }
+
+  &.clean-group {
+    &:hover {
+      .btn-1 {
+        border-color: darken($input-border-color, 18%);
+      }
+    }
+
+    .btn-1 {
+      border-color: $input-border-color;
+    }
+
+    //.form-control {
+    //  &:focus {
+    //    + .input-group-append {
+    //      .btn {
+    //        border-color: $input-focus-border-color;
+    //      }
+    //    }
+    //  }
+    //}
+  }
+
+  .form-control {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .input-group-text {
+    background-color: $color-6;
+    border-color: $input-border;
+  }
+}
+
+.input-group-text {
+  font-size: .8125rem;
+}

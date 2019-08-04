@@ -1,0 +1,138 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables";
+@import "font-awesome/scss/variables";
+@import "angled-edges/angled-edges";
+
+// Import core stuff
+@import "shared/variables";
+@import "shared/__mixins";
+
+$selector-bg: #edf1f2;
+$selector-header-bg: #442D65;
+$selector-font-color: #A0A0A0;
+$selector-font-color-hover: darken($selector-font-color, 70%);
+$selector-title-color: #F98A5F;
+$selector-border-color: darken($selector-bg, 8%);
+$selector-width: 350px;
+$count-down-padding : $padding-default / 2;
+
+.demo-link {
+    width: 64px;
+    max-width: 64px;
+    transition: max-width .8s ease-in-out;
+    display: flex;
+    align-items: center;
+
+    .demo-link-text {
+        opacity: 0;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-small;
+        transform: translateX(100%);
+        transition: transform .3s ease .2s;
+    }
+
+    &:hover {
+        max-width: 192px;
+        width: auto;
+
+        .demo-link-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+.demo-blocks {
+    background-color: lighten($color-6, 1.25%);
+
+    .block {
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+        box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.075);
+        border: 1px solid darken($color-6, 3%);
+    }
+}
+
+.preview-pane {
+    padding: 0;
+    height: 320px;
+    text-align: center;
+
+    .preview-page {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+
+        img {
+            width: 100%;
+            display: block;
+            margin-top: 0;
+        }
+    }
+}
+
+.card-demo {
+    .card-body {
+        z-index: 1;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.03);
+    }
+}
+
+.count-down {
+    padding-top: $count-down-padding;
+    padding-bottom: $count-down-padding;
+
+    li {
+        padding: 0 ($padding-default / 2) 0;
+    }
+
+    span {
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        line-height: 1;
+        display: block;
+    }
+
+    p {
+        margin-top: 0;
+        font-weight: $font-weight-light;
+    }
+
+    @media (min-width: $grid-float-breakpoint) {
+        span {
+            font-size: $font-size-extra-large;
+        }
+    }
+}
+
+// Cookie-consent demo styles
+.example-selector {
+    @include center-flex(space-around);
+    flex-wrap: wrap;
+    list-style-type: none;
+
+    > li {
+        @include center-flex();
+        cursor: pointer;
+        margin: 0.5em;
+        padding: 2.5em;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border-radius: .25rem;
+        border: 1px solid $border-color-default;
+
+        &:hover {
+            border-color: $color-accent;
+        }
+    }
+}
+
+.cookie-location-message {
+    margin-top: 4rem;
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+}

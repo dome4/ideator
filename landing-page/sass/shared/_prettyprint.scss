@@ -1,0 +1,57 @@
+// Showing prettify line numbers
+$pre-shadow-color: darken($color-6, 5%);
+$pre-border-radius: 5px;
+
+.prettyprint {
+  .linenums {
+    padding-left: 0;
+    list-style-type: none !important;
+    color: #ccc;
+
+    > li {
+      counter-increment: step-counter;
+
+      &:before {
+        content: counter(step-counter);
+        color: lighten($color-accent, 18.75%); //00ccff;
+        background-color: $color-accent;
+        min-width: 3rem;
+        display: inline-block;
+        padding: 0 10px;
+        text-align: right;
+        margin-right: 10px;
+      }
+
+      &:first-child {
+        &:before {
+          border-radius: $pre-border-radius 0 0;
+        }
+      }
+
+      &:last-child {
+        &:before {
+          border-radius: 0 0 0 $pre-border-radius;
+        }
+      }
+    }
+
+    > li.L4,
+    > li.L9 {
+      color: #000;
+    }
+  }
+}
+
+pre {
+  &.prettyprint {
+    border: none;
+    box-shadow: 0 0 1px 1px $pre-shadow-color, 0 0 5px 2px rgba($pre-shadow-color, 0.5);
+    background-color: #fff;
+    margin: 0 $pre-border-radius;
+    border-radius: $pre-border-radius;
+  }
+}
+
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+  background: #f5f5f5;
+}

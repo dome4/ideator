@@ -1,0 +1,5 @@
+.progress {
+    @include media-breakpoint-down($grid-float-breakpoint-max) {
+        width: 100%;
+    }
+}

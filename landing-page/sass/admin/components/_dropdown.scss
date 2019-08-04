@@ -1,0 +1,31 @@
+.dropdown-menu {
+    min-width: $dropdown-min-width;
+    box-shadow: 0 0 15px 1px rgba($color-2, .2), 0 0 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: $font-size-admin;
+
+    &:not(ul) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.dropdown-heading {
+    padding: 1.5rem 1rem;
+}
+
+.dropdown-footer {
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 $dropdown-border-radius $dropdown-border-radius;
+    background-color: $dropdown-footer-bg-color;
+    //border-top: 1px solid $border-color-default;
+}
+
+.dropdown-heading {
+    font-weight: $font-weight-bold;
+}
+
+.dropdown-body {
+    max-height: 380px;
+    overflow-y: auto;
+}

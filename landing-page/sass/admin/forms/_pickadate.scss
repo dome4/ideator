@@ -1,0 +1,332 @@
+.picker {
+  width: 100%;
+  top: 100%;
+  margin-top: -1px;
+
+  &__ {
+    &input {
+
+    }
+
+    &holder {
+      width: 100%;
+      overflow-y: auto;
+      background-color: $html-background-color;
+      border: 1px solid $input-border-color;
+      border-top-width: 0;
+      min-width: 18rem;
+      max-width: 25rem;
+      outline: 0;
+      -webkit-overflow-scrolling: touch;
+      border-bottom-right-radius: $border-radius-default;
+      border-bottom-left-radius: $border-radius-default;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    &box {
+      padding: 1rem;
+    }
+
+    &header {
+      font-size: 1rem;
+      line-height: 1;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      margin-top: 0;
+
+      @include center-flex();
+    }
+
+    &month {
+      font-weight: $font-weight-bold;
+      /*margin-left: .3125rem;*/
+      /*margin-right: .3125rem;*/
+    }
+
+    &year {
+      font-weight: $font-weight-regular;
+      font-size: 1rem;
+    }
+
+    &select {
+      &--month, &--year {
+        border: 1px solid $input-border-color;
+        padding: .2rem .875rem;
+        font-size: $font-size-small;
+        line-height: 1.5385;
+        background-clip: padding-box;
+        margin-left: .3125rem;
+        margin-right: .3125rem;
+        margin-top: 0 !important;
+        outline: 0;
+        white-space: nowrap;
+      }
+    }
+
+    &nav {
+      &--next, &--prev {
+        position: initial;
+        padding: .5rem;
+        line-height: 1;
+        border-radius: .1875rem;
+        transition: all ease-in-out .15s;
+        @include center-flex();
+
+        &:hover {
+          color: #333;
+          background-color: $datepicker-color-bg-hover;
+        }
+
+        &:before {
+          border: none;
+          width: auto;
+          height: auto;
+        }
+      }
+
+      &--prev {
+        margin-left: auto;
+
+        &:before {
+          @include font-awesome($fa-var-angle-left)
+        }
+      }
+
+      &--next {
+        right: 0;
+
+        &:before {
+          @include font-awesome($fa-var-angle-right)
+        }
+      }
+
+      &--disabled {
+        &,
+        &:hover {
+          cursor: default;
+          background-color: transparent;
+        }
+      }
+    }
+
+    &weekday {
+      font-weight: $font-weight-regular;
+    }
+
+    &day {
+      font-weight: $font-weight-base;
+      border-radius: $border-radius-default;
+
+      &:hover {
+        color: #333;
+        background-color: $datepicker-color-bg-hover;
+      }
+
+      &--today {
+        &, &:hover {
+          background: $datepicker-color-today-bg none !important;
+          border-color: darken($datepicker-color-today-bg, 1.25%) !important;
+          color: $datepicker-color-today !important;
+        }
+
+        &:before {
+          content: none;
+        }
+      }
+
+      &--selected {
+        &, &:hover {
+          background: $datepicker-color-selected-bg !important;
+          border-color: darken($datepicker-color-selected-bg, 1.25%) !important;
+          color: $datepicker-color-selected !important;
+        }
+      }
+    }
+
+    &button {
+      &--today, &--close, &--clear {
+        border-radius: $border-radius-default;
+
+        &:focus, &:hover {
+          background-color: $datepicker-color-bg-hover;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  &-- {
+    &opened {
+      .picker__holder {
+        max-height: 480px;
+      }
+    }
+  }
+}
+
+ /*
+
+.picker__day--outfocus {
+  color: #ccc;
+}
+
+.picker__day--infocus, .picker__day--outfocus {
+  transition: all ease-in-out .15s;
+}
+
+.picker__day--infocus:hover, .picker__day--outfocus:hover {
+  cursor: pointer;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.picker--focused .picker__day--highlighted {
+  cursor: pointer;
+  color: #fff;
+  background-color: #26a69a;
+}
+
+.picker--focused .picker__day--selected {
+  background-color: #26a69a;
+  color: #fff;
+}
+
+.picker__day--disabled {
+  background-color: transparent;
+  color: #999;
+  cursor: default;
+  &:hover {
+    background-color: transparent;
+    color: #999;
+    cursor: default;
+  }
+  &:before {
+    border-top-color: #999;
+  }
+}
+
+.picker__day--highlighted .picker__day--disabled {
+  background-color: transparent;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.picker__footer {
+  text-align: center;
+  button {
+    border: 0;
+    padding: .4375rem .875rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: .1875rem;
+    transition: all ease-in-out .15s;
+    &:focus, &:hover {
+      outline: 0;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+    &:before {
+      height: 0;
+    }
+    &:disabled {
+      background-color: transparent;
+      color: #999;
+      cursor: default;
+      &:focus, &:hover {
+        background-color: transparent;
+        color: #999;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.picker--time {
+  min-width: 16rem;
+  max-width: 20rem;
+  .picker__box {
+    padding: 0;
+  }
+}
+
+.picker__list {
+  list-style: none;
+  padding: .5rem 0;
+  margin: 0;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.picker__list-item {
+  position: relative;
+  padding: .5rem 1rem;
+  transition: all ease-in-out .15s;
+  &:focus, &:hover {
+    cursor: pointer;
+    color: #333;
+    background-color: #f5f5f5;
+    z-index: 10;
+  }
+}
+
+
+.picker__list-item--highlighted {
+  z-index: 10;
+}
+
+.picker--focused .picker__list-item--highlighted {
+  cursor: pointer;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.picker__list-item--highlighted {
+  cursor: pointer;
+  color: #333;
+  background-color: #f5f5f5;
+  &:hover {
+    cursor: pointer;
+    color: #333;
+    background-color: #f5f5f5;
+  }
+}
+
+.picker--focused .picker__list-item--selected {
+  color: #fff;
+  background-color: #2196f3;
+  z-index: 10;
+}
+
+.picker__list-item--selected {
+  color: #fff;
+  background-color: #2196f3;
+  z-index: 10;
+  &:hover {
+    color: #fff;
+    background-color: #2196f3;
+    z-index: 10;
+  }
+}
+
+.picker--focused .picker__list-item--disabled {
+  color: #999;
+  background-color: transparent;
+  cursor: default;
+  z-index: auto;
+}
+
+.picker__list-item--disabled {
+  color: #999;
+  background-color: transparent;
+  cursor: default;
+  z-index: auto;
+  &:hover {
+    color: #999;
+    background-color: transparent;
+    cursor: default;
+    z-index: auto;
+  }
+}
+*/

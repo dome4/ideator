@@ -1,0 +1,18 @@
+.table-clean {
+  tbody tr td {
+      border-bottom: 1px solid $border-color-default;
+      border-top: none;
+      //padding: 20px;
+      //font-size: 13.5px;
+    }
+
+  thead tr th {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    letter-spacing: .06em;
+    font-size: .8rem;
+    color: rgba($color-5, .75);
+    border-bottom: 1px solid $border-color-default;
+    border-top: none;
+  }
+}

@@ -1,0 +1,29 @@
+.jqstooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  color: white;
+  font: 10px arial, san serif;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 10000;
+
+  /** .CSS **/
+  width: auto;
+  max-height: 12px;
+  max-width: 64px;
+  padding: 5px 10px !important;
+  background-color: rgba(0,0,0,0.8) !important;
+  border: solid 1px #000 !important;
+  border-radius: 3px;
+  box-sizing: content-box;
+}
+
+.jqsfield {
+  color: white;
+  font: 10px arial, san serif;
+  text-align: left;
+}

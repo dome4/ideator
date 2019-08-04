@@ -1,0 +1,19 @@
+/* 2.9 Badges ======================================================= */
+
+@each $i, $color in $color-scheme {
+    .badge-#{$i} {
+        @include badge-variant($color);
+    }
+
+    .badge-outline-#{$i} {
+        border: 1px solid;
+        @include badge-outline-variant($color);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .badge-outline-#{$color} {
+        border: 1px solid;
+        @include badge-outline-variant($value);
+    }
+}

@@ -1,0 +1,28 @@
+/* ==========================================================================
+    [6. ANIMATIONS]
+========================================================================== */
+
+//@import "animations/push";
+@import "animations/bubbles";
+
+.animation {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.typed-cursor {
+    opacity: 1;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@keyframes jump {
+    0% { top: 0; }
+    50% { top: 50px; }
+    100% { top: 0; }
+}

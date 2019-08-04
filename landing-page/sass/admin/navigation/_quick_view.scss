@@ -1,0 +1,23 @@
+.quick-view {
+    background-color: $quick-view-bg-color;
+    color: $quick-view-text-color;
+    border-left: 1px solid $border-color-default;
+
+    .nav-tabs {
+        > .nav-item {
+            &.active {
+                > a[data-toggle="tab"] {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .aside--todo-list {
+        .collapsed {
+            + .task-description {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

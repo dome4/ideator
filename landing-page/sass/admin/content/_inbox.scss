@@ -1,0 +1,99 @@
+.inbox {
+  .sidebar {
+    display: none;
+  }
+
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    .sidebar {
+      display: flex;
+      border-right: 1px solid $border-color-default;
+    }
+  }
+
+  @include media-breakpoint-down($grid-float-breakpoint-max) {
+    .btn-group-reply {
+      position: absolute;
+      margin-top: 6px;
+      top: 0;
+      right: 0;
+
+      .btn {
+        border: 0;
+      }
+    }
+  }
+}
+
+.emails-ws {
+  position: relative;
+
+  > div {
+    flex-shrink: 0;
+    min-height: 1px;
+  }
+
+  @include media-breakpoint-down($grid-float-breakpoint-max) {
+    display: flex;
+    transform: translate3d(0,0,0);
+    transition: .3s ease transform;
+
+    > div {
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    &--messages {
+      z-index: 1;
+      background-color: $html-background-color;
+    }
+
+    &.message-loaded {
+      //transform: translate3d(-100%,0,0);
+    }
+  }
+
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    @include make-row();
+    margin-right: 0;
+    margin-left: 0;
+
+    /* remove gutters */
+    > div {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    &--messages {
+      border-right: 1px solid $border-color-default;
+      @include make-col(5, $grid-columns);
+    }
+
+    &--body {
+      position: relative;
+      @include make-col(7, $grid-columns);
+    }
+  }
+}
+
+.emails-wrapper {
+  .email-body p {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .list-group-item {
+    &.selected {
+      background-color: $list-group-hover-bg;
+
+      &:before {
+        content: '';
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        position: absolute;
+        background-color: $color-3;
+      }
+    }
+  }
+}

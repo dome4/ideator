@@ -1,0 +1,24 @@
+.mfp-content,
+.popup-wrapper {
+  height: 100%;
+}
+
+.mfp-container {
+  padding: 0;
+}
+
+.popup-wrapper {
+  position: relative;
+}
+
+@include media-breakpoint-up($grid-float-breakpoint) {
+  .mfp-content ,
+  .popup-wrapper {
+    height: auto;
+  }
+
+  .popup-wrapper {
+    padding: 20px 30px;
+    margin: 0 auto;
+  }
+}

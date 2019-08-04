@@ -1,0 +1,14 @@
+.gradient {
+  background-color: transparent;
+
+  @each $i, $color_i in $color-scheme {
+    @each $j, $color_j in $color-scheme {
+      @if $i != $j {
+        &.gradient-#{$i}#{$j} {
+          //background-image: linear-gradient(220deg, $color_i 0%, $color_j 100%);
+          background-image: linear-gradient(-135deg, $color_i 25%, $color_j 100%);
+        }
+      }
+    }
+  }
+}

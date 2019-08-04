@@ -1,0 +1,10 @@
+$zoom-color: #c5c6ca;
+
+.jvectormap-zoomin,
+.jvectormap-zoomout,
+.jvectormap-goback {
+  background: #fff;
+  color: $zoom-color;
+  box-shadow: 0 0 1px 0 $zoom-color;
+  line-height: 8px;
+}

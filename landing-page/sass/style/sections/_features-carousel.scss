@@ -1,0 +1,52 @@
+$swiper-container-p : 2.5rem;
+
+.features-carousel {
+  background-color: $v6-heading-bg-color;
+
+  .swiper-container {
+    padding-top: $swiper-container-p;
+    padding-bottom: $swiper-container-p;
+
+    @include media-breakpoint-up(sm) {
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: $swiper-container-p;
+        width: 25%;
+        z-index: 2;
+        left: 75%;
+        bottom: 0;
+        background: linear-gradient(to left, $v6-heading-bg-color 10%, rgba($v6-heading-bg-color, 0.1));
+      }
+    }
+  }
+
+  .features-nav-next {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    margin: 0;
+    z-index: 3;
+    cursor: pointer;
+    padding-right: 1rem;
+
+    .features-nav-icon {
+      display: inline-block;
+      transform: translateX(0);
+      transition: all .4s ease-out;
+
+      &:after {
+        @include font-awesome($fa-var-long-arrow-alt-right);
+      }
+    }
+
+    &:hover {
+      color: $color-4;
+
+      .features-nav-icon {
+        transform: translateX(1rem);
+      }
+    }
+  }
+}

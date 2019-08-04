@@ -1,0 +1,32 @@
+/* 2.10 Text ======================================================= */
+
+.italic { font-style: italic !important; }
+.underline { text-decoration: underline !important; }
+.dotted { border-bottom: 1px dotted; }
+.strike-through, s {
+    text-decoration: line-through !important;
+    color: $strike-color;
+    font-weight: $font-weight-light;
+}
+.text-wrap {
+    white-space: normal !important;
+}
+
+.bold, strong { font-weight: $font-weight-bold !important; }
+.thin { font-weight: $font-weight-thin !important; }
+.light { font-weight: $font-weight-light !important; }
+.regular { font-weight: $font-weight-regular !important; }
+.extra-bold { font-weight: $font-weight-extra-bold !important; }
+.accent { color: $color-accent; }
+
+@each $i, $color in $color-scheme {
+    &.color-#{$i} {
+        color: $color !important;
+
+        @for $a from 1 through 9 {
+            &.alpha-#{$a} {
+                color: rgba($color, ($a * .1));
+            }
+        }
+    }
+}

@@ -1,0 +1,295 @@
+$fc-button-bg: $color-6;
+$fc-td-padding: 0.5rem;
+$fc-event-bg: $color-1;
+$fc-resizer-color: darken($border-color-default, 4%);
+$fc-space-3: map-get($spacers, 3);
+$fc-space-4: map-get($spacers, 4);
+$fc-today-bg: $color-6;
+$fc-listheading-bg: $color-6;
+
+.fc-unthemed {
+  .fc-content,
+  .fc-divider,
+  .fc-list-heading td,
+  .fc-list-view,
+  .fc-popover,
+  .fc-row,
+  tbody,
+  td,
+  th,
+  thead {
+    border-color: $border-color-default;
+  }
+
+  .fc-toolbar {
+    margin-bottom: $fc-space-4;
+    flex-direction: column;
+    @include center-flex(space-between);
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      flex-direction: row;
+    }
+
+    .fc-left,
+    .fc-center,
+    .fc-right {
+      float: none;
+      margin-bottom: 1rem;
+
+      @include media-breakpoint-up($grid-float-breakpoint) {
+        margin-bottom: 0;
+      }
+    }
+
+    .fc-left { order: 0; }
+    .fc-center { order: 1; }
+    .fc-right { order: 2; }
+
+    .fc-clear {
+      display: none;
+    }
+
+    .fc-button {
+      @include btn();
+      @include button-hover($fc-button-bg, $fc-button-bg);
+
+      background-image: none;
+      //border: 0;
+      text-shadow: none!important;
+
+      &.fc-state-active,
+      &:active,
+      &:focus {
+        background: $color-accent;
+        color: $color-1;
+      }
+
+      &.fc-state-disabled {
+        background: lighten($fc-button-bg, 0.5%);
+        color: darken($fc-button-bg, 12%);
+      }
+
+      &.fc-state-default {
+        box-shadow: none;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: $font-weight-regular;
+      text-transform: uppercase;
+      color: $color-accent;
+    }
+  }
+
+  .fc-day-header {
+    padding: .75rem $fc-td-padding;
+    font-size: .75rem;
+    font-weight: $font-weight-bold;
+    color: $color-2;
+  }
+
+  .fc-day-grid {
+    .fc-other-month {
+      color: $color-2;
+    }
+
+    .fc-day-top {
+      padding: $fc-td-padding;
+    }
+
+    .fc-more-cell {
+      padding: 0 $fc-td-padding;
+    }
+
+    .fc-event-container {
+      padding: .2rem $fc-td-padding;
+    }
+  }
+
+  .fc-event { //, .fc-event-dot
+    background: $fc-event-bg;
+    border: 1px solid $border-color-default;
+    box-shadow: 0 1px 10px 1px rgba($color-2, .08);
+
+    .fc-content {
+      padding: .5rem;
+    }
+  }
+
+  .fc-more {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small * .75;
+    color: $color-2 !important;
+    opacity: 0.5;
+  }
+
+  .fc-popover {
+    box-shadow:  0 0 15px 1px rgba($color-2, .2);
+    border-radius: $border-radius;
+
+    .fc-header {
+      background: $fc-event-bg;
+      border-bottom: 1px solid $border-color-default;
+      padding: $fc-space-3;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+      @include center-flex(space-between);
+
+      .fc-title {
+        font-weight: $font-weight-regular;
+        @include text-truncate();
+      }
+
+      .fc-close {
+        color: $color-2;
+        opacity: 0.5;
+        order: 2;
+      }
+
+      .fc-clear {
+        display: none;
+      }
+    }
+
+    .fc-body {
+      .fc-event-container {
+        padding: $fc-space-3;
+      }
+
+      .fc-event {
+        margin-bottom: .5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .fc-month-view {
+    .fc-event {
+      .fc-end-resizer {
+        width: 1px;
+        top: 6px;
+        bottom: 6px;
+        background-color: transparent;
+        border: 1px dotted $fc-resizer-color;
+        display: block;
+      }
+    }
+  }
+
+  .fc-listWeek-view {
+    .fc-list-heading {
+      td {
+        background-color: $fc-listheading-bg;
+      }
+
+      .fc-list-heading-alt {
+        font-weight: $font-weight-regular;
+      }
+    }
+
+    .fc-list-item {
+      td {
+        padding: .75rem 1.25rem;
+      }
+
+      &:hover {
+        td {
+          background-color: lighten($fc-listheading-bg, 1.55%);
+        }
+      }
+    }
+  }
+
+  td.fc-today {
+    background-color: $fc-today-bg;
+  }
+
+  &.fc-ltr {
+    .fc-h-event {
+      .fc-end-resizer {
+        right: 4px;
+      }
+    }
+
+    .fc-day-grid-event.fc-allow-mouse-resize {
+      .fc-end-resizer {
+        margin-right: 0 !important;
+        border-color: darken($fc-resizer-color, 6%);
+      }
+    }
+  }
+}
+
+//
+// Alternate events
+//
+
+.fc {
+  button {
+    height: auto;
+  }
+
+  .fc-event-dot {
+    background-color: $color-2;
+  }
+
+  .fc-event {
+    @each $color, $value in $theme-colors {
+      &.fc-event-#{$color} {
+        @include button-hover($value, $value);
+      }
+
+      &.fc-event-outline-#{$color} {
+        @include button-outline-hover($value);
+      }
+    }
+
+    @each $i, $color in $color-scheme {
+      &.fc-event-#{$i} {
+        @include button-hover($color, $color);
+      }
+
+      &.fc-event-outline-#{$i} {
+        @include button-outline-hover($color);
+      }
+    }
+
+    &.fc-event-accent {
+      @include button-hover($color-accent, $color-accent);
+    }
+
+    &.fc-event-outline-accent {
+      @include button-outline-hover($color-accent);
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    .fc-event-#{$color},
+    .fc-event-outline-#{$color} {
+      .fc-event-dot {
+        background-color: $value;
+      }
+    }
+  }
+
+  @each $i, $color in $color-scheme {
+    .fc-event-#{$i},
+    .fc-event-outline-#{$i} {
+      .fc-event-dot {
+        background-color: $color;
+      }
+    }
+  }
+
+  .fc-event-accent,
+  .fc-event-outline-accent {
+    .fc-event-dot {
+      background-color: $color-accent;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+/* 8.2 Inputs ======================================================= */
+$input-bg-color-disabled: lighten($color-6, 1.3175%);
+
+.form-control {
+    border-radius: $border-radius-default;
+    box-shadow: none;
+    transition: border .3s ease-in-out;
+    border-color: $input-border;
+
+    &:hover, &:focus {
+        border-color: darken($input-border-color, 18%);
+    }
+
+    &.shadow {
+        box-shadow: 0 3px 20px 0 rgba($color-accent, 0.11) !important;
+    }
+
+    &:not([class*=shadow]) {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &[readonly] {
+      // border-color: $border-color-default;
+      color: $color-2;
+      background-color: $input-bg-color-disabled;
+    }
+
+    &[disabled], &:disabled {
+    // border-color: $border-color-default;
+    color: $color-2;
+    background-color: $input-bg-color-disabled;
+  }
+
+    // Theme colors are in format: color-[1|2|3|4|5|6]
+    @each $i, $color in $color-scheme {
+        &.color-#{$i} {
+            &:focus {
+                border-color: $color;
+            }
+        }
+    }
+
+    // Theme colors are in format: text-[success|info|...]
+    @each $i, $color in $theme-colors {
+        &.text-#{$i} {
+            &:focus {
+                border-color: $color;
+            }
+        }
+    }
+}

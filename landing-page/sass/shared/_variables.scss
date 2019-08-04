@@ -1,0 +1,163 @@
+// [ FONTS ]
+$font-family-template: 'Poppins', sans-serif !default;
+$font-family-complementary: $font-family-template !default;
+$font-family-handwritten: "Caveat", cursive, $font-family-template !default;
+$font-family-awesome: "Font Awesome 5 Free" !default;
+
+// Updated to Bootstrap 4 fix
+$grid-float-breakpoint: md;
+$grid-float-breakpoint-max: sm;
+
+// [ COLORS ]
+$color-1: #ffffff !default;
+$color-2: #646f79 !default; // #4E5A70 (o)
+$color-3: #9F55FF !default; //#7b68ee !default; //#3c1fc7 !default;
+$color-4: #028fff !default; //#7a39db !default;
+$color-5: #101480 !default; //#143350 !default; // #181c1f (o)
+$color-6: #f4f8fb !default; // #ebeef3 (o)
+
+$color-scheme: (
+    1: $color-1,
+    2: $color-2,
+    3: $color-3,
+    4: $color-4,
+    5: $color-5,
+    6: $color-6
+) !default;
+
+$all-colors: map_merge($color-scheme, $theme-colors);
+
+// Social icons
+//
+$brand-colors: () !default;
+$brand-colors: map-merge((
+    "facebook":   #3b5998,
+    "google":     #dd4b39,
+    "gplus":      #dd4b39,
+    "twitter":    #00aced,
+    "linkedin":   #007bb6,
+    "pinterest":  #cb2027,
+    "git":        #666666,
+    "tumblr":     #32506d,
+    "vimeo":      #aad450,
+    "youtube":    #bb0000,
+    "flickr":     #ff0084,
+    "reddit":     #ff4500,
+    "dribbble":   #ea4c89,
+    "skype":      #00aff0,
+    "instagram":  #517fa4,
+    "lastfm":     #c3000d,
+    "soundcloud": #ff8800,
+    "behance":    #1769ff,
+    "envato":     #82b541,
+    "medium":     #00ab6c,
+    "spotify":    #1db954,
+    "quora":      #a82400,
+    "xing":       #026466,
+    "snapchat":   #fffc00,
+    "telegram":   #0088cc,
+    "whatsapp":   #075e54,
+    "rss":        #f26522,
+), $brand-colors);
+
+// [ DEFAULTS ]
+$html-text-color: darken($color-2, 15%) !default;
+$html-background-color: $color-1 !default;
+
+$striped-bg-color: #f8f9fa;
+$striped-bg-color-hover: darken($striped-bg-color, 1%);
+
+$input-border: #D8E1E5;
+$input-padding-y : $input-btn-padding-y;
+$input-padding-x: $input-btn-padding-x;
+$input-border-rounded: 10rem;
+
+$padding-default: 60px !default;
+
+$strike-color: lighten($html-text-color, 25%);
+$border-color-default: #edf4f8; //$input-border;
+$border-radius-default: 2px !default;
+$paragraph-margin-default: 1.5rem !default;
+$color-accent: $color-3 !default;
+$color-accent-inverse: $color-1 !default;
+$swiper-border-color: $color-5;
+
+// [ SIZES ]
+// fonts
+// $font-size-base: 16px;
+$font-size-tiny: $font-size-base * 0.45;
+$font-size-small: $font-size-base * 0.85;
+$font-size-regular: $font-size-base;
+$font-size-medium: $font-size-base * 2;
+$font-size-large: $font-size-base * 3.25;
+$font-size-extra-large: $font-size-base * 4.5;
+$font-size-xx-large: $font-size-base * 6.5;
+$font-size-section-heading: 2.875rem;
+
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// arrows - for background edges
+$arrow-size: 30px;
+$arrow-pos: (-$arrow-size / 2) + 2;
+
+// [ HEADINGS ]
+// $headings-background-color: $color-1;
+$headings-font-family: $font-family-complementary;
+$headings-font-weight: $font-weight-regular;
+$headings-font-color: $color-3;
+
+// [ SECTION ]
+$section-padding: $padding-default * 1.5;
+
+// [ FORMS ]
+// inputs
+$input-padding-base: $input-padding-y;
+$input-border-color: darken($border-color-default, 1.75%);
+$input-text-color: darken($input-border-color, 12%);
+$input-text-color-focus: darken($input-text-color, 22%);
+
+// buttons 2.875
+$btn-font-family:   $font-family-template;
+$btn-font-size:     .75rem;
+$btn-font-weight:   $font-weight-regular;
+$btn-font-color:    $color-1 !default;
+$btn-text-transform: uppercase;
+$btn-sizes: () !default;
+$btn-sizes: map-merge((
+    "xs": .125rem, // 0.75
+    "sm": .25rem,  // 1.5
+    "md": .375rem, // 1
+    "lg": .5rem,   // 3
+    "xl": .625rem  // 3.75
+), $btn-sizes);
+
+// navs
+$nav-tab-active-border-color: $color-3;
+$navbar-header-height: 70px;
+
+$nav-tabs-font-size    : $btn-font-size;
+$nav-tabs-font-weight:   $btn-font-weight;
+
+// mobile devices
+$jacks-bg-color: #e3e8eb;
+
+$browser-action-color-1: #f44;
+$browser-action-color-2: #9b3;
+$browser-action-color-3: #fb5;
+$browser-action-size: 0.5em;
+$iphone-bg-color: $color-1;
+
+// design for iphone-x
+$x-scaling: .65;
+$x-border-width: 15px * $x-scaling;
+$x-phone-width: 375px * $x-scaling;
+$x-border-radius: 40px * $x-scaling;
+$x-notch-width: 209px * $x-scaling;
+$x-notch-height: 35px * $x-scaling;
+$x-notch-border-radius: 20px * $x-scaling;
+$x-dark-bg: #152975;
+$x-light-bg: #f2f2f5;

@@ -1,0 +1,54 @@
+.card {
+  .card-header {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom-color: $border-color-default;
+  }
+}
+
+.card-grid {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-deck-margin;
+  }
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      @if ($infix != "") {
+        &.card-grid#{$infix}   {
+          flex-flow: row wrap;
+          margin-right: -$card-deck-margin;
+          margin-left: -$card-deck-margin;
+
+          .card {
+            display: flex;
+            // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+            flex: 1 0 0%;
+            flex-direction: column;
+            margin-right: $card-deck-margin;
+            margin-bottom: 0; // Override the default
+            margin-left: $card-deck-margin;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-columns {
+  .card {
+    margin-bottom: 1.25rem;
+  }
+
+  &.columns-md-2 {
+    column-count: 1;
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      column-count: 2;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+/* Animated bars ======================================================= */
+
+$bars-height: 100px;
+$bars-bg-color: $color-4;
+$bars-margin: $padding-default / 2;
+$bars-margin-top: $bars-margin / 2;
+$bars-bar-color: darken($bars-bg-color, 9%);
+$bars-bar-bg: rgba($bars-bar-color, 0.3);
+
+.progress {
+  &.progress-sl {
+    height: 1px;
+  }
+
+  &.progress-ty {
+    height: 2px;
+  }
+
+  &.progress-xs {
+    height: 4px;
+  }
+
+  &.progress-sm {
+    height: 6px;
+  }
+
+  &.progress-md {
+    height: 12px;
+  }
+
+  @each $i, $color in map_merge($color-scheme, $theme-colors) {
+    &.progress-#{$i} {
+      background-color: rgba($color, 0.3);
+
+      .progress-bar {
+        background-color: $color;
+      }
+    }
+  }
+}
+
+.animate-bars {
+  .progress-bars {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    p {
+      font-size: $font-size-small;
+    }
+
+    &.progress-vertical {
+      height: $bars-height;
+      @include center-flex(space-around);
+
+      p {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+
+      li {
+        height: $bars-height;
+        width: 8px;
+      }
+
+      .progress, .progress-bar {
+        bottom: 0;
+        position: absolute;
+        width: 8px;
+      }
+    }
+
+    &.progress-horizontal {
+      width: 100%;
+
+      p {
+        margin-top: 0;
+        margin-bottom: 6px;
+        @include center-flex(space-between);
+      }
+
+      li + li {
+        margin-top: 1.5rem;
+      }
+    }
+
+    li {
+      position: relative;
+    }
+  }
+}

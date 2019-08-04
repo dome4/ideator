@@ -1,0 +1,73 @@
+/* 2.6 Overlay ======================================================= */
+
+$color-overlay: #27333E;
+$rgba: 0.6;
+
+.overlay {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background-color: rgba($color-overlay, $rgba);
+        opacity: 1;
+        z-index: 0;
+    }
+
+    [class^='container'],
+    > .content {
+        position: relative;
+        z-index: 1;
+    }
+
+    > .content {
+        position: relative;
+    }
+
+    &.gradient {
+        @include gradient-after($rgba);
+
+        @for $a from 1 through 9 {
+            $transparency: $a * .1;
+
+            &.alpha-#{$a} {
+                @include gradient-after($transparency);
+            }
+        }
+    }
+
+    @each $c, $color in $color-scheme {
+        &.overlay-#{$c} {
+            &:after {
+                background-color: rgba($color, $rgba);
+            }
+
+            @for $a from 1 through 9 {
+                $transparency: $a * .1;
+
+                &.alpha-#{$a} {
+                    &:after {
+                        background-color: rgba($color, $transparency);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.inner-overlay {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+
+    // could be placed on overlay file, with gradient css class.. $color-3 + $color-4
+    &.gradient {
+        background-image: linear-gradient(-48deg, lighten($color-3, 8%) 25%, $color-4 100%);
+    }
+}
+

@@ -1,0 +1,8 @@
+/* 4.1 Form ======================================================= */
+form, .form {
+  legend {
+    padding-bottom: .625rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid $border-color-default;
+  }
+}

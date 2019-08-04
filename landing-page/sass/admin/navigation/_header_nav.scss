@@ -1,0 +1,200 @@
+/* 4.1 Navigation base styles ======================================================= */
+$avatar-height: 35px;
+$avatar-padding: ($header-nav-height - $avatar-height) * .5;
+$nav-badge-top-pos: $nav-link-padding-y;
+
+.main-header {
+    z-index: 3;
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: 0 0 6px 0 rgba(50, 50, 50, .2);
+        padding: 0;
+
+        @include media-breakpoint-up($grid-float-breakpoint) {
+            height: $navbar-header-height;
+        }
+    }
+
+    .dropdown-menu {
+        min-width: 280px;
+
+        .arrow {
+            &.top:after {
+                left: auto;
+                right: 32px;
+            }
+        }
+    }
+
+    // get rid of default bs4 angled arrows on drop downs
+    .dropdown-toggle {
+        &:after {
+            content: none;
+        }
+    }
+
+    .navbar-logo {
+        transition: width .3s ease-in-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            max-height: 40px;
+        }
+    }
+
+    .navbar-options {
+        background-color: $header-nav-light-bg-color;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .search-form {
+            position: relative;
+            display: none;
+
+            .form-control,
+            .btn {
+                border: 0;
+                box-shadow: none;
+            }
+
+            .btn {
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+
+    .navbar-toggler {
+        display: block;
+
+        .icon-bar {
+            transform: rotate(0deg);
+            background-color: $header-nav-text-color;
+            transition: all .35s ease-in-out;
+            width: 30px;
+            display: block;
+            height: 1px;
+
+            + .icon-bar {
+                margin-top: 8px;
+            }
+
+            &:hover {
+                background-color: $header-nav-text-color;
+            }
+        }
+    }
+
+    .navbar-brand {
+        padding: 0;
+    }
+
+    .nav {
+        margin: 0;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .avatar {
+            max-height: $avatar-height;
+        }
+
+        .nav-link {
+            padding:$nav-link-padding-y * 2;
+
+            .badge {
+                position: absolute;
+                font-weight: $font-weight-light;
+                padding: 3px 6px;
+                top: $nav-badge-top-pos;
+                right: 0;
+            }
+        }
+
+        @include media-breakpoint-down($grid-float-breakpoint-max) {
+            .dropdown-menu-right {
+                left: 0;
+                position: fixed;
+                right: 0;
+                top: $header-nav-height * 2;
+                margin: 0 15px;
+            }
+        }
+
+        .progress-xs {
+            margin: 8px 0 2px;
+        }
+
+        .list-group-item {
+            border-color: rgba(0,0,0,0.035);
+        }
+
+        .pe {
+            font-size: 1.5rem;
+        }
+    }
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+        .navbar {
+            flex-direction: row;
+        }
+
+        .navbar-options {
+            flex-direction: row;
+            align-items: center;
+            flex: 1;
+
+            .search-form {
+                flex: 1;
+                display: block;
+                margin-right: auto;
+            }
+        }
+
+        .navbar-logo {
+            width: $side-nav-width;
+        }
+
+        .nav {
+            padding: 0;
+        }
+    }
+}
+
+.side-nav-collapsed {
+    .navbar-toggle {
+        transform: rotate(180deg);
+
+        .icon-bar {
+            width: 15px;
+
+            &:first-child {
+                transform: rotate(45deg) translate(5px, 0px)
+            }
+
+            &:last-child {
+                transform: rotate(-45deg) translate(5px, 0px)
+            }
+        }
+    }
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+        .navbar-toggle {
+            transform: rotate(0deg);
+        }
+
+        .navbar-logo {
+            width: $side-nav-collapsed-width;
+
+            .logo {
+                display: none;
+            }
+        }
+    }
+}

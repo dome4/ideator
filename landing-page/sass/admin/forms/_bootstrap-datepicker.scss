@@ -1,0 +1,117 @@
+$day-cell-size: 30px;
+
+.datepicker {
+  padding: 10px !important;
+
+  &:before, &:after {
+    content: none;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  td, th {
+    width: $day-cell-size;
+    height: $day-cell-size;
+    border-radius: $border-radius-default; // 50%
+  }
+
+  thead th {
+    &.prev, &.datepicker-switch, &.next {
+      font-weight: 500;
+
+      &:hover {
+        background: $datepicker-color-bg-hover;
+      }
+    }
+
+    &.prev i, &.datepicker-switch i, &.next i {
+      font-size: .85rem;
+    }
+
+    &.dow {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  tbody tr > td {
+    &.day {
+      color: $datepicker-color-day;
+
+      &:hover {
+        background: $datepicker-color-bg-hover;
+      }
+
+      &.old {
+        color: $datepicker-color-old;
+      }
+
+      &.new {
+        color: $datepicker-color-day;
+      }
+
+      &.selected, &.active {
+        background: $datepicker-color-selected-bg;
+        color: $datepicker-color-selected;
+
+        &:hover {
+          background: $datepicker-color-selected-bg;
+          color: $datepicker-color-selected;
+        }
+      }
+
+      &.today {
+        position: relative;
+
+        &, &:hover {
+          background: $datepicker-color-today-bg none;
+          color: $datepicker-color-today;
+        }
+      }
+
+      &.range {
+        background-color: $datepicker-color-bg-hover;
+      }
+    }
+
+    span.month {
+      color: $datepicker-color-day;
+
+      &.focused, &:hover {
+        background: $datepicker-color-bg-hover;
+      }
+
+      &.active {
+        &:hover {
+          background: $datepicker-color-selected-bg;
+          color: $datepicker-color-selected;
+        }
+
+        background: $datepicker-color-selected-bg;
+        color: $datepicker-color-selected;
+      }
+    }
+  }
+  
+  tfoot tr > th {
+    &.today, &.clear {
+      border-radius: $border-radius-default;
+      font-weight: 500;
+
+      &:hover {
+        background: $datepicker-color-bg-hover;
+      }
+    }
+  }
+
+  &.datepicker-inline {
+    border: 1px solid $border-color-default;
+  }
+}
+
+.input-daterange {
+   .form-control {
+    text-align: left;
+  }
+}

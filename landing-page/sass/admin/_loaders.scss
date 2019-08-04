@@ -1,0 +1,33 @@
+$loader-border-color: lighten($html-text-color, 20%);
+$spinner-border-color: darken($html-text-color, 50%);
+
+.loader-container {
+    overflow: hidden;
+}
+
+.loader-8 {
+    margin: 20px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border: 3px solid;
+    border-color: $loader-border-color $loader-border-color $loader-border-color $spinner-border-color;
+    transform: translateZ(0);
+    animation: load8 1.1s infinite linear;
+
+    &,
+    &:after {
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,46 @@
+// [ DEFAULTS ]
+$font-family-signature: 'Lovers Quarrel', cursive, $font-family-base;
+
+$input-border-color: #d8e1e5;
+$html-text-color: darken($color-2, 9%) !default;
+$html-background-color: darken($color-1, 1.5%) !default;
+$border-radius-default: 4px !default;
+$icon-margin-right: 5px;
+
+// [ SIZES ]
+$font-size-1d5: $font-size-base * 1.5;
+$font-size-admin: .9rem;
+
+// [ NAVIGATION ]
+$header-nav-height: 70px;
+$header-min-width-inline: 472px;
+$header-nav-bg-color: darken($color-5, 20%);
+$header-nav-light-bg-color: $color-1;
+$header-nav-text-color: $color-1;
+
+$side-nav-width: 270px;
+$aside-nav-width: 320px;
+$sidebar-width: 240px;
+$side-nav-collapsed-width: 100px;
+$side-nav-bg-color: $color-5;
+$side-nav-text-color: $color-1;
+$side-nav-border-color: $border-color-default;
+$side-nav-open-menu-border-color: $color-3;
+
+$quick-view-bg-color: $color-1;
+$quick-view-text-color: $color-3;
+
+// [ COMPONENTS ]
+$dropdown-min-width: 180px;
+$dropdown-footer-bg-color: $striped-bg-color;
+$dropdown-bg-color: $color-1;
+$dropdown-nav-min-width: 350px;
+
+// CALENDAR DATEPICKER
+$datepicker-color-selected-bg: $color-accent;
+$datepicker-color-selected: $color-1;
+$datepicker-color-bg-hover: $color-6;
+$datepicker-color-old: lighten($color-2, 8%);
+$datepicker-color-day: $html-text-color;
+$datepicker-color-today-bg: lighten($datepicker-color-selected-bg, 8%);
+$datepicker-color-today: $color-1;

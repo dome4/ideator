@@ -1,0 +1,18 @@
+/* ==========================================================================
+    [1. RESET STYLES]
+========================================================================== */
+
+html {
+    font-size: $font-size-base;
+}
+
+body {
+    font-family: $font-family-template;
+    font-weight: $font-weight-regular;
+    color: $html-text-color;
+    background-color: $html-background-color;
+}
+
+a {
+    transition: all .3s ease-in;
+}

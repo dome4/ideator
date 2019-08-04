@@ -1,0 +1,175 @@
+$padding-default: $grid-gutter-width / 2;
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-size: $font-size-admin;
+
+    .main-body {
+        flex: 1;
+        display: flex;
+        position: relative;
+        overflow-x: hidden;
+
+        main {
+            flex: 1;
+            order: 2;
+            //width: calc(100% - #{$side-nav-width});
+            //padding: $padding-default;
+
+            .content {
+                width: 100%;
+                padding: ($grid-gutter-width / 2);
+                margin-right: auto;
+                margin-left: auto;
+                position: relative;
+
+                @include media-breakpoint-up($grid-float-breakpoint) {
+                    padding: ($grid-gutter-width / 2) $grid-gutter-width;
+                }
+            }
+
+            .content-fluid {
+                .content {
+                    padding: ($grid-gutter-width * 2) $grid-gutter-width;
+                }
+            }
+        }
+
+        .side-nav {
+            width: $side-nav-width;
+            order: 1;
+
+            margin-left: -$side-nav-width;
+            transition: width .3s ease-in-out, margin-left .3s ease-in-out;
+        }
+
+        .quick-view {
+            width: $aside-nav-width;
+            order: 3;
+            margin-right: -$aside-nav-width;
+            transition: margin-right .3s ease-in-out;
+
+            &.absolute {
+                z-index: 2;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+        }
+
+        @include media-breakpoint-up($grid-float-breakpoint) {
+            .side-nav {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .main-footer {
+        padding: $padding-default;
+        border-top: 1px solid $border-color-default;
+    }
+
+    .aside-overlay {
+        transition: all .3s ease;
+    }
+
+    &.side-nav-collapsed {
+        .side-nav {
+            margin-left: 0;
+            z-index: 999;
+        }
+
+        @include media-breakpoint-up($grid-float-breakpoint) {
+            main {
+                padding-left: $side-nav-collapsed-width;
+            }
+
+            .side-nav {
+                width: $side-nav-collapsed-width;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &.quick-view-expanded {
+        .quick-view {
+            margin-right: 0;
+        }
+
+        &.is-absolute {
+            .aside-overlay {
+                position: fixed;
+                opacity: 1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: rgba($color-5, 0.55);
+                z-index: 1;
+            }
+        }
+    }
+
+    &.fixed-layout {
+        .main-header {
+            height: $header-nav-height * 3;
+
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+
+        .side-wrapper {
+            position: fixed;
+            width: $side-nav-width;
+        }
+
+        @media (min-width: $header-min-width-inline) {
+            .main-header {
+                height: $header-nav-height * 2;
+            }
+        }
+
+        @media (min-width: $grid-float-breakpoint) {
+            &.side-nav-collapsed {
+                .side-wrapper {
+                    width: $side-nav-collapsed-width;
+                }
+            }
+
+            .main-header {
+                height: $header-nav-height + 1px; /* minus border bottom */
+            }
+        }
+    }
+
+    .has-sidebar {
+        display: flex;
+
+        .sidebar {
+            width: $sidebar-width;
+            order: 1;
+            flex-direction: column;
+        }
+
+        .inner-content {
+            flex: 1;
+            order: 2;
+        }
+    }
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.full-height {
+    height: calc(100vh - #{$navbar-header-height});
+}

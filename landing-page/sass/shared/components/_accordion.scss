@@ -1,0 +1,98 @@
+[data-toggle="collapse"] {
+  &:before {
+    @include font-awesome($fa-var-angle-down);
+    transition: transform .3s ease;
+    margin-right: 0.5rem;
+  }
+
+  &.collapsed {
+    &:before {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.accordion {
+  .card {
+    border: 1px solid $border-color-default;
+  }
+
+  .card-header {
+    border-bottom: none;
+    background-color: $color-6;
+
+    .btn {
+      &:active, &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .card-title {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .card-title {
+    margin-bottom: 0;
+  }
+
+  &:not(.accordion-collapsed) {
+    .card {
+      border-bottom: 1px solid $border-color-default !important;
+    }
+  }
+
+  &.accordion-clean {
+    .card {
+      border-bottom: 1px solid $border-color-default;
+    }
+
+    .card-header {
+      background-color: #fff;
+      //border-bottom: none;
+    }
+  }
+
+  &.accordion-collapsed {
+    .card {
+      border-bottom: none;
+    }
+
+    //&.accordion-clean {
+      .card:last-of-type {
+        border-bottom: 1px solid $border-color-default;
+      }
+    //}
+  }
+
+  @each $color, $value in map-merge($theme-colors, $color-scheme) {
+    &.accordion-#{$color} {
+      .card {
+        border-color: $value;
+      }
+
+      .card-header {
+        background-color: $value;
+
+        .card-title {
+          color: color-yiq($value);
+        }
+      }
+
+      &:not(.accordion-collapsed) {
+        .card {
+          border-bottom: 1px solid $value !important;
+        }
+      }
+    }
+  }
+}
+
+.payment-accordion {
+  [data-toggle="collapse"] {
+    &:before {
+      content: none;
+    }
+  }
+}
