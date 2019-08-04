@@ -1,2 +1,5 @@
 [project]
 name = landing-page
+
+[packages]
+lektor-webpack-support = 0.5
