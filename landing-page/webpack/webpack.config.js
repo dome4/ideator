@@ -4,7 +4,6 @@ var path = require("path");
 
 module.exports = {
   entry: {
-    app: "./js/main.js",
     styles: "../sass/styles.scss"
   },
   output: {
