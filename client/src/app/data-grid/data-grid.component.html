@@ -1,0 +1,106 @@
+<div class="progress loop" *ngIf="ideasLoading"><progress></progress></div>
+<!-- ToDo: add animation -->
+
+<clr-datagrid [(clrDgSelected)]="selectedItems" [clrDgRowSelection]="true">
+  <clr-dg-action-bar>
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onCreateIdea()"
+        [clrLoading]="createIdeaBtnState"
+      >
+        <clr-icon shape="plus"></clr-icon> Add Idea
+      </button>
+      <button
+        [disabled]="selectedItems.length != 1"
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onEditIdea()"
+      >
+        <clr-icon shape="pencil"></clr-icon> Edit
+      </button>
+      <button
+        [disabled]="selectedItems.length < 1"
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="onDeleteIdeas()"
+      >
+        <clr-icon shape="close"></clr-icon> Delete
+      </button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-column>Title</clr-dg-column>
+  <clr-dg-column>Business Idea</clr-dg-column>
+
+  <clr-dg-placeholder>We couldn't find any ideas!</clr-dg-placeholder>
+
+  <!-- <clr-dg-row *clrDgItems="let idea of ideas" [routerLink]="[idea.id]"> -->
+  <clr-dg-row *clrDgItems="let idea of ideas" [clrDgItem]="idea">
+    <clr-dg-cell>{{ idea.title | customSlice: 0:50 }}</clr-dg-cell>
+    <clr-dg-cell>{{ idea.businessIdea | customSlice: 0:50 }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+        >Ideas per page</clr-dg-page-size
+      >
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} ideas
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<app-idea-seven-ws
+  [modalOpen]="openModal"
+  (modalClosed)="modalClosed($event)"
+></app-idea-seven-ws>
+
+<div class="clr-row">
+  <div class="clr-col-12 clr-col-sm-4">
+    <div class="clr-row">
+      <!-- search -->
+      <form clrForm>
+        <clr-input-container>
+          <input
+            clrInput
+            type="text"
+            [(ngModel)]="searchString"
+            name="example"
+          />
+        </clr-input-container>
+      </form>
+
+      <!-- cards-->
+      <div *ngFor="let idea of ideas" class="clr-col-12">
+        <div class="card" style="margin-top: 0.5rem">
+          <div class="card-block">
+            <div class="progress top">
+              <progress value="100" max="100"></progress>
+            </div>
+            <h4 class="card-title">{{ idea.title | customSlice: 0:30 }}</h4>
+            <p class="card-text">{{ idea.businessIdea | customSlice: 0:50 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- do not display idea list on small devices-->
+  <div class="clr-col-sm-8 d-none d-sm-block">
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <div class="card" style="margin-top: 0.5rem">
+          <div class="card-block">
+            <div class="progress top">
+              <progress value="100" max="100"></progress>
+            </div>
+            <h4 class="card-title">Selected Idea</h4>
+            <p class="card-text">Test ...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

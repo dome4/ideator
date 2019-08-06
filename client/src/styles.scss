@@ -5,3 +5,18 @@
     width: 100%;
   }
 }
+
+// Hiding elements (see https://getbootstrap.com/docs/4.0/utilities/display/)
+.d-none {
+  display: none !important;
+}
+
+// small
+@media (min-width: 576px) {
+  .d-sm-none {
+    display: none !important;
+  }
+  .d-sm-block {
+    display: block !important;
+  }
+}

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IdeaListComponent } from './idea-list/idea-list.component';
-import { IdeaSevenWsComponent } from './idea-list/idea-seven-ws/idea-seven-ws.component';
+import { IdeaSevenWsComponent } from './data-grid/idea-seven-ws/idea-seven-ws.component';
 import { IdeaService } from './services/idea.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { IdeaEffects } from './store/effects/idea.effects';
 import { CustomSlicePipe } from './pipes/custom-slice.pipe';
+import { DataGridComponent } from './data-grid/data-grid.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CustomSlicePipe } from './pipes/custom-slice.pipe';
     SignupComponent,
     HeaderComponent,
     HomeComponent,
-    CustomSlicePipe
+    CustomSlicePipe,
+    DataGridComponent
   ],
   imports: [
     BrowserModule,
