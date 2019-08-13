@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../store/app.states';
 import { LogOut } from '../store/actions/auth.actions';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated: false;
   user = null;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private router: Router
+  ) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -35,6 +39,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     this.store.dispatch(new LogOut);
+
+    this.router.navigate(['/login']);
   }
 
 }
