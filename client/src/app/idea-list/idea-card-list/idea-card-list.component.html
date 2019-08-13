@@ -1,22 +1,45 @@
 <div class="clr-row">
   <!-- search -->
-  <form clrForm>
-    <clr-input-container>
-      <input clrInput type="text" [(ngModel)]="searchString" name="example" />
-    </clr-input-container>
+  <form clrForm style="padding-right: .5rem; padding-left: .5rem; width: 100%;">
+    <div class="clr-form-control" style="margin-top: 0px;">
+      <div class="clr-control-container" style="width: 100%;">
+        <div class="clr-input-wrapper">
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Search ideas ..."
+            class="clr-input"
+            [(ngModel)]="searchString"
+            style="width: 100%;"
+          />
+          <clr-icon
+            class="clr-validate-icon"
+            shape="exclamation-circle"
+          ></clr-icon>
+        </div>
+      </div>
+    </div>
   </form>
 
   <!-- cards-->
-  <div *ngFor="let idea of ideas" class="clr-col-12">
-    <div class="card" style="margin-top: 0.5rem">
-      <div class="card-block">
-        <div class="progress top">
-          <progress value="100" max="100"></progress>
+  <ng-container *ngIf="ideas | ideaFilter: searchString as ideas2">
+    <div *ngFor="let idea of ideas2" class="clr-col-12">
+      <div class="card" style="margin-top: 0.5rem">
+        <div class="card-block">
+          <div class="progress top">
+            <progress value="100" max="100"></progress>
+          </div>
+          <h4 class="card-title">{{ idea.title | customSlice: 0:30 }}</h4>
+          <p class="card-text">{{ idea.businessIdea | customSlice: 0:50 }}</p>
+          <button (click)="onClick(idea)">Click Me</button>
         </div>
-        <h4 class="card-title">{{ idea.title | customSlice: 0:30 }}</h4>
-        <p class="card-text">{{ idea.businessIdea | customSlice: 0:50 }}</p>
-        <button (click)="onClick(idea)">Click Me</button>
       </div>
     </div>
-  </div>
+    <div *ngIf="ideas2?.length === 0" class="clr-col-12">
+      <clr-datagrid>
+        <clr-dg-placeholder>We couldn't find any ideas!</clr-dg-placeholder>
+      </clr-datagrid>
+    </div>
+  </ng-container>
 </div>

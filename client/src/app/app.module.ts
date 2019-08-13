@@ -29,6 +29,7 @@ import { DataGridComponent } from './idea-list/data-grid/data-grid.component';
 import { IdeaEditComponent } from './idea-list/idea-edit/idea-edit.component';
 import { IdeaListComponent } from './idea-list/idea-list.component';
 import { ApplicationStateService } from './services/application-state.service';
+import { IdeaFilterPipe } from './pipes/idea-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ApplicationStateService } from './services/application-state.service';
     CustomSlicePipe,
     DataGridComponent,
     IdeaEditComponent,
-    IdeaListComponent
+    IdeaListComponent,
+    IdeaFilterPipe
   ],
   imports: [
     BrowserModule,
