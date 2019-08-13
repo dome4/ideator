@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Idea } from '../../models/idea.model';
+import { Idea } from '../../../models/idea.model';
 import { Store } from '@ngrx/store';
-import { AppState, selectIdeaState } from '../../store/app.states';
-import { State } from '../../store/reducers/idea.reducers';
+import { AppState, selectIdeaState } from '../../../store/app.states';
+import { State } from '../../../store/reducers/idea.reducers';
 import { Subscription, Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { UpdateIdea } from 'src/app/store/actions/idea.actions';
@@ -34,7 +34,7 @@ export class IdeaSevenWsComponent implements OnInit, OnDestroy {
       this.getState.subscribe((state: State) => {
         this.idea = _.cloneDeep(state.selectedIdea);
       })
-    )
+    );
   }
 
   ngOnDestroy() {

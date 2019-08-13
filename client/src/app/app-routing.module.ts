@@ -12,10 +12,10 @@ import { ApplicationStateService } from './services/application-state.service';
 const desktopRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/idea-list',
     pathMatch: 'full'
   },
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   {
     path: 'idea-list', component: IdeaListComponent, canActivate: [AuthGuardService], children: [
       { path: ':id', component: IdeaEditComponent },
@@ -30,10 +30,10 @@ const desktopRoutes: Routes = [
 const mobileRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/idea-list',
     pathMatch: 'full'
   },
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'idea-list', component: IdeaListComponent, canActivate: [AuthGuardService] },
   { path: 'idea-list/:id', component: IdeaEditComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },

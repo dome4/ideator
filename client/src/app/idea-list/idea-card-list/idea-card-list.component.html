@@ -1,0 +1,22 @@
+<div class="clr-row">
+  <!-- search -->
+  <form clrForm>
+    <clr-input-container>
+      <input clrInput type="text" [(ngModel)]="searchString" name="example" />
+    </clr-input-container>
+  </form>
+
+  <!-- cards-->
+  <div *ngFor="let idea of ideas" class="clr-col-12">
+    <div class="card" style="margin-top: 0.5rem">
+      <div class="card-block">
+        <div class="progress top">
+          <progress value="100" max="100"></progress>
+        </div>
+        <h4 class="card-title">{{ idea.title | customSlice: 0:30 }}</h4>
+        <p class="card-text">{{ idea.businessIdea | customSlice: 0:50 }}</p>
+        <button (click)="onClick(idea)">Click Me</button>
+      </div>
+    </div>
+  </div>
+</div>

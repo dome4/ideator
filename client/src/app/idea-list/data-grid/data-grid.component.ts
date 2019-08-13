@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
-import { Idea } from '../models/idea.model';
+import { Idea } from '../../models/idea.model';
 import { Store } from '@ngrx/store';
-import { AppState, selectIdeaState } from '../store/app.states';
-import { State } from '../store/reducers/idea.reducers';
-import { GetIdeas, GetIdea, CreateIdea, DeleteIdea } from '../store/actions/idea.actions';
+import { AppState, selectIdeaState } from '../../store/app.states';
+import { State } from '../../store/reducers/idea.reducers';
+import { GetIdeas, GetIdea, CreateIdea, DeleteIdea } from '../../store/actions/idea.actions';
 import { ClrLoadingState } from '@clr/angular';
 import * as _ from 'lodash';
 

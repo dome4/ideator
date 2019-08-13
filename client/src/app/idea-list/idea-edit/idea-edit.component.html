@@ -1,0 +1,28 @@
+<div class="clr-row">
+  <div class="clr-col-12">
+    <div
+      *ngIf="selectedIdea; else loading"
+      class="card"
+      style="margin-top: 0.5rem"
+    >
+      <div class="card-block">
+        <div class="progress top">
+          <progress value="100" max="100"></progress>
+        </div>
+        <h4 class="card-title">{{ selectedIdea.title | customSlice: 0:30 }}</h4>
+        <p class="card-text">
+          {{ selectedIdea.businessIdea | customSlice: 0:50 }}
+        </p>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <span class="spinner spinner-inline">
+        Loading...
+      </span>
+      <span>
+        Loading...
+      </span>
+    </ng-template>
+  </div>
+</div>
