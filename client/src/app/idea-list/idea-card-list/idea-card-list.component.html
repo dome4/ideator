@@ -23,16 +23,35 @@
   </form>
 
   <!-- cards-->
+  <!-- ToDo: write custom css classes-->
   <ng-container *ngIf="ideas | ideaFilter: searchString as ideas2">
     <div *ngFor="let idea of ideas2" class="clr-col-12">
-      <div class="card" style="margin-top: 0.5rem">
-        <div class="card-block">
-          <div class="progress top">
-            <progress value="100" max="100"></progress>
+      <div
+        (click)="onClick(idea)"
+        class="card clickable"
+        style="margin-top: 0.5rem;  overflow: hidden; min-height: 100px;"
+      >
+        <div
+          class="card-block"
+          style="padding-top: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.5rem;"
+        >
+          <div
+            style="width: 100%; position: absolute; left: 0px; top: 0px; background-color: #002538; height: .15625rem"
+          ></div>
+          <div class="card-title" style="display: flex; flex-direction: row;">
+            <h5 style="margin-top: 0px; color: #002538;">
+              {{ idea.title | customSlice: 0:30 }}
+            </h5>
+            <clr-icon
+              shape="pencil"
+              size="20"
+              style="margin-left: auto; color: #002538;"
+            ></clr-icon>
           </div>
-          <h4 class="card-title">{{ idea.title | customSlice: 0:30 }}</h4>
           <p class="card-text">{{ idea.businessIdea | customSlice: 0:50 }}</p>
-          <button (click)="onClick(idea)">Click Me</button>
         </div>
       </div>
     </div>

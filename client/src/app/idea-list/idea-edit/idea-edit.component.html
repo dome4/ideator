@@ -3,12 +3,12 @@
     <div
       *ngIf="selectedIdea; else loading"
       class="card"
-      style="margin-top: 0.5rem"
+      style="margin-top: 0.5rem; overflow: hidden;"
     >
       <div class="card-block">
-        <div class="progress top">
-          <progress value="100" max="100"></progress>
-        </div>
+        <div
+          style="width: 100%; position: absolute; left: 0px; top: 0px; background-color: #002538; height: .15625rem"
+        ></div>
         <h4 class="card-title">{{ selectedIdea.title | customSlice: 0:30 }}</h4>
         <p class="card-text">
           {{ selectedIdea.businessIdea | customSlice: 0:50 }}
