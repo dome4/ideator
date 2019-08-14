@@ -22,6 +22,27 @@
     </div>
   </form>
 
+  <!-- add new idea-->
+  <div class="clr-col-12">
+    <div
+      (click)="onCreateIdea()"
+      class="card clickable"
+      style="margin-top: 0.5rem; background-color: #002538; box-shadow: none; border: 0px;"
+    >
+      <div
+        class="card-block"
+        style="padding-top: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.5rem;"
+      >
+        <p class="card-text" style="display: flex; justify-content: center;">
+          <clr-icon shape="plus" class="is-inverse" size="20"></clr-icon>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- cards-->
   <!-- ToDo: write custom css classes-->
   <ng-container *ngIf="ideas | ideaFilter: searchString as ideas2">

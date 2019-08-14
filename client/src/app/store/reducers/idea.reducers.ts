@@ -110,7 +110,7 @@ export function reducer(state = initialState, action: All): State {
         ...state,
         loading: false,
         ideas: ideasArray,
-        selectedIdea: null,
+        selectedIdea: newIdea,
         error: null
       };
     }

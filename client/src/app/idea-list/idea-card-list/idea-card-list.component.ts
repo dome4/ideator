@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from '../../store/reducers/idea.reducers';
 import { AppState, selectIdeaState } from '../../store/app.states';
 import * as _ from 'lodash';
-import { GetIdea } from '../../store/actions/idea.actions';
+import { GetIdea, CreateIdea } from '../../store/actions/idea.actions';
 import { Router } from '@angular/router';
 
 
@@ -19,9 +19,6 @@ export class IdeaCardListComponent implements OnInit {
   searchString: string = '';
 
   subscriptions: Subscription[] = [];
-
-  // selected items of datagrid
-  selectedItems: Idea[] = [];
 
   // idea data
   getState: Observable<any>;
@@ -49,6 +46,27 @@ export class IdeaCardListComponent implements OnInit {
 
     // get selected idea from api
     this.store.dispatch(new GetIdea(idea.id));
+
+  }
+
+  onCreateIdea() {
+    // create new dummy idea
+    const idea: Idea = {
+      id: 99, // is ignored by api
+      title: 'new idea',
+      businessIdea: '',
+      usp: '',
+      customers: '',
+      businessModel: '',
+      competitors: '',
+      team: '',
+      marketBarriers: ''
+    };
+    this.store.dispatch(new CreateIdea(idea));
+
+
+    // ToDo: navigate to new created idea
+    // this.router.navigate(['idea-list', this.selec]);
 
   }
 }
