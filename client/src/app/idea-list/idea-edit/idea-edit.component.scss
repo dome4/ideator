@@ -1,0 +1,12 @@
+// set card-list and edit-card on the same line
+.search-input-placeholder {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .search-input-placeholder {
+    height: 30px;
+    width: 100%;
+    display: block;
+  }
+}
