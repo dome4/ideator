@@ -52,10 +52,18 @@ export class IdeaEditComponent implements OnInit, OnDestroy {
   * simply closes the modal and does not save the edited idea
   */
   cancelIdeaEditing() {
-    // because a copy of the object is made with clonedeep in the subscription,
-    // nothing else is necessary here
+    // ToDo: find better implementation
+    // -> does only work for one subscription and no other usage of selected task
 
-    // ToDo: reload old object
+    // cancel subscricptions
+    this.ngOnDestroy();
+
+    // resubscribe to current state
+    this.subscriptions.push(
+      this.getState.subscribe((state: State) => {
+        this.selectedIdea = _.cloneDeep(state.selectedIdea);
+      })
+    );
   }
 
   /*
