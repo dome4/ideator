@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState, selectIdeaState } from '../../store/app.states';
 import { State } from '../../store/reducers/idea.reducers';
 import * as _ from 'lodash';
+import { UpdateIdea, DeleteIdea } from '../../store/actions/idea.actions';
 
 
 @Component({
@@ -36,6 +37,37 @@ export class IdeaEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  /*
+  * save edited idea from modal
+  */
+  saveIdea() {
+
+    // update idea
+    this.store.dispatch(new UpdateIdea(this.selectedIdea));
+  }
+
+  /*
+  * simply closes the modal and does not save the edited idea
+  */
+  cancelIdeaEditing() {
+    // because a copy of the object is made with clonedeep in the subscription,
+    // nothing else is necessary here
+
+    // ToDo: reload old object
+  }
+
+  /*
+   * delete currently edited idea
+   */
+  onDeleteIdea() {
+
+    if (confirm('Are you sure that you want to delete the selected idea?')) {
+
+      // delete selected idea
+      this.store.dispatch(new DeleteIdea(_.cloneDeep(this.selectedIdea).id));
+    }
   }
 
 }

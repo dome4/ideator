@@ -1,20 +1,119 @@
 <div class="clr-row">
   <div class="clr-col-12">
-    <div
-      *ngIf="selectedIdea; else loading"
-      class="card"
-      style="margin-top: 0.5rem; overflow: hidden;"
-    >
-      <div class="card-block">
-        <div
-          style="width: 100%; position: absolute; left: 0px; top: 0px; background-color: #002538; height: .15625rem"
-        ></div>
-        <h4 class="card-title">{{ selectedIdea.title | customSlice: 0:30 }}</h4>
-        <p class="card-text">
-          {{ selectedIdea.businessIdea | customSlice: 0:50 }}
-        </p>
+    <form clrForm class="fullwidth" clrLayout="vertical">
+      <div
+        *ngIf="selectedIdea; else loading"
+        class="card"
+        style="margin-top: 0.5rem; overflow: hidden;"
+      >
+        <div class="card-block">
+          <div
+            style="width: 100%; position: absolute; left: 0px; top: 0px; background-color: #002538; height: .15625rem"
+          ></div>
+          <div
+            class="card-title"
+            style="display: flex; flex-direction: row; margin-top: 1rem;"
+          >
+            <clr-input-container style="flex-grow:1; margin-top: 0px;">
+              <input
+                clrInput
+                placeholder="Idea title"
+                name="title"
+                [(ngModel)]="selectedIdea.title"
+                style="width: 80%; font-size: .75rem; font-weight: 600; padding-left: 0px;"
+              />
+            </clr-input-container>
+
+            <clr-dropdown>
+              <button
+                class="dropdown-toggle"
+                clrDropdownTrigger
+                aria-label="Dropdown button"
+              >
+                <clr-icon shape="ellipsis-vertical" size="20"></clr-icon>
+              </button>
+              <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                <div clrDropdownItem (click)="onDeleteIdea()">Delete Idea</div>
+              </clr-dropdown-menu>
+            </clr-dropdown>
+          </div>
+
+          <clr-textarea-container>
+            <label>1. What is your business idea?</label>
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.businessIdea"
+              name="businessIdea"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label>2. What makes you idea special?</label>
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.usp"
+              name="usp"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label
+              >3. Which are the target customers and how big is the target
+              group?</label
+            >
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.customers"
+              name="customers"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label>4. What is your business model?</label>
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.businessModel"
+              name="businessModel"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label>5. Who are your competitors?</label>
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.competitors"
+              name="competitors"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label>6. Who belongs to the start-up team? Who is missing?</label>
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.team"
+              name="team"
+            ></textarea>
+          </clr-textarea-container>
+          <clr-textarea-container>
+            <label
+              >7. What are the market barriers for others to follow you?</label
+            >
+            <textarea
+              clrTextarea
+              [(ngModel)]="selectedIdea.marketBarriers"
+              name="marketBarriers"
+            ></textarea>
+          </clr-textarea-container>
+        </div>
+        <div class="card-footer">
+          <button
+            type="button"
+            class="btn btn-outline"
+            (click)="cancelIdeaEditing()"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary" (click)="saveIdea()">
+            Save
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
 
     <ng-template #loading>
       <span class="spinner spinner-inline">
