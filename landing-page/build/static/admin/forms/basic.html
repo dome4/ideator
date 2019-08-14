@@ -1,0 +1,1133 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+	<title>Dashcore - Admin HTML Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Place favicon.ico in the root directory -->
+	<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+	<link rel="icon" href="../../favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,700,900" rel="stylesheet">
+
+	<link rel="stylesheet" href="../css/bootstrap-select.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/fontawesome-all.css">
+	<link rel="stylesheet" href="../css/fullcalendar.css">
+	<link rel="stylesheet" href="../css/helper.css">
+	<link rel="stylesheet" href="../css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="../css/scroller.css">
+	<link rel="stylesheet" href="../css/simplebar.css">
+	<link rel="stylesheet" href="../css/smart_wizard_theme_arrows.css">
+	<link rel="stylesheet" href="../css/smart_wizard_theme_circles.css">
+	<link rel="stylesheet" href="../css/smart_wizard_theme_dots.css">
+	<link rel="stylesheet" href="../css/smart_wizard.css">
+	<link rel="stylesheet" href="../css/swiper.css">
+	<link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+	<header class="main-header">
+		<nav class="navbar navbar-expand-md bg-3">
+			<div class="navbar-logo p-3 py-md-0">
+				<a class="navbar-brand" href="../index.html">
+					<img src="../../img/logo-light.png" alt="" class="logo"> </a>
+				<button type="button" class="navbar-toggler">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-options px-3 px-md-4">
+				<form class="form search-form mr-auto" action="../search-result.html" method="GET" id="header-search">
+					<div class="form-group mb-0 d-flex position-relative">
+						<input type="text" class="form-control pl-5" placeholder="Search for..." name="q">
+						<button type="submit" class="btn btn-link pl-0 pt-2">
+							<i class="pe pe-7s-search pe-2x"></i>
+						</button>
+					</div>
+				</form>
+				<ul class="nav">
+					<li class="nav-item tasks dropdown" data-rel="tasks">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+							<i class="pe pe-7s-menu"></i>
+							<span class="badge badge-pill badge-info">6</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="dropdown-heading d-flex align-items-center justify-content-between">
+								<h6 class="m-0 text-uppercase bold">Tasks</h6>
+								<small class="text-muted">
+									<span class="bold number">6</span> pending</small>
+							</div>
+							<div class="dropdown-body list list-group list-group-flush load-content">
+								<div class="loader-container">
+									<div class="loader-8">Loading...</div>
+								</div>
+							</div>
+							<div class="dropdown-footer text-center">
+								<a href="#" title="">
+									<i class="fas fa-ellipsis-h"></i>
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item notifications dropdown" data-rel="notifications">
+						<a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">
+							<i class="pe pe-7s-bell"></i>
+							<span class="badge badge-pill badge-info">11</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="dropdown-heading d-flex align-items-center justify-content-between">
+								<h6 class="m-0 text-uppercase bold">Notifications</h6>
+								<small class="text-muted">
+									<span class="bold number">7</span> new</small>
+							</div>
+							<div class="list list-unstyled list-hover list-bordered dropdown-body load-content">
+								<div class="loader-container">
+									<div class="loader-8">Loading...</div>
+								</div>
+							</div>
+							<div class="dropdown-footer text-center">
+								<a href="#" title="">
+									<i class="fas fa-ellipsis-h"></i>
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item messages dropdown" data-rel="messages">
+						<a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">
+							<i class="pe pe-7s-mail"></i>
+							<span class="badge badge-pill badge-info">9</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="dropdown-heading d-flex align-items-center justify-content-between">
+								<h6 class="m-0 text-uppercase bold">Messages</h6>
+								<small class="text-muted">
+									<span class="bold number">9</span> unread</small>
+							</div>
+							<div class="list list-hover dropdown-body load-content">
+								<div class="loader-container">
+									<div class="loader-8">Loading...</div>
+								</div>
+							</div>
+							<div class="dropdown-footer text-center">
+								<a href="#" title="">
+									<i class="fas fa-ellipsis-h"></i>
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item account dropdown">
+						<a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">
+							<img src="" class="avatar user-avatar rounded-circle" alt="...">
+							<i class="fas fa-angle-down"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="dropdown-heading rounded-top bg-3 arrow top color-1">
+								<div class="content py-1">
+									<div class="media align-items-center">
+										<img src="" class="user-avatar shadow mr-2 rounded-circle" alt="">
+										<div class="media-body">
+											<span class="bold color-1 user-name text-overflow text-capitalize">...</span>
+											<p class="small user-info text-overflow capitalize-first mb-0 op-5">...</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul class="dropdown-body list list-group list-group-flush">
+								<li class="list-group-item list-group-item-action">
+									<a href="#">
+										<i class="mr-3 fas fa-user"></i>Profile</a>
+								</li>
+								<li class="list-group-item list-group-item-action">
+									<a href="#">
+										<i class="mr-3 fas fa-cogs"></i>Settings</a>
+								</li>
+								<li class="list-group-item list-group-item-action">
+									<a href="#">
+										<i class="mr-3 fas fa-life-ring"></i>Help</a>
+								</li>
+							</ul>
+							<div class="dropdown-footer bg-1 d-flex justify-content-between align-items-center">
+								<a href="#" class="btn btn-rounded btn-3">
+									<i class="mr-3 fas fa-sign-out-alt"></i>Log out </a>
+								<a href="#" class="text-danger">
+									<i class="mr-3 fas fa-lock"></i>
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="aside-toggler" data-behavior="absolute">
+						<a href="#">
+							<i class="pe pe-7s-keypad"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="main-body">
+		<nav class="side-nav">
+			<div class="side-wrapper">
+				<div class="nav-wrapper">
+					<ul class="nav flex-column">
+						<!-- USER -->
+						<li class="nav-item user-sidebar nav-dropdown">
+							<a href="javascript:void(0)" class="nav-link">
+								<div class="media align-items-center justify-content-center">
+									<div class="position-relative">
+										<img src="" class="user-avatar rounded-circle mr-2" alt="">
+										<span class="status status-right online"></span>
+									</div>
+									<div class="media-body title">
+										<span class="media-heading bold user-name text-truncate text-capitalize">...</span>
+										<div class="small user-info text-truncate capitalize-first text-muted">...</div>
+									</div>
+								</div>
+							</a>
+							<div class="nav-dropdown-items">
+								<div class="stat">
+									<p class="small task d-flex justify-content-between mb-1">
+										<span class="text-muted">You're running out of space</span>
+										<span class="bold percent text-danger">94%</span>
+									</p>
+									<div class="progress progress-xs mb-4">
+										<div class="progress-bar bg-danger" style="width: 94%;"></div>
+									</div>
+								</div>
+								<nav class="nav justify-content-between">
+									<a href="javascript:void(0)" class="nav-link py-3">
+										<i class="mr-1 fas fa-inbox"></i>
+										<span class="small">Inbox</span>
+										<small class="badge badge-primary">7</small>
+									</a>
+									<a href="javascript:void(0)" class="nav-link py-3">
+										<i class="mr-1 fas fa-lock"></i>
+										<span class="small">Lock</span>
+									</a>
+									<a href="javascript:void(0)" class="nav-link py-3">
+										<i class="mr-1 fas fa-sign-out-alt"></i>
+										<span class="small">Log out</span>
+									</a>
+								</nav>
+							</div>
+						</li>
+						<!-- MAIN -->
+						<li class="nav-header pt-4">
+							<span>Main</span>
+						</li>
+						<li class="nav-item">
+							<a href="../index.html" class="nav-link">
+								<i class="icon pe pe-7s-display1"></i>
+								<span class="title">Dashboard</span>
+							</a>
+						</li>
+						<!-- Layout -->
+						<li class="nav-item nav-dropdown">
+							<a href="javascript:void(0)" class="nav-link">
+								<i class="icon pe pe-7s-box2"></i>
+								<span class="title">Layout</span>
+							</a>
+							<ul class="nav-dropdown-items">
+								<li>
+									<a href="../index.html" class="nav-link">
+										<b class="icon extra-bold">D</b>
+										<span class="title">Default</span>
+									</a>
+								</li>
+								<li>
+									<a href="../gradient-sidebar.html" class="nav-link">
+										<b class="icon extra-bold">G</b>
+										<span class="title">Gradient navigation</span>
+									</a>
+								</li>
+								<!-- Add locked layouts -->
+								<li>
+									<span class="nav-link disabled">
+										<b class="icon extra-bold">F</b>
+										<span class="title">Fixed navbar &amp; sidebar</span>
+										<i class="pe pe-7s-lock icon ml-auto mr-0 text-warning"></i>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<!-- Forms -->
+						<li class="nav-item nav-dropdown">
+							<a href="javascript:;" class="nav-link">
+								<i class="icon pe pe-7s-switch"></i>
+								<span class="title">Forms</span>
+							</a>
+							<ul class="nav-dropdown-items">
+								<li>
+									<a href="../forms/basic.html" class="nav-link">
+										<b class="icon extra-bold">B</b>
+										<span class="title">Basic inputs</span>
+									</a>
+								</li>
+								<li>
+									<a href="../forms/checkbox-radio.html" class="nav-link">
+										<b class="icon extra-bold">C</b>
+										<span class="title">Checkbox & Radio</span>
+									</a>
+								</li>
+								<li>
+									<a href="../forms/input-groups.html" class="nav-link">
+										<b class="icon extra-bold">I</b>
+										<span class="title">Input Groups</span>
+									</a>
+								</li>
+								<li>
+									<a href="../forms/date-picker.html" class="nav-link">
+										<b class="icon extra-bold">D</b>
+										<span class="title">Date Picker</span>
+									</a>
+								</li>
+								<li>
+									<a href="../forms/select2.html" class="nav-link">
+										<b class="icon extra-bold">S</b>
+										<span class="title">Select 2</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<!-- Tables -->
+						<li class="nav-item nav-dropdown">
+							<a href="javascript:void(0)" class="nav-link">
+								<i class="icon pe pe-7s-browser"></i>
+								<span class="title">Tables</span>
+							</a>
+							<ul class="nav-dropdown-items">
+								<li class="nav-dropdown">
+									<a href="javascript:void(0)" class="nav-link">
+										<i class="icon fab fa-html5 font-sm"></i>
+										<span class="title">HTML tables</span>
+									</a>
+									<ul class="nav-dropdown-items">
+										<li>
+											<a href="../tables/basic.html" class="nav-link">
+												<b class="icon extra-bold">B</b>
+												<span class="title">Basic</span>
+											</a>
+										</li>
+										<li>
+											<a href="../tables/responsive.html" class="nav-link">
+												<b class="icon extra-bold">R</b>
+												<span class="title">Responsive</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="nav-dropdown">
+									<a href="javascript:void(0)" class="nav-link">
+										<i class="icon fas fa-table font-sm"></i>
+										<span class="title">DataTables</span>
+									</a>
+									<ul class="nav-dropdown-items">
+										<li>
+											<a href="../datatables/basic.html" class="nav-link">
+												<b class="icon extra-bold">B</b>
+												<span class="title">Basic</span>
+											</a>
+										</li>
+										<li>
+											<a href="../datatables/ajax.html" class="nav-link">
+												<b class="icon extra-bold">A</b>
+												<span class="title">Ajax</span>
+											</a>
+										</li>
+										<li>
+											<a href="../datatables/checkbox-select.html" class="nav-link">
+												<b class="icon extra-bold">C</b>
+												<span class="title">Checkbox</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<!-- /MAIN -->
+						<!-- Pages -->
+						<li class="nav-item nav-dropdown">
+							<a href="javascript:void(0)" class="nav-link">
+								<i class="icon pe pe-7s-bookmarks"></i>
+								<span class="title">Pages</span>
+							</a>
+							<ul class="nav-dropdown-items">
+								<li class="nav-dropdown">
+									<a href="javascript:void(0)" class="nav-link">
+										<i class="icon fas font-sm fa-exclamation-circle"></i>
+										<span class="title">Error</span>
+									</a>
+									<ul class="nav-dropdown-items">
+										<li>
+											<a href="../../403.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold font-sm">403</b>
+												<span class="title">403</span>
+											</a>
+										</li>
+										<li>
+											<a href="../../404.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold font-sm">404</b>
+												<span class="title">404</span>
+											</a>
+										</li>
+										<li>
+											<a href="../../500.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold font-sm">405</b>
+												<span class="title">500</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="nav-dropdown">
+									<a href="javascript:void(0)" class="nav-link">
+										<i class="icon fas font-sm fa-user"></i>
+										<span class="title">User</span>
+									</a>
+									<ul class="nav-dropdown-items">
+										<li>
+											<a href="../../login.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold">L</b>
+												<span class="title">Login</span>
+											</a>
+										</li>
+										<li>
+											<a href="../../forgot.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold">P</b>
+												<span class="title">Recover Password</span>
+											</a>
+										</li>
+										<li>
+											<a href="../../register.html" target="_blank" class="nav-link">
+												<b class="icon extra-bold">R</b>
+												<span class="title">Register</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<!-- Apps -->
+						<li class="nav-header">
+							<span class="title">Apps</span>
+						</li>
+						<li class="nav-item">
+							<a href="../inbox.html" class="nav-link">
+								<i class="icon pe pe-7s-mail"></i>
+								<span class="title">Mail</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="../calendar.html" class="nav-link">
+								<i class="icon pe pe-7s-date"></i>
+								<span class="title">Calendar</span>
+							</a>
+						</li>
+						<li class="nav-item nav-dropdown">
+							<a href="javascript:void(0)" class="nav-link">
+								<i class="icon pe pe-7s-note2"></i>
+								<span class="title">Invoices</span>
+							</a>
+							<ul class="nav-dropdown-items">
+								<li>
+									<a href="../invoice-1.html" class="nav-link">
+										<b class="icon extra-bold">1</b>
+										<span class="title">Version 1</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<main class="overflow-hidden bg-6">
+			<header class="page header">
+				<div class="content">
+					<h1 class="display-4 mb-0">Form Controls</h1>
+					<p class="lead text-muted">Basic form inputs example</p>
+				</div>
+			</header>
+			<div class="content">
+				<div class="card-columns columns-md-2">
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Basic form inputs</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="cozy">
+								<div class="form-group">
+									<label for="exampleInputEmailBase">Email address</label>
+									<input type="email" class="form-control" id="exampleInputEmailBase" aria-describedby="emailHelp" placeholder="Enter email">
+									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPasswordBase">Password</label>
+									<input type="password" class="form-control" id="exampleInputPasswordBase" placeholder="Password">
+								</div>
+								<div class="form-group checkbox">
+									<input type="checkbox" class="form-check-input" id="exampleCheckBase">
+									<label class="form-check-label" for="exampleCheckBase">Check me out</label>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectMultipleBase">Example select</label>
+									<select class="form-control" id="exampleFormControlSelectMultipleBase">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectBase">Example multiple select</label>
+									<select multiple="multiple" class="form-control" id="exampleFormControlSelectBase">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextareaBase">Example textarea</label>
+									<textarea class="form-control" id="exampleFormControlTextareaBase" rows="3"></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Rounded inputs</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="cozy">
+								<div class="form-group">
+									<label for="exampleInputEmailRounded">Email address</label>
+									<input type="email" class="form-control form-control-rounded" id="exampleInputEmailRounded" aria-describedby="emailHelp" placeholder="Enter email">
+									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPasswordRounded">Password</label>
+									<input type="password" class="form-control form-control-rounded" id="exampleInputPasswordRounded" placeholder="Password">
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectMultipleRounded">Example select</label>
+									<select class="form-control form-control-rounded" id="exampleFormControlSelectMultipleRounded">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectRounded">Example multiple select</label>
+									<select multiple="multiple" class="form-control form-control-rounded" id="exampleFormControlSelectRounded">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextareaRounded">Example textarea</label>
+									<textarea class="form-control form-control-rounded" id="exampleFormControlTextareaRounded" rows="3"></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Inputs with icons</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="cozy">
+								<fieldset>
+									<legend class="bold small text-uppercase">Default inputs</legend>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRight" class="form-control" placeholder="Right icon">
+										<i class="icon fas fa-user"></i>
+									</div>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeft" class="form-control" placeholder="Left icon">
+										<i class="icon fas fa-user"></i>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Rounded inputs</legend>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRightRounded" class="form-control form-control-rounded" placeholder="Right icon">
+										<i class="icon fas fa-user"></i>
+									</div>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeftRounded" class="form-control form-control-rounded" placeholder="Left icon">
+										<i class="icon fas fa-user"></i>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Sizing inputs</legend>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRightLg" class="form-control form-control-lg" placeholder="Right icon - input large">
+										<i class="icon fas fa-user"></i>
+									</div>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeftSm" class="form-control form-control-sm" placeholder="Left icon - input small">
+										<i class="icon fas fa-user"></i>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Animation icons</legend>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeftAnimated" class="form-control" placeholder="Left icon - fa-sync fa-spin">
+										<i class="icon fas fa-sync fa-spin"></i>
+									</div>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeftAnimated" class="form-control" placeholder="Left icon - fa-spinner fa-pulse">
+										<i class="icon fas fa-spinner fa-pulse"></i>
+									</div>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRightAnimated" class="form-control" placeholder="Right icon - fa-sync fa-spin">
+										<i class="icon fas fa-sync fa-spin"></i>
+									</div>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRightAnimated" class="form-control" placeholder="Right icon - fa-spinner fa-pulse">
+										<i class="icon fas fa-spinner fa-pulse"></i>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1 d-flex flex-column flex-md-row">
+							<h5 class="mb-0">Text options</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="form cozy">
+								<div class="form-group">
+									<label for="exampleInputThin">Input with thin font</label>
+									<input type="text" class="form-control thin" id="exampleInputThin" placeholder="Input with thin font" value="Input with thin font">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputLight">Input with light font</label>
+									<input type="text" class="form-control light" id="exampleInputLight" placeholder="Input with light font" value="Input with light font">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputRegular">Input with regular font</label>
+									<input type="text" class="form-control regular" id="exampleInputRegular" placeholder="Input with regular font" value="Input with regular font">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputBold">Input with bold font</label>
+									<input type="text" class="form-control bold" id="exampleInputBold" placeholder="Input with bold font" value="Input with bold font">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputExtraBold">Input with bold font</label>
+									<input type="text" class="form-control extra-bold" id="exampleInputExtraBold" placeholder="Input with extra-bold font" value="Input with extra-bold font">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputCapitalized">Input with bold font</label>
+									<input type="text" class="form-control text-capitalize" id="exampleInputCapitalized" placeholder="Input with capitalized text" value="Input with capitalized text">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputUpperCase">Input with upper case</label>
+									<input type="text" class="form-control text-uppercase" id="exampleInputUpperCase" placeholder="Input with upper case" value="Input with upper case text">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputTextCenter">Input with centered text</label>
+									<input type="text" class="form-control text-center" id="exampleInputTextCenter" placeholder="Input with centered text" value="Input with centered text">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputTextRight">Input with right aligned text</label>
+									<input type="text" class="form-control text-right" id="exampleInputTextRight" placeholder="Input with right aligned text" value="Input with right aligned text">
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Validation states</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="cozy">
+								<fieldset>
+									<legend class="bold small text-uppercase">Default inputs</legend>
+									<div class="form-group">
+										<input type="text" id="exampleInputIconRight" class="form-control is-valid" placeholder="Valid state">
+										<small class="form-text text-success">Valid state helper</small>
+									</div>
+									<div class="form-group">
+										<input type="text" id="exampleInputIconLeft" class="form-control is-invalid" placeholder="Invalid state">
+										<small class="form-text text-danger">Invalid state helper</small>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Rounded inputs</legend>
+									<div class="form-group">
+										<input type="text" id="exampleInputIconRightRounded" class="form-control form-control-rounded is-valid" placeholder="Valid state">
+									</div>
+									<div class="form-group">
+										<input type="text" id="exampleInputIconLeftRounded" class="form-control form-control-rounded is-invalid" placeholder="Invalid state">
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Inputs with icon</legend>
+									<div class="form-group has-icon">
+										<input type="text" id="exampleInputIconRightLg" class="form-control is-valid" placeholder="Valid state">
+										<i class="icon fas fa-check-circle"></i>
+									</div>
+									<div class="form-group has-icon icon-left">
+										<input type="text" id="exampleInputIconLeftSm" class="form-control is-invalid" placeholder="Invalid state">
+										<i class="icon fas fa-times-circle"></i>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1 d-flex flex-column flex-md-row">
+							<h5 class="mb-0">Sizing options</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="form cozy">
+								<fieldset>
+									<legend class="bold small text-uppercase">Input elements</legend>
+									<div class="form-group">
+										<label for="exampleInputLarge">Large input</label>
+										<input type="text" class="form-control form-control-lg" id="exampleInputLarge" placeholder="Large input">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputDefault">Default input</label>
+										<input type="text" class="form-control" id="exampleInputDefault" placeholder="Default input">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputSmall">Small input</label>
+										<input type="text" class="form-control form-control-sm" id="exampleInputSmall" placeholder="Default input">
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Select inputs</legend>
+									<div class="form-group">
+										<label for="exampleSelectLarge">Large select</label>
+										<select type="text" class="form-control form-control-lg" id="exampleSelectLarge">
+											<option value="1">Option 1</option>
+											<option value="2">Option 2</option>
+											<option value="3">Option 3</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleSelectDefault">Default select</label>
+										<select type="text" class="form-control form-control-sm" id="exampleSelectDefault">
+											<option value="1">Option 1</option>
+											<option value="2">Option 2</option>
+											<option value="3">Option 3</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleSelectSmall">Small select</label>
+										<select type="text" class="form-control form-control-sm" id="exampleSelectSmall">
+											<option value="1">Option 1</option>
+											<option value="2">Option 2</option>
+											<option value="3">Option 3</option>
+										</select>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box demo-form-color-options">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Color options</h5>
+						</div>
+						<div class="card-body">
+							<div class="bg-light b rounded p-4 form-group">
+								<p class="mt-0 small">You can change both the text color and the background color</p>
+								<div class="row">
+									<div class="col-md-6">
+										<p class="my-0">Text Color</p>
+										<div class="dropdown" id="demo-form-color-selector">
+											<button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown" id="demo-form-color-current">Info</button>
+											<div class="dropdown-menu">
+												<a class="dropdown-item" href="#" data-color="primary">Primary</a>
+												<a class="dropdown-item" href="#" data-color="secondary">Secondary</a>
+												<a class="dropdown-item" href="#" data-color="success">Success</a>
+												<a class="dropdown-item" href="#" data-color="danger">Danger</a>
+												<a class="dropdown-item" href="#" data-color="warning">Warning</a>
+												<a class="dropdown-item" href="#" data-color="info">Info</a>
+												<a class="dropdown-item" href="#" data-color="light">Light</a>
+												<a class="dropdown-item" href="#" data-color="dark">Dark</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#" data-color="1">1</a>
+												<a class="dropdown-item" href="#" data-color="2">2</a>
+												<a class="dropdown-item" href="#" data-color="3">3</a>
+												<a class="dropdown-item" href="#" data-color="4">4</a>
+												<a class="dropdown-item" href="#" data-color="5">5</a>
+												<a class="dropdown-item" href="#" data-color="6">6</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<p class="my-0">Background</p>
+										<div class="dropdown" id="demo-form-background-selector">
+											<button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown" id="demo-form-background-current">Info</button>
+											<div class="dropdown-menu">
+												<a class="dropdown-item" href="#" data-color="primary">Primary</a>
+												<a class="dropdown-item" href="#" data-color="secondary">Secondary</a>
+												<a class="dropdown-item" href="#" data-color="success">Success</a>
+												<a class="dropdown-item" href="#" data-color="danger">Danger</a>
+												<a class="dropdown-item" href="#" data-color="warning">Warning</a>
+												<a class="dropdown-item" href="#" data-color="info">Info</a>
+												<a class="dropdown-item" href="#" data-color="light">Light</a>
+												<a class="dropdown-item" href="#" data-color="dark">Dark</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#" data-color="1">1</a>
+												<a class="dropdown-item" href="#" data-color="2">2</a>
+												<a class="dropdown-item" href="#" data-color="3">3</a>
+												<a class="dropdown-item" href="#" data-color="4">4</a>
+												<a class="dropdown-item" href="#" data-color="5">5</a>
+												<a class="dropdown-item" href="#" data-color="6">6</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form action=";" class="cozy">
+								<fieldset>
+									<legend class="bold small text-uppercase">Input elements</legend>
+									<div class="form-group">
+										<label for="exampleInputCustomColor">Custom text color</label>
+										<input type="text" class="form-control" id="exampleInputCustomColor" aria-describedby="emailHelp" placeholder="Custom text color" value="Custom text color">
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlTextareaCustomColor">Example textarea</label>
+										<textarea class="form-control" id="exampleFormControlTextareaCustomColor" rows="3">Textarea custom color example</textarea>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Checkboxes and Radios</legend>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group checkbox">
+												<input type="checkbox" id="exampleCheckCustomColor1">
+												<label for="exampleCheckCustomColor1">Check me out</label>
+											</div>
+											<div class="form-group checkbox">
+												<input type="checkbox" id="exampleCheckCustomColor2">
+												<label for="exampleCheckCustomColor2">Check me out</label>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group radio">
+												<input type="radio" id="exampleRadioCustomColor1" name="exampleRadioCustomColor">
+												<label for="exampleRadioCustomColor1">Check me out</label>
+											</div>
+											<div class="form-group radio">
+												<input type="radio" id="exampleRadioCustomColor2" name="exampleRadioCustomColor">
+												<label for="exampleRadioCustomColor2">Check me out</label>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="bold small text-uppercase">Select elements</legend>
+									<div class="form-group">
+										<label for="exampleFormControlSelectMultipleCustomColor">Example select</label>
+										<select class="form-control" id="exampleFormControlSelectMultipleCustomColor">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlSelectCustomColor">Example multiple select</label>
+										<select multiple="multiple" class="form-control" id="exampleFormControlSelectCustomColor">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="card border-0 shadow-box">
+						<div class="card-header bg-1">
+							<h5 class="mb-0">Shadow inputs</h5>
+						</div>
+						<div class="card-body">
+							<form action=";" class="cozy">
+								<div class="form-group">
+									<label for="exampleInputEmailShadow">Email address</label>
+									<input type="email" class="form-control shadow" id="exampleInputEmailShadow" aria-describedby="emailHelp" placeholder="Enter email">
+									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPasswordShadow">Password</label>
+									<input type="password" class="form-control shadow" id="exampleInputPasswordShadow" placeholder="Password">
+								</div>
+								<div class="form-group checkbox">
+									<input type="checkbox" class="form-check-input" id="exampleCheckShadow">
+									<label class="form-check-label" for="exampleCheckShadow">Check me out</label>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectMultipleShadow">Example select</label>
+									<select class="form-control shadow" id="exampleFormControlSelectMultipleShadow">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelectShadow">Example multiple select</label>
+									<select multiple="multiple" class="form-control shadow" id="exampleFormControlSelectShadow">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextareaShadow">Example textarea</label>
+									<textarea class="form-control shadow" id="exampleFormControlTextareaShadow" rows="3"></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<aside class="quick-view">
+			<div class="side-wrapper">
+				<nav class="nav nav-tabs nav-fill tabs-clean slide">
+					<a class="nav-item nav-link active" data-toggle="tab" href="#aside-profile">
+						<i class="far fa-id-card icon"></i>
+					</a>
+					<a class="nav-item nav-link" data-toggle="tab" href="#aside-todo" data-rel="todos">
+						<i class="fas fa-list-ul icon"></i>
+					</a>
+					<a class="nav-item nav-link" data-toggle="tab" href="#aside-users" data-rel="users">
+						<i class="fas fa-users icon"></i>
+					</a>
+					<a class="nav-item nav-link" data-toggle="tab" href="#aside-settings">
+						<i class="fas fa-cog icon"></i>
+					</a>
+				</nav>
+				<div class="tab-content">
+					<div class="tab-pane active" id="aside-profile">
+						<ul class="list-unstyled d-flex justify-content-between text-left pt-3">
+							<li>
+								<p class="mb-0 small text-uppercase color-2">followers</p>
+								<h4>2.7k</h4>
+							</li>
+							<li>
+								<p class="mb-0 small text-uppercase color-2">friends</p>
+								<h4>1.3k</h4>
+							</li>
+							<li>
+								<p class="mb-0 small text-uppercase color-2">posts</p>
+								<h4>451</h4>
+							</li>
+						</ul>
+						<hr class="my-3">
+						<p class="regular text-uppercase">Favorite categories</p>
+						<div class="row gap-y">
+							<div class="col-6">
+								<a class="btn btn-5 d-flex flex-column align-items-center py-4" href="">
+									<i class="w-50">
+										<img src="../../img/svg/design.svg" class="img-responsive" alt="">
+									</i>
+									<p class="mb-0">Design</p>
+								</a>
+							</div>
+							<div class="col-6">
+								<a class="btn btn-4 d-flex flex-column align-items-center py-4" href="">
+									<i class="w-50">
+										<img src="../../img/svg/marketing.svg" class="img-responsive" alt="">
+									</i>
+									<p class="mb-0">Marketing</p>
+								</a>
+							</div>
+							<div class="col-6">
+								<a class="btn btn-3 d-flex flex-column align-items-center py-4" href="">
+									<i class="w-50">
+										<img src="../../img/svg/mobile.svg" class="img-responsive" alt="">
+									</i>
+									<p class="mb-0">Mobile</p>
+								</a>
+							</div>
+							<div class="col-6">
+								<a class="btn btn-danger d-flex flex-column align-items-center py-4" href="">
+									<i class="w-50">
+										<img src="../../img/svg/cloud.svg" class="img-responsive" alt="">
+									</i>
+									<p class="mb-0">Cloud</p>
+								</a>
+							</div>
+						</div>
+						<hr class="my-3">
+						<p class="regular text-uppercase">Quick overview</p>
+						<ul class="list-unstyled">
+							<li class="stat">
+								<p class="small d-flex justify-content-between mb-1">
+									<span class="text-muted">Profile almost complete</span>
+									<span class="bold text-success">75%</span>
+								</p>
+								<div class="progress progress-xs mb-4">
+									<div class="progress-bar bg-success" style="width: 75%;"></div>
+								</div>
+							</li>
+							<li>
+								<p class="small d-flex justify-content-between mb-1">
+									<span class="text-muted">Tasks done</span>
+									<span class="bold text-info">50%</span>
+								</p>
+								<div class="progress progress-xs mb-4">
+									<div class="progress-bar bg-info" style="width: 50%;"></div>
+								</div>
+							</li>
+							<li>
+								<p class="small d-flex justify-content-between mb-1">
+									<span class="text-muted">You're running out of space</span>
+									<span class="bold text-danger">94%</span>
+								</p>
+								<div class="progress progress-xs mb-4">
+									<div class="progress-bar bg-danger" style="width: 94%;"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-pane" id="aside-todo">
+						<ul class="list-group list-group-flush load-content aside--todo-list">
+							<li class="loader-container">
+								<div class="loader-8">Loading...</div>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-pane" id="aside-users">
+						<form class="form">
+							<div class="input-group clean-group mb-3">
+								<input type="text" class="form-control" placeholder="Search user ..." name="q">
+								<div class="input-group-append">
+									<button class="btn btn-1" type="button">
+										<i class="fas fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+						<div class="list-group list-group-flush load-content aside--users-list">
+							<div class="loader-container">
+								<div class="loader-8">Loading...</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="aside-settings">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item px-0">
+								<h4 class="small bold mb-4">Email settings</h4>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="mr-3">
+										<p class="regular mb-0 color-5">Automatic response</p>
+										<p class="color-2 mb-0 small">(Experimental) Configure an automated response</p>
+									</div>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-1" type="checkbox">
+										<label class="tgl-btn tgl-btn-4" for="tgl-1"></label>
+									</div>
+								</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="mr-3">
+										<p class="regular mb-0 color-5">Daily summary emails</p>
+										<p class="color-2 mb-0 small">Send me a daily summary of all my activity</p>
+									</div>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-2" type="checkbox" checked="checked">
+										<label class="tgl-btn tgl-btn-4" for="tgl-2"></label>
+									</div>
+								</div>
+							</li>
+							<li class="list-group-item px-0">
+								<h4 class="small bold mb-4">Personal settings</h4>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<p class="regular mb-0 color-5 mr-3">Other can view my status</p>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-3" type="checkbox">
+										<label class="tgl-btn tgl-btn-4" for="tgl-3"></label>
+									</div>
+								</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<p class="regular mb-0 color-5 mr-3">Allow remote access</p>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-4" type="checkbox" checked="checked">
+										<label class="tgl-btn tgl-btn-4" for="tgl-4"></label>
+									</div>
+								</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<p class="regular mb-0 color-5 mr-3">Automatic signing</p>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-5" type="checkbox">
+										<label class="tgl-btn tgl-btn-4" for="tgl-5"></label>
+									</div>
+								</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<p class="regular mb-0 color-5 mr-3">Clear cache on log off</p>
+									<div class="form-group mb-0">
+										<input class="tgl tgl-light" id="tgl-6" type="checkbox" checked="checked">
+										<label class="tgl-btn tgl-btn-4" for="tgl-6"></label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+	<!-- FOOTER -->
+	<footer class="main-footer">
+		<div class="container-fluid d-flex justify-content-between small">
+			<span>&copy; 2018.
+				<a href="../index.html">Dashcore Admin</a> by
+				<a href="http://5studios.net">5studios.net</a>
+			</span>
+			<span class="color-2">v1.0</span>
+		</div>
+	</footer>
+
+	<script src="../js/swiper.js"></script>
+	<script src="../js/popper.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.easing.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/jquery.waypoints.js"></script>
+	<script src="../js/jquery.counterup.js"></script>
+	<script src="../js/jquery.smartWizard.js"></script>
+	<script src="../js/simplebar.js"></script>
+	<script src="../js/modernizr-2.8.3.min.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="../js/handlebars.js"></script>
+	<script src="../js/Chart.bundle.js"></script>
+	<script src="../js/moment.js"></script>
+	<script src="../js/fullcalendar.js"></script>
+	<script src="../js/bootstrap-select.js"></script>
+
+	<script src="../js/common-script.js"></script>
+	<script src="../js/00.configuration.js"></script>
+	<script src="../js/01.1.templates.js"></script>
+	<script src="../js/01.2.data.js"></script>
+	<script src="../js/02.navigation.js"></script>
+	<script src="../js/03.charts.js"></script>
+	<script src="../js/04.script.js"></script>
+	<script src="../js/demo.js"></script>
+</body>
+
+</html>

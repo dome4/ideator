@@ -30,7 +30,7 @@ Explain how to run the automated tests for this system
 
 ## Deployment
 
-`lektor build -f webpack`
+`lektor build -f webpack --output-path ./build`
 
 ## Built With
 
