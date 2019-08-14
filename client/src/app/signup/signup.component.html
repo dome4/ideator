@@ -1,12 +1,18 @@
 <div class="login-wrapper">
-  <form class="login" clrForm (ngSubmit)="onSubmit()" ngNativeValidate>
+  <form
+    class="login login-form"
+    clrForm
+    (ngSubmit)="onSubmit()"
+    ngNativeValidate
+    clrLayout="vertical"
+  >
     <section class="title">
       <h3 class="welcome">Welcome to</h3>
       Company Product Name
       <h5 class="hint">Use your Company ID to sign in or create one now</h5>
     </section>
     <div class="login-group">
-      <clr-input-container>
+      <clr-input-container style="margin-bottom: 0.5rem;">
         <input
           type="email"
           name="email"
@@ -38,7 +44,7 @@
       <div class="error" [ngClass]="{ active: errorMessage }">
         {{ errorMessage }}
       </div>
-      <input type="submit" class="btn btn-primary" value="Sign up" />
+      <input type="submit" class="btn btn-primary" value="Sign up" disabled />
       <a [routerLink]="['/login']" class="signup">Already have an account?</a>
     </div>
   </form>
