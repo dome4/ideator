@@ -9,6 +9,8 @@ import { CreateIdeaDto } from './dto';
 import { IdeaRO, IdeasRO } from './idea.interface';
 // const slug = require('slug');
 
+// ToDo: add throw new HttpException('Forbidden', HttpStatus.FORBIDDEN); if something wents wrong
+
 @Injectable()
 export class IdeaService {
     constructor(
@@ -139,15 +141,9 @@ export class IdeaService {
         idea.team = ideaData.team;
         idea.marketBarriers = ideaData.marketBarriers;
 
-        // idea.user = userId;
-        // ToDo: is the user id set?
-        // throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
-
-        // ToDo: bug creation of a new idea sets other idea's user to null
-
         const newIdea = await this.ideaRepository.save(idea);
 
-        const user = await this.userRepository.findOne({ where: { id: userId } });
+        const user = await this.userRepository.findOne({ where: { id: userId }, relations: ["ideas"] });
 
         if (Array.isArray(user.ideas)) {
             user.ideas.push(idea);

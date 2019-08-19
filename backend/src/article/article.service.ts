@@ -7,7 +7,7 @@ import { UserEntity } from '../user/user.entity';
 import { FollowsEntity } from '../profile/follows.entity';
 import { CreateArticleDto } from './dto';
 
-import {ArticleRO, ArticlesRO, CommentsRO} from './article.interface';
+import { ArticleRO, ArticlesRO, CommentsRO } from './article.interface';
 const slug = require('slug');
 
 @Injectable()
@@ -21,7 +21,7 @@ export class ArticleService {
     private readonly userRepository: Repository<UserEntity>,
     @InjectRepository(FollowsEntity)
     private readonly followsRepository: Repository<FollowsEntity>
-  ) {}
+  ) { }
 
   async findAll(query): Promise<ArticlesRO> {
 
@@ -36,12 +36,12 @@ export class ArticleService {
     }
 
     if ('author' in query) {
-      const author = await this.userRepository.findOne({username: query.author});
+      const author = await this.userRepository.findOne({ username: query.author });
       qb.andWhere("article.authorId = :id", { id: author.id });
     }
 
     if ('favorited' in query) {
-      const author = await this.userRepository.findOne({username: query.favorited});
+      const author = await this.userRepository.findOne({ username: query.favorited });
       const ids = author.favorites.map(el => el.id);
       qb.andWhere("article.authorId IN (:ids)", { ids });
     }
@@ -60,11 +60,11 @@ export class ArticleService {
 
     const articles = await qb.getMany();
 
-    return {articles, articlesCount};
+    return { articles, articlesCount };
   }
 
   async findFeed(userId: number, query): Promise<ArticlesRO> {
-    const _follows = await this.followsRepository.find( {followerId: userId});
+    const _follows = await this.followsRepository.find({ followerId: userId });
     const ids = _follows.map(el => el.followingId);
 
     const qb = await getRepository(ArticleEntity)
@@ -85,16 +85,16 @@ export class ArticleService {
 
     const articles = await qb.getMany();
 
-    return {articles, articlesCount};
+    return { articles, articlesCount };
   }
 
   async findOne(where): Promise<ArticleRO> {
     const article = await this.articleRepository.findOne(where);
-    return {article};
+    return { article };
   }
 
   async addComment(slug: string, commentData): Promise<ArticleRO> {
-    let article = await this.articleRepository.findOne({slug});
+    let article = await this.articleRepository.findOne({ slug });
 
     const comment = new Comment();
     comment.body = commentData.body;
@@ -103,11 +103,11 @@ export class ArticleService {
 
     await this.commentRepository.save(comment);
     article = await this.articleRepository.save(article);
-    return {article}
+    return { article }
   }
 
   async deleteComment(slug: string, id: string): Promise<ArticleRO> {
-    let article = await this.articleRepository.findOne({slug});
+    let article = await this.articleRepository.findOne({ slug });
 
     const comment = await this.commentRepository.findOne(id);
     const deleteIndex = article.comments.findIndex(_comment => _comment.id === comment.id);
@@ -115,16 +115,16 @@ export class ArticleService {
     if (deleteIndex >= 0) {
       const deleteComments = article.comments.splice(deleteIndex, 1);
       await this.commentRepository.delete(deleteComments[0].id);
-      article =  await this.articleRepository.save(article);
-      return {article};
+      article = await this.articleRepository.save(article);
+      return { article };
     } else {
-      return {article};
+      return { article };
     }
 
   }
 
   async favorite(id: number, slug: string): Promise<ArticleRO> {
-    let article = await this.articleRepository.findOne({slug});
+    let article = await this.articleRepository.findOne({ slug });
     const user = await this.userRepository.findOne(id);
 
     const isNewFavorite = user.favorites.findIndex(_article => _article.id === article.id) < 0;
@@ -136,11 +136,11 @@ export class ArticleService {
       article = await this.articleRepository.save(article);
     }
 
-    return {article};
+    return { article };
   }
 
   async unFavorite(id: number, slug: string): Promise<ArticleRO> {
-    let article = await this.articleRepository.findOne({slug});
+    let article = await this.articleRepository.findOne({ slug });
     const user = await this.userRepository.findOne(id);
 
     const deleteIndex = user.favorites.findIndex(_article => _article.id === article.id);
@@ -154,12 +154,12 @@ export class ArticleService {
       article = await this.articleRepository.save(article);
     }
 
-    return {article};
+    return { article };
   }
 
   async findComments(slug: string): Promise<CommentsRO> {
-    const article = await this.articleRepository.findOne({slug});
-    return {comments: article.comments};
+    const article = await this.articleRepository.findOne({ slug });
+    return { comments: article.comments };
   }
 
   async create(userId: number, articleData: CreateArticleDto): Promise<ArticleEntity> {
@@ -173,7 +173,7 @@ export class ArticleService {
 
     const newArticle = await this.articleRepository.save(article);
 
-    const author = await this.userRepository.findOne({ where: { id: userId } });
+    const author = await this.userRepository.findOne({ where: { id: userId }, relations: ["articles"] });
 
     if (Array.isArray(author.articles)) {
       author.articles.push(article);
@@ -188,17 +188,17 @@ export class ArticleService {
   }
 
   async update(slug: string, articleData: any): Promise<ArticleRO> {
-    let toUpdate = await this.articleRepository.findOne({ slug: slug});
+    let toUpdate = await this.articleRepository.findOne({ slug: slug });
     let updated = Object.assign(toUpdate, articleData);
     const article = await this.articleRepository.save(updated);
-    return {article};
+    return { article };
   }
 
   async delete(slug: string): Promise<DeleteResult> {
-    return await this.articleRepository.delete({ slug: slug});
+    return await this.articleRepository.delete({ slug: slug });
   }
 
   slugify(title: string) {
-    return slug(title, {lower: true}) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36)
+    return slug(title, { lower: true }) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36)
   }
 }
