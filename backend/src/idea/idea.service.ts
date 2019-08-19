@@ -7,60 +7,49 @@ import { FollowsEntity } from '../profile/follows.entity';
 import { CreateIdeaDto } from './dto';
 
 import { IdeaRO, IdeasRO } from './idea.interface';
-const slug = require('slug');
+// const slug = require('slug');
 
 @Injectable()
 export class IdeaService {
     constructor(
-        // @InjectRepository(ArticleEntity)
-        // private readonly articleRepository: Repository<ArticleEntity>,
-        // @InjectRepository(Comment)
-        // private readonly commentRepository: Repository<Comment>,
-        // @InjectRepository(UserEntity)
-        // private readonly userRepository: Repository<UserEntity>,
+        @InjectRepository(IdeaEntity)
+        private readonly ideaRepository: Repository<IdeaEntity>,
+        @InjectRepository(UserEntity)
+        private readonly userRepository: Repository<UserEntity>,
         // @InjectRepository(FollowsEntity)
         // private readonly followsRepository: Repository<FollowsEntity>
     ) { }
 
-    // async findAll(query): Promise<ArticlesRO> {
+    async findAll(query): Promise<IdeasRO> {
 
-    //     const qb = await getRepository(ArticleEntity)
-    //         .createQueryBuilder('article')
-    //         .leftJoinAndSelect('article.author', 'author');
+        const qb = await getRepository(IdeaEntity)
+            .createQueryBuilder('idea')
+            .leftJoinAndSelect('idea.user', 'user');
 
-    //     qb.where("1 = 1");
+        qb.where("1 = 1"); // ToDo: what happens here?
 
-    //     if ('tag' in query) {
-    //         qb.andWhere("article.tagList LIKE :tag", { tag: `%${query.tag}%` });
-    //     }
+        // only respond with ideas of matching user
+        if ('user' in query) {
+            const user = await this.userRepository.findOne({ username: query.user });
+            qb.andWhere("idea.userId = :id", { id: user.id });
+        }
 
-    //     if ('author' in query) {
-    //         const author = await this.userRepository.findOne({ username: query.author });
-    //         qb.andWhere("article.authorId = :id", { id: author.id });
-    //     }
+        qb.orderBy('article.created', 'DESC');
 
-    //     if ('favorited' in query) {
-    //         const author = await this.userRepository.findOne({ username: query.favorited });
-    //         const ids = author.favorites.map(el => el.id);
-    //         qb.andWhere("article.authorId IN (:ids)", { ids });
-    //     }
+        const ideasCount = await qb.getCount();
 
-    //     qb.orderBy('article.created', 'DESC');
+        if ('limit' in query) {
+            qb.limit(query.limit);
+        }
 
-    //     const articlesCount = await qb.getCount();
+        if ('offset' in query) {
+            qb.offset(query.offset);
+        }
 
-    //     if ('limit' in query) {
-    //         qb.limit(query.limit);
-    //     }
+        const ideas = await qb.getMany();
 
-    //     if ('offset' in query) {
-    //         qb.offset(query.offset);
-    //     }
-
-    //     const articles = await qb.getMany();
-
-    //     return { articles, articlesCount };
-    // }
+        return { ideas, ideasCount };
+    }
 
     // async findFeed(userId: number, query): Promise<ArticlesRO> {
     //     const _follows = await this.followsRepository.find({ followerId: userId });
