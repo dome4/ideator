@@ -22,6 +22,8 @@ export class IdeaService {
 
     async findAll(query): Promise<IdeasRO> {
 
+        // ToDo: returns whole user with password
+
         const qb = await getRepository(IdeaEntity)
             .createQueryBuilder('idea')
             .leftJoinAndSelect('idea.user', 'user');
@@ -139,15 +141,13 @@ export class IdeaService {
 
         // idea.user = userId;
         // ToDo: is the user id set?
+        // throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+
+        // ToDo: bug creation of a new idea sets other idea's user to null
 
         const newIdea = await this.ideaRepository.save(idea);
 
         const user = await this.userRepository.findOne({ where: { id: userId } });
-
-        // debug
-        console.log('debug')
-        console.log(userId)
-        console.log(newIdea)
 
         if (Array.isArray(user.ideas)) {
             user.ideas.push(idea);
