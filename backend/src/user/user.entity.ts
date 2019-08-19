@@ -1,7 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, BeforeInsert, JoinTable, ManyToMany, OneToMany} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, JoinTable, ManyToMany, OneToMany } from "typeorm";
 import { IsEmail, Validate } from 'class-validator';
 import * as crypto from 'crypto';
 import { ArticleEntity } from '../article/article.entity';
+import { IdeaEntity } from "../idea/idea.entity";
 
 @Entity('user')
 export class UserEntity {
@@ -16,10 +17,10 @@ export class UserEntity {
   @IsEmail()
   email: string;
 
-  @Column({default: ''})
+  @Column({ default: '' })
   bio: string;
 
-  @Column({default: ''})
+  @Column({ default: '' })
   image: string;
 
   @Column()
@@ -36,4 +37,7 @@ export class UserEntity {
 
   @OneToMany(type => ArticleEntity, article => article.author)
   articles: ArticleEntity[];
+
+  @OneToMany(type => IdeaEntity, idea => idea.user)
+  ideas: ArticleEntity[];
 }
