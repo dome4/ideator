@@ -8,7 +8,7 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
 
   async use(req: Request, res: Response, next: NextFunction) {
     const authHeaders = req.headers.authorization;
@@ -22,6 +22,7 @@ export class AuthMiddleware implements NestMiddleware {
       }
 
       req.user = user.user;
+      req.user.id = decoded.id; // see https://github.com/lujakob/nestjs-realworld-example-app/pull/21/commits/9ee75dfb895603c646542a424850054b9db806e0
       next();
 
     } else {
