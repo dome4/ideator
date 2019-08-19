@@ -7,7 +7,12 @@ export class CreateIdeaDto {
     @IsNotEmpty()
     readonly title: string;
 
-    readonly description: string;
-    readonly body: string;
-    readonly tagList: string[];
+    readonly businessIdea: string;
+    readonly usp: string;
+    readonly customers: string;
+    readonly businessModel: string;
+    readonly competitors: string;
+    readonly team: string;
+    readonly marketBarriers: string;
+    readonly user: string;
 }

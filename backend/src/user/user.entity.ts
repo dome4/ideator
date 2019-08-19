@@ -39,5 +39,5 @@ export class UserEntity {
   articles: ArticleEntity[];
 
   @OneToMany(type => IdeaEntity, idea => idea.user)
-  ideas: ArticleEntity[];
+  ideas: IdeaEntity[];
 }

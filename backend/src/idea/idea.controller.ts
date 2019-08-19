@@ -1,12 +1,47 @@
 import { Get, Post, Body, Put, Delete, Query, Param, Controller } from '@nestjs/common';
 import { CreateIdeaDto } from './dto';
+import {
+    ApiUseTags,
+    ApiBearerAuth,
+    ApiResponse,
+    ApiOperation,
+} from '@nestjs/swagger';
+import { IdeaService } from './idea.service';
+import { IdeasRO, IdeaRO } from './idea.interface';
+import { User } from '../user/user.decorator';
 
+@ApiBearerAuth()
+@ApiUseTags('ideas')
 @Controller('ideas')
 export class IdeaController {
 
+    constructor(private readonly ideaService: IdeaService) { }
+
+    @ApiOperation({ title: 'Get all ideas' })
+    @ApiResponse({ status: 200, description: 'Return all ideas.' })
+    @Get()
+    async findAll(@Query() query): Promise<IdeasRO> {
+        return await this.ideaService.findAll(query);
+
+        // ToDo: debug
+    }
+
+    @ApiOperation({ title: 'Get specified idea' })
+    @ApiResponse({ status: 200, description: 'Return specified idea.' })
+    @Get(':id')
+    async findOne(@Param('id') id: number): Promise<IdeaRO> {
+        return await this.ideaService.findOne({ id });
+
+        // ToDo: return error if no idea were matched
+        // ToDo: debug
+    }
+
+    @ApiOperation({ title: 'Create idea' })
+    @ApiResponse({ status: 201, description: 'The idea has been successfully created.' })
+    @ApiResponse({ status: 403, description: 'Forbidden.' })
     @Post()
-    create(@Body() createIdeaDto: CreateIdeaDto) {
-        return 'This action adds a new cat';
+    async create(@User('id') userId: number, @Body('idea') ideaData: CreateIdeaDto) {
+        return this.ideaService.create(userId, ideaData);
     }
 
     // @Get()
@@ -14,10 +49,10 @@ export class IdeaController {
     //     return `This action returns all cats (limit: ${query.limit} items)`;
     // }
 
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return `This action returns a #${id} cat`;
-    }
+    // @Get(':id')
+    // findOne(@Param('id') id: string) {
+    //     return `This action returns a #${id} cat`;
+    // }
 
     @Put(':id')
     update(@Param('id') id: string, @Body() updateIdeaDto: CreateIdeaDto) {

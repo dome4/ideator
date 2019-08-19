@@ -34,7 +34,7 @@ export class IdeaService {
             qb.andWhere("idea.userId = :id", { id: user.id });
         }
 
-        qb.orderBy('article.created', 'DESC');
+        qb.orderBy('idea.created', 'DESC');
 
         const ideasCount = await qb.getCount();
 
@@ -51,35 +51,10 @@ export class IdeaService {
         return { ideas, ideasCount };
     }
 
-    // async findFeed(userId: number, query): Promise<ArticlesRO> {
-    //     const _follows = await this.followsRepository.find({ followerId: userId });
-    //     const ids = _follows.map(el => el.followingId);
-
-    //     const qb = await getRepository(ArticleEntity)
-    //         .createQueryBuilder('article')
-    //         .where('article.authorId IN (:ids)', { ids });
-
-    //     qb.orderBy('article.created', 'DESC');
-
-    //     const articlesCount = await qb.getCount();
-
-    //     if ('limit' in query) {
-    //         qb.limit(query.limit);
-    //     }
-
-    //     if ('offset' in query) {
-    //         qb.offset(query.offset);
-    //     }
-
-    //     const articles = await qb.getMany();
-
-    //     return { articles, articlesCount };
-    // }
-
-    // async findOne(where): Promise<ArticleRO> {
-    //     const article = await this.articleRepository.findOne(where);
-    //     return { article };
-    // }
+    async findOne(where): Promise<IdeaRO> {
+        const idea = await this.ideaRepository.findOne(where);
+        return { idea };
+    }
 
     // async addComment(slug: string, commentData): Promise<ArticleRO> {
     //     let article = await this.articleRepository.findOne({ slug });
@@ -150,30 +125,41 @@ export class IdeaService {
     //     return { comments: article.comments };
     // }
 
-    // async create(userId: number, articleData: CreateArticleDto): Promise<ArticleEntity> {
+    async create(userId: number, ideaData: CreateIdeaDto): Promise<IdeaEntity> {
 
-    //     let article = new ArticleEntity();
-    //     article.title = articleData.title;
-    //     article.description = articleData.description;
-    //     article.slug = this.slugify(articleData.title);
-    //     article.tagList = articleData.tagList || [];
-    //     article.comments = [];
+        let idea = new IdeaEntity();
+        idea.title = ideaData.title;
+        idea.businessIdea = ideaData.businessIdea;
+        idea.usp = ideaData.usp;
+        idea.customers = ideaData.customers;
+        idea.businessModel = ideaData.businessModel;
+        idea.competitors = ideaData.competitors;
+        idea.team = ideaData.team;
+        idea.marketBarriers = ideaData.marketBarriers;
 
-    //     const newArticle = await this.articleRepository.save(article);
+        // idea.user = userId;
+        // ToDo: is the user id set?
 
-    //     const author = await this.userRepository.findOne({ where: { id: userId } });
+        const newIdea = await this.ideaRepository.save(idea);
 
-    //     if (Array.isArray(author.articles)) {
-    //         author.articles.push(article);
-    //     } else {
-    //         author.articles = [article];
-    //     }
+        const user = await this.userRepository.findOne({ where: { id: userId } });
 
-    //     await this.userRepository.save(author);
+        // debug
+        console.log('debug')
+        console.log(userId)
+        console.log(newIdea)
 
-    //     return newArticle;
+        if (Array.isArray(user.ideas)) {
+            user.ideas.push(idea);
+        } else {
+            user.ideas = [idea];
+        }
 
-    // }
+        await this.userRepository.save(user);
+
+        return newIdea;
+
+    }
 
     // async update(slug: string, articleData: any): Promise<ArticleRO> {
     //     let toUpdate = await this.articleRepository.findOne({ slug: slug });
