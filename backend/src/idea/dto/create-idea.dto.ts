@@ -14,5 +14,5 @@ export class CreateIdeaDto {
     readonly competitors: string;
     readonly team: string;
     readonly marketBarriers: string;
-    readonly user: string;
+    // readonly user: string;
 }
