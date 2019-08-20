@@ -54,23 +54,11 @@ export class IdeaController {
         return this.ideaService.update(id, ideaData);
     }
 
-    // @Get()
-    // findAll(@Query() query: ListAllEntities) {
-    //     return `This action returns all cats (limit: ${query.limit} items)`;
-    // }
-
-    // @Get(':id')
-    // findOne(@Param('id') id: string) {
-    //     return `This action returns a #${id} cat`;
-    // }
-
-    // @Put(':id')
-    // update(@Param('id') id: string, @Body() updateIdeaDto: CreateIdeaDto) {
-    //     return `This action updates a #${id} cat`;
-    // }
-
+    @ApiOperation({ title: 'Delete idea' })
+    @ApiResponse({ status: 201, description: 'The idea has been successfully deleted.' })
+    @ApiResponse({ status: 403, description: 'Forbidden.' })
     @Delete(':id')
-    remove(@Param('id') id: string) {
-        return `This action removes a #${id} cat`;
+    async delete(@Param('id') id: number) {
+        return this.ideaService.delete(id);
     }
 }

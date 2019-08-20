@@ -62,6 +62,8 @@ export class IdeaService {
 
     async create(userId: number, ideaData: CreateIdeaDto): Promise<IdeaEntity> {
 
+        // ToDo: validate if title is given as param
+
         let idea = new IdeaEntity();
         idea.title = ideaData.title;
         idea.businessIdea = ideaData.businessIdea;
@@ -100,8 +102,10 @@ export class IdeaService {
         return { idea };
     }
 
-    // async delete(slug: string): Promise<DeleteResult> {
-    //     return await this.articleRepository.delete({ slug: slug });
-    // }
+    async delete(id: number): Promise<DeleteResult> {
+        return await this.ideaRepository.delete({ id });
+
+        // ToDo: modify return to client of delete idea action
+    }
 
 }
