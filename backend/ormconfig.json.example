@@ -6,5 +6,7 @@
   "password": "your-mysql-password",
   "database": "nestjsrealworld",
   "entities": ["src/**/**.entity{.ts,.js}"],
-  "synchronize": true
+  "synchronize": true,
+  "seeds": ["src/database/seeds/**.seeder.ts"],
+  "factories": ["src/database/factories/**.factory.ts"]
 }

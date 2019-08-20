@@ -47,6 +47,7 @@ On application start, tables for all entities will be created.
 - `npm run start:watch` - Start application in watch mode
 - `npm run test` - run Jest test runner
 - `npm run start:prod` - Build application
+- `npm run seed` - Run database seeder
 
 ---
 
