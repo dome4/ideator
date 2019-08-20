@@ -14,16 +14,25 @@ export class AuthMiddleware implements NestMiddleware {
     const authHeaders = req.headers.authorization;
     if (authHeaders && (authHeaders as string).split(' ')[1]) {
       const token = (authHeaders as string).split(' ')[1];
-      const decoded: any = jwt.verify(token, SECRET);
-      const user = await this.userService.findById(decoded.id);
 
-      if (!user) {
-        throw new HttpException('User not found.', HttpStatus.UNAUTHORIZED);
-      }
+      const decoded: any = jwt.verify(token, SECRET, async (err, decoded) => {
 
-      req.user = user.user;
-      req.user.id = decoded.id; // see https://github.com/lujakob/nestjs-realworld-example-app/pull/21/commits/9ee75dfb895603c646542a424850054b9db806e0
-      next();
+        // handle token error
+        if (err) {
+          throw new HttpException('Failed to authenticate token.', HttpStatus.UNAUTHORIZED);
+        }
+
+        const user = await this.userService.findById(decoded.id);
+
+        if (!user) {
+          throw new HttpException('User not found.', HttpStatus.UNAUTHORIZED);
+        }
+
+        req.user = user.user;
+        req.user.id = decoded.id; // see https://github.com/lujakob/nestjs-realworld-example-app/pull/21/commits/9ee75dfb895603c646542a424850054b9db806e0
+        next();
+
+      });
 
     } else {
       throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
