@@ -28,7 +28,7 @@
     "@webcomponents/custom-elements": "^1.0.0",
     "core-js": "^2.5.4",
     "fuse.js": "^3.4.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
